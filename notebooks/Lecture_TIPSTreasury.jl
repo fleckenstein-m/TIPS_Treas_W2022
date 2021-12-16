@@ -220,7 +220,7 @@ md"""
 """
 
 # ╔═╡ 7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
-LocalResource("FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+LocalResource("https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
 
 # ╔═╡ 50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 md"""
