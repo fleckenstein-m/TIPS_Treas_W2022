@@ -21,7 +21,7 @@ The latter allows you to plug in values that you would have defined here.
 @def title       = "TIPS-Treasury Bond Puzzle"
 @def prepath     = "TIPS_Treas_W2022"
 @def description = """
-                   Relative Pricing of Treasury Notes/Bonds and TIPS
+                   Relative Valuation of Treasury Notes/Bond and TIPS
                    """
 @def author     = "Matthias Fleckenstein"
 
