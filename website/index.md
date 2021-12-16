@@ -23,7 +23,7 @@
 
 ## Course Overview
 
-This course
+This course covers
 
 ## Prerequisites
 
