@@ -219,8 +219,19 @@ md"""
 #
 """
 
+# ╔═╡ b34099d1-2deb-4ca8-9205-5fbc6b950d3a
+LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+
 # ╔═╡ 7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
-LocalResource("../Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+Resource("https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+
+# ╔═╡ 6b06a725-e2fd-4276-9ba9-ae351dbccd8a
+html"""<img src="https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg" height=500>"""
+
+# ╔═╡ 3d082e09-25c8-4893-8adf-ca3159324dd5
+md"""
+![](https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.png)
+"""
 
 # ╔═╡ 50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 md"""
@@ -2599,7 +2610,10 @@ version = "0.9.1+5"
 # ╟─84a4314f-b871-4f09-bec5-b140196e4134
 # ╟─6bcc4fb6-531c-44f9-8cd4-cea8b0eba4ae
 # ╟─aa580b94-1ea6-45d1-8508-10e0a20888e0
+# ╠═b34099d1-2deb-4ca8-9205-5fbc6b950d3a
 # ╠═7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
+# ╠═6b06a725-e2fd-4276-9ba9-ae351dbccd8a
+# ╠═3d082e09-25c8-4893-8adf-ca3159324dd5
 # ╟─50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 # ╟─1c90bd2e-67e2-4bb5-aceb-a39228f22872
 # ╟─c8d89c51-c6a3-46b0-9dd3-a51de9680128
