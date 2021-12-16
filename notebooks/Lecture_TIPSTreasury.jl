@@ -17,7 +17,7 @@ end
 # ╔═╡ f0545c67-5cfd-438f-a9ef-92c35ebaefa4
 #Set-up packages
 begin
-	using DataFrames, XLSX, Dates, Plots, Random, PlutoUI, Printf
+	using DataFrames, CSV, HTTP, XLSX, Dates, Plots, Random, PlutoUI, Printf
 	gr();
 	Plots.GRBackend()
 end
@@ -222,16 +222,11 @@ md"""
 # ╔═╡ b34099d1-2deb-4ca8-9205-5fbc6b950d3a
 LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
 
+# ╔═╡ eafdbacf-eb26-463a-9b9f-050d9b9cc9f1
+Resource("../Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+
 # ╔═╡ 7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
-Resource("https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
-
-# ╔═╡ 6b06a725-e2fd-4276-9ba9-ae351dbccd8a
-html"""<img src="https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg" height=500>"""
-
-# ╔═╡ 3d082e09-25c8-4893-8adf-ca3159324dd5
-md"""
-![](https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.png)
-"""
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
 
 # ╔═╡ 50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 md"""
@@ -264,7 +259,7 @@ md"""
 """
 
 # ╔═╡ 1539816e-2a47-4ae4-a2a3-7892958cc3ef
-LocalResource("TreasuryOutstandingSIFMA.svg",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryOutstandingSIFMA.svg",:width => 900)
 
 # ╔═╡ 014f362b-ccbb-41ba-ba87-08df662378a4
 md"""
@@ -344,7 +339,7 @@ md"""
 """
 
 # ╔═╡ 442528d3-e052-4c1c-b715-f137f00c39e7
-LocalResource("TreasuryCouponPicture.svg",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryCouponPicture.svg",:width => 900)
 
 # ╔═╡ bb987a24-8cc8-43d4-924b-340c112b4d04
 md"""
@@ -352,7 +347,7 @@ md"""
 """
 
 # ╔═╡ 13fe3b83-f41e-4df6-8241-9621dae2e432
-LocalResource("TreasuryNoteDescrExampleBloomberg.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryNoteDescrExampleBloomberg.png",:width => 900)
 
 # ╔═╡ ab65c69c-dec8-4af5-abdb-4baa7a1eb91f
 md"""
@@ -360,7 +355,7 @@ md"""
 """
 
 # ╔═╡ 7cc4e9fe-ce39-492e-9b91-5b02d5f48e8d
-LocalResource("TreasuryNoteCashflowExampleBloomberg.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryNoteCashflowExampleBloomberg.png",:width => 900)
 
 # ╔═╡ 51bf7ebf-0dc9-4cdd-94ff-ccc13e1131e3
 md"""
@@ -424,7 +419,11 @@ begin
 	TreasMkt = DataFrame()
 	plot_Treas = plot()
 	let
-		file="US-Treasury-Securities-Statistics-SIFMA.xlsx"
+		data_url = "https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/US-Treasury-Securities-Statistics-SIFMA.xlsx"
+		my_file = CSV.File(HTTP.get(data_url).body)
+ 		df = DataFrame(my_file)
+		
+		file="https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/US-Treasury-Securities-Statistics-SIFMA.xlsx"
 		sheet="Outstanding"
 		cols="A:G"
 		startrow = 8
@@ -494,7 +493,7 @@ md"""
 """
 
 # ╔═╡ 210e432f-4c5f-41d9-a593-d8452b56cef5
-LocalResource("SoldiersDepreciationNote.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/SoldiersDepreciationNote.png",:width => 900)
 
 # ╔═╡ 35e52c31-80d0-4876-a0ed-2ced82592fd0
 md"""
@@ -556,7 +555,7 @@ md"""
 """
 
 # ╔═╡ 03de2578-dff5-4b26-ad75-84c92fab1603
-LocalResource("USCPIYoY.svg",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/USCPIYoY.svg",:width => 900)
 
 # ╔═╡ 414f4a76-f3dd-436f-a07a-b38a377c61a0
 md"""
@@ -569,7 +568,7 @@ md"""
 """
 
 # ╔═╡ 0bfd0309-672c-4926-b2e2-673add7662f4
-LocalResource("USCPI_ReleaseSchedule.svg",:width => 600)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/USCPI_ReleaseSchedule.svg",:width => 600)
 
 # ╔═╡ 80e100ee-2de9-44b3-9295-865c062a1f6f
 md"""
@@ -602,7 +601,7 @@ md"""
 """
 
 # ╔═╡ 1a217214-86c3-4cde-9613-e2e2d6f85e71
-LocalResource("TIPSInflationAdjustment.svg",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TIPSInflationAdjustment.svg",:width => 900)
 
 # ╔═╡ 77b2f632-4c81-4d9d-a548-a59ec2fceb94
 md"""
@@ -615,7 +614,7 @@ md"""
 """
 
 # ╔═╡ 0184f6a2-578c-49a0-a532-34c1d322d1ea
-LocalResource("ReferenceCPI_Des.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/ReferenceCPI_Des.png",:width => 900)
 
 # ╔═╡ 9d865825-b8e0-487a-a06b-4e83955b94a8
 md"""
@@ -623,7 +622,7 @@ md"""
 """
 
 # ╔═╡ be17325c-713b-4df1-a4bd-ad80942e0860
-LocalResource("ReferenceCPI_Graph.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/ReferenceCPI_Graph.png",:width => 900)
 
 # ╔═╡ a1111504-70ff-4ff4-ae87-f4ae508d374b
 md"""
@@ -652,7 +651,7 @@ md"""
 """
 
 # ╔═╡ d1f23485-74dc-4d86-9f8f-490a8345cd4c
-LocalResource("IndexationLag_Chart.svg",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/IndexationLag_Chart.svg",:width => 900)
 
 # ╔═╡ c59abf9a-b54d-457e-a5e3-6e089f365f60
 md"""
@@ -677,7 +676,7 @@ md"""
 """
 
 # ╔═╡ 2749f2c5-291d-40cb-aff4-42ddc75ebaef
-LocalResource("RefCPICalc1997.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/RefCPICalc1997.png",:width => 900)
 
 # ╔═╡ e4d277ee-377b-4887-982e-b68257802747
 md"""
@@ -710,7 +709,7 @@ md"""
 """
 
 # ╔═╡ 632909cd-59be-4e5a-93aa-2f6953723701
-LocalResource("of698cpi_crop.svg",:width => 500)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/of698cpi_crop.svg",:width => 500)
 
 # ╔═╡ efed7be3-fa6f-487c-9474-bd27b0ea4217
 md"""
@@ -810,7 +809,7 @@ md"""
 """
 
 # ╔═╡ d57dc159-839d-4122-bb87-b5d683d37184
-LocalResource("InflSwap_Chart.svg",:width => 400)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap_Chart.svg",:width => 400)
 
 # ╔═╡ f685418f-752e-41e5-9c39-cb365cc8e152
 md"""
@@ -818,7 +817,7 @@ md"""
 """
 
 # ╔═╡ 2f5a3344-ff86-4aef-9f80-a9e1dcf017b1
-LocalResource("InflSwap1Yr_Des.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap1Yr_Des.png",:width => 900)
 
 # ╔═╡ 0c868329-c5ec-4e61-924c-28d1537304e5
 md"""
@@ -826,7 +825,7 @@ md"""
 """
 
 # ╔═╡ 3e00ebce-d205-4e5e-9926-be3cc4c91623
-LocalResource("InflSwap1Yr_PxQuotes.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap1Yr_PxQuotes.png",:width => 900)
 
 # ╔═╡ 1a97379e-6124-4d69-9c9b-5ea634427439
 md"""
@@ -834,7 +833,7 @@ md"""
 """
 
 # ╔═╡ 3168837d-cdf2-41a2-8240-191abd824304
-LocalResource("InflSwap1Yr_Graph.png",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap1Yr_Graph.png",:width => 900)
 
 # ╔═╡ f93d41c0-43c9-4c16-98f5-35f1ad6d1673
 md"""
@@ -871,7 +870,7 @@ md"""
 """
 
 # ╔═╡ 1e67a9c9-a676-4586-bbbf-b278389e4890
-LocalResource("InflationSwap_TermSheet.svg",:width => 900)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflationSwap_TermSheet.svg",:width => 900)
 
 # ╔═╡ 858849d8-eee7-4d24-826b-805b801dfadd
 md"""
@@ -1089,10 +1088,10 @@ md"""
 """
 
 # ╔═╡ 8f3a465e-af54-4b0e-9210-87c140629f2f
-LocalResource("TIPS_912828EA_Des.png",:width => 800)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TIPS_912828EA_Des.png",:width => 800)
 
 # ╔═╡ 049debc7-b1d5-4908-9b27-70344995a4c4
-LocalResource("TIPS_912828EA_PxGraph.png",:width => 800)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TIPS_912828EA_PxGraph.png",:width => 800)
 
 # ╔═╡ 6ffb21f5-3692-4698-abc8-70c423535ca5
 md"""
@@ -1100,7 +1099,7 @@ md"""
 """
 
 # ╔═╡ 72721c2c-f227-469a-91d9-dbec158c2fa7
-LocalResource("TIPS_912828EA_PxQuotes.png",:width => 800)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TIPS_912828EA_PxQuotes.png",:width => 800)
 
 # ╔═╡ f269b30a-91c9-4c93-8f03-1157ed5eaed1
 md"""
@@ -1113,7 +1112,7 @@ md"""
 """
 
 # ╔═╡ 97d9ba4b-880f-464e-bd94-7b72a86094b7
-LocalResource("Treasury_912828EE_Des.png",:width => 800)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/Treasury_912828EE_Des.png",:width => 800)
 
 # ╔═╡ df66a75a-96e3-49cb-8b9d-7274c467a7e0
 md"""
@@ -1121,10 +1120,10 @@ md"""
 """
 
 # ╔═╡ d16e82d8-faa9-444f-8db7-6f442c5e5fd4
-LocalResource("Treasury_912828EE_PxQuotes.png",:width => 800)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/Treasury_912828EE_PxQuotes.png",:width => 800)
 
 # ╔═╡ e36dc8d3-3b4e-46c4-9259-007f75068591
-LocalResource("Treasury_912828EE_PxGraph_2.png",:width => 800)
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/Treasury_912828EE_PxGraph_2.png",:width => 800)
 
 # ╔═╡ 3ee683fe-bed9-4230-9813-3befc8c06e2c
 md"""
@@ -1694,8 +1693,10 @@ Fleckenstein, Matthias, Francis A. Longstaff, and Hanno Lustig, 2014, The TIPS�
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
@@ -1703,7 +1704,9 @@ Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 XLSX = "fdbf4ff8-1666-58a4-91e7-1b58723a45e0"
 
 [compat]
+CSV = "~0.9.11"
 DataFrames = "~1.2.2"
+HTTP = "~0.9.17"
 Plots = "~1.22.4"
 PlutoUI = "~0.7.15"
 XLSX = "~0.7.8"
@@ -1734,11 +1737,23 @@ git-tree-sha1 = "19a35467a82e236ff51bc17a3a44b69ef35185a2"
 uuid = "6e34b625-4abd-537c-b88f-471c36dfa7a0"
 version = "1.0.8+0"
 
+[[CSV]]
+deps = ["CodecZlib", "Dates", "FilePathsBase", "InlineStrings", "Mmap", "Parsers", "PooledArrays", "SentinelArrays", "Tables", "Unicode", "WeakRefStrings"]
+git-tree-sha1 = "49f14b6c56a2da47608fe30aed711b5882264d7a"
+uuid = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+version = "0.9.11"
+
 [[Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
 git-tree-sha1 = "f2202b55d816427cd385a9a4f3ffb226bee80f99"
 uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 version = "1.16.1+0"
+
+[[CodecZlib]]
+deps = ["TranscodingStreams", "Zlib_jll"]
+git-tree-sha1 = "ded953804d019afa9a3f98981d99b33e3db7b6da"
+uuid = "944b1d66-785c-5afd-91f1-9de20f533193"
+version = "0.7.0"
 
 [[ColorSchemes]]
 deps = ["ColorTypes", "Colors", "FixedPointNumbers", "Random"]
@@ -1847,6 +1862,12 @@ git-tree-sha1 = "d8a578692e3077ac998b50c0217dfd67f21d1e5f"
 uuid = "b22a6f82-2f65-5046-a5b2-351ab43fb4e5"
 version = "4.4.0+0"
 
+[[FilePathsBase]]
+deps = ["Compat", "Dates", "Mmap", "Printf", "Test", "UUIDs"]
+git-tree-sha1 = "04d13bfa8ef11720c24e4d840c0033d145537df7"
+uuid = "48062228-2e41-5def-b9a4-89aafe57970f"
+version = "0.9.17"
+
 [[FixedPointNumbers]]
 deps = ["Statistics"]
 git-tree-sha1 = "335bfdceacc84c5cdf16aadc768aa5ddfc5383cc"
@@ -1930,9 +1951,9 @@ version = "1.0.2"
 
 [[HTTP]]
 deps = ["Base64", "Dates", "IniFile", "Logging", "MbedTLS", "NetworkOptions", "Sockets", "URIs"]
-git-tree-sha1 = "14eece7a3308b4d8be910e265c724a6ba51a9798"
+git-tree-sha1 = "0fa77022fe4b511826b39c894c90daf5fce3334a"
 uuid = "cd3eb016-35fb-5094-929b-558a96fad6f3"
-version = "0.9.16"
+version = "0.9.17"
 
 [[HarfBuzz_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "Graphite2_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Pkg"]
@@ -1962,6 +1983,12 @@ deps = ["Test"]
 git-tree-sha1 = "098e4d2c533924c921f9f9847274f2ad89e018b8"
 uuid = "83e8ac13-25f8-5344-8a64-a9f2b223428f"
 version = "0.5.0"
+
+[[InlineStrings]]
+deps = ["Parsers"]
+git-tree-sha1 = "8d70835a3759cdd75881426fced1508bb7b7e1b6"
+uuid = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
+version = "1.1.1"
 
 [[InteractiveUtils]]
 deps = ["Markdown"]
@@ -2278,6 +2305,12 @@ git-tree-sha1 = "0b4b7f1393cff97c33891da2a0bf69c6ed241fda"
 uuid = "6c6a2e73-6563-6170-7368-637461726353"
 version = "1.1.0"
 
+[[SentinelArrays]]
+deps = ["Dates", "Random"]
+git-tree-sha1 = "244586bc07462d22aed0113af9c731f2a518c93e"
+uuid = "91c51154-3ec4-41a3-a24f-3f23e20d615c"
+version = "1.3.10"
+
 [[Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 
@@ -2355,6 +2388,12 @@ uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
+[[TranscodingStreams]]
+deps = ["Random", "Test"]
+git-tree-sha1 = "216b95ea110b5972db65aa90f88d8d89dcb8851c"
+uuid = "3bb67fe8-82b1-5028-8e26-92a6c54297fa"
+version = "0.9.6"
+
 [[URIs]]
 git-tree-sha1 = "97bbe755a53fe859669cd907f2d96aee8d2c1355"
 uuid = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
@@ -2378,6 +2417,12 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg", "Wayland_jll"]
 git-tree-sha1 = "2839f1c1296940218e35df0bbb220f2a79686670"
 uuid = "2381bf8a-dfd0-557d-9999-79630e7b1b91"
 version = "1.18.0+4"
+
+[[WeakRefStrings]]
+deps = ["DataAPI", "InlineStrings", "Parsers"]
+git-tree-sha1 = "c69f9da3ff2f4f02e811c3323c22e5dfcb584cfa"
+uuid = "ea10d353-3f73-51f8-a26c-33c1cb351aa5"
+version = "1.4.1"
 
 [[XLSX]]
 deps = ["Dates", "EzXML", "Printf", "Tables", "ZipFile"]
@@ -2591,7 +2636,7 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
-# ╟─f0545c67-5cfd-438f-a9ef-92c35ebaefa4
+# ╠═f0545c67-5cfd-438f-a9ef-92c35ebaefa4
 # ╟─2fb302c5-6002-4571-bda0-5d337413ef9b
 # ╟─5ad14e2f-726f-43c4-9428-8fc87267881a
 # ╟─fcdbefd3-73ac-4f0d-88b0-7869160ae049
@@ -2611,9 +2656,8 @@ version = "0.9.1+5"
 # ╟─6bcc4fb6-531c-44f9-8cd4-cea8b0eba4ae
 # ╟─aa580b94-1ea6-45d1-8508-10e0a20888e0
 # ╠═b34099d1-2deb-4ca8-9205-5fbc6b950d3a
+# ╠═eafdbacf-eb26-463a-9b9f-050d9b9cc9f1
 # ╠═7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
-# ╠═6b06a725-e2fd-4276-9ba9-ae351dbccd8a
-# ╠═3d082e09-25c8-4893-8adf-ca3159324dd5
 # ╟─50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 # ╟─1c90bd2e-67e2-4bb5-aceb-a39228f22872
 # ╟─c8d89c51-c6a3-46b0-9dd3-a51de9680128
@@ -2665,7 +2709,7 @@ version = "0.9.1+5"
 # ╟─03de2578-dff5-4b26-ad75-84c92fab1603
 # ╟─414f4a76-f3dd-436f-a07a-b38a377c61a0
 # ╟─ad216456-046b-4281-a416-b0c54feb9fcb
-# ╟─0bfd0309-672c-4926-b2e2-673add7662f4
+# ╠═0bfd0309-672c-4926-b2e2-673add7662f4
 # ╟─80e100ee-2de9-44b3-9295-865c062a1f6f
 # ╟─458e8893-c76f-4a69-8e15-07974f5c5397
 # ╟─61f2fb5f-5537-4a3c-8e01-4915f312a461
