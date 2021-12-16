@@ -220,7 +220,7 @@ md"""
 """
 
 # ╔═╡ 7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
-LocalResource("https://github.com/fleckenstein-m/TIPS_Treas_W2022/blob/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+LocalResource("../Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
 
 # ╔═╡ 50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 md"""
@@ -1902,9 +1902,9 @@ version = "0.21.0+0"
 
 [[Glib_jll]]
 deps = ["Artifacts", "Gettext_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Libiconv_jll", "Libmount_jll", "PCRE_jll", "Pkg", "Zlib_jll"]
-git-tree-sha1 = "7bf67e9a481712b3dbe9cb3dac852dc4b1162e02"
+git-tree-sha1 = "74ef6288d071f58033d54fd6708d4bc23a8b8972"
 uuid = "7746bdde-850d-59dc-9ae8-88ece973131d"
-version = "2.68.3+0"
+version = "2.68.3+1"
 
 [[Graphite2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1925,9 +1925,9 @@ version = "0.9.16"
 
 [[HarfBuzz_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "Graphite2_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Pkg"]
-git-tree-sha1 = "8a954fed8ac097d5be04921d595f741115c1b2ad"
+git-tree-sha1 = "129acf094d168394e80ee1dc4bc06ec835e510a3"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
-version = "2.8.1+0"
+version = "2.8.1+1"
 
 [[Hyperscript]]
 deps = ["Test"]
@@ -2599,7 +2599,7 @@ version = "0.9.1+5"
 # ╟─84a4314f-b871-4f09-bec5-b140196e4134
 # ╟─6bcc4fb6-531c-44f9-8cd4-cea8b0eba4ae
 # ╟─aa580b94-1ea6-45d1-8508-10e0a20888e0
-# ╟─7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
+# ╠═7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
 # ╟─50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 # ╟─1c90bd2e-67e2-4bb5-aceb-a39228f22872
 # ╟─c8d89c51-c6a3-46b0-9dd3-a51de9680128
