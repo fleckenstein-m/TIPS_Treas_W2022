@@ -1,5 +1,5 @@
 
-# The TIPS-Treasury Bond Puzzle
+## UD/ISCTE-IUL Trading and Bloomberg Program
 
 
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
@@ -15,11 +15,13 @@
 
 ---
 
+# The TIPS-Treasury Bond Puzzle
+
 ## Course Overview
 
 > The largest arbitrage ever documented...
 
-In this course we discuss a persistent violation of the law of one price that occured in the multi-trillion dollar 
+In this series of lectures we discuss a persistent violation of the law of one price that occured in the multi-trillion dollar 
 U.S. Treasury bond market, one of the largest and most liquid financial markets in the world.
 We first give an introduction to the U.S. Treasury market and cover the basics of bond pricing.
 Then, we discuss how the prices of TIPS and Treasury notes/bonds are related via the law of one price. 
