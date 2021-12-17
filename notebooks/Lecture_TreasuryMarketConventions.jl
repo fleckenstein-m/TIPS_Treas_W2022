@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
@@ -17,23 +17,20 @@ end
 # ╔═╡ f0545c67-5cfd-438f-a9ef-92c35ebaefa4
 #Set-up packages
 begin
+	
 	using DataFrames, Dates, Plots, PlutoUI, Printf, LaTeXStrings, HypertextLiteral
-	gr() 
+	
+	gr();
 	Plots.GRBackend()
-end
 
-# ╔═╡ 2fb302c5-6002-4571-bda0-5d337413ef9b
-#Define html elements
-begin
+
+	#Define html elements
 	nbsp = html"&nbsp" #non-breaking space
 	vspace = html"""<div style="margin-bottom:0.05cm;"></div>"""
 	br = html"<br>"
-end
 
-# ╔═╡ 5ad14e2f-726f-43c4-9428-8fc87267881a
-#Sets the width of cells, caps the cell width by 90% of screen width
-#(setting overwritten by cell below)
-begin
+	#Sets the width of cells, caps the cell width by 90% of screen width
+	#(setting overwritten by cell below)
 	@bind screenWidth @htl("""
 		<div>
 		<script>
@@ -43,7 +40,7 @@ begin
 		</div>
 	""")
 
-	begin
+	
 		cellWidth= min(1000, screenWidth*0.9)
 		@htl("""
 			<style>
@@ -53,32 +50,27 @@ begin
 				}
 			</style>
 		""")
-	end
-end
+	
 
-# ╔═╡ fcdbefd3-73ac-4f0d-88b0-7869160ae049
-#Sets the width of the cells
-#begin
-#	html"""<style>
-#	main {
-#		max-width: 900px;
-#	}
-#	"""
-#end
+	#Sets the width of the cells
+	#begin
+	#	html"""<style>
+	#	main {
+	#		max-width: 900px;
+	#	}
+	#	"""
+	#end
 
-# ╔═╡ 91f62e02-a265-4a6e-9e6c-a058a7ca76e2
-#Sets the height of displayed tables
-begin
+
+	#Sets the height of displayed tables
 	html"""<style>
-	pluto-output.scroll_y {
-		max-height: 550px; /* changed this from 400 to 550 */
-	}
-	"""
-end
+		pluto-output.scroll_y {
+			max-height: 550px; /* changed this from 400 to 550 */
+		}
+		"""
+	
 
-# ╔═╡ 52db118a-719f-41f1-a41f-4a366bf2d5f0
-#Two-column cell
-begin
+	#Two-column cell
 	struct TwoColumn{A, B}
 		left::A
 		right::B
@@ -103,12 +95,8 @@ begin
 			</div>
 		""")
 	end
-	
-end
 
-# ╔═╡ a07cff2b-d1d3-4bb6-8780-ec893694fe63
-#Creates a foldable cell
-begin
+	#Creates a foldable cell
 	struct Foldable{C}
 		title::String
 		content::C
@@ -120,23 +108,22 @@ begin
 		write(io,"</p></details>")
 	end
 	
-end
-
-# ╔═╡ 2e3fa133-fc18-4376-b48d-136b43ffdee6
-#helper functions
-begin
-#round to digits, e.g. 6 digits then prec=1e-6
-roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
-
+	
+	#helper functions
+	#round to digits, e.g. 6 digits then prec=1e-6
+	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
+	
+	display("")
+	
 end
 
 # ╔═╡ 41d7b190-2a14-11ec-2469-7977eac40f12
 #add button to trigger presentation mode
 html"<button onclick='present()'>present</button>"
 
-# ╔═╡ 731c88b4-7daf-480d-b163-7003a5fbd41f
+# ╔═╡ b1462143-60bc-4055-a5c7-1dcf4d4d55d5
 md"""
-# FINC 462/662 -- Fixed Income Securities
+#### UD/ISCTE-IUL Trading and Bloomberg Program
 """
 
 # ╔═╡ a5de5746-3df0-45b4-a62c-3daf36f015a5
@@ -145,7 +132,7 @@ begin
 	<p style="padding-bottom:1cm"> </p>
 	<div align=center style="font-size:25px; font-family:family:Georgia"> Fixed Income Securities </div>
 	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Price-Quoting Conventions in the U.S. Treasury Market</b> <p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Market Conventions in the U.S. Treasury Market</b> <p>
 	<p style="padding-bottom:1cm"> </p>
 	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
 	<p style="padding-bottom:1cm"> </p>
@@ -153,6 +140,26 @@ begin
 	<p style="padding-bottom:0.5cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> University of Delaware, 
 	Lerner College of Business and Economics </div>
+	<p style="padding-bottom:1cm"> </p>
+	"""
+end
+
+# ╔═╡ 801bb743-2f23-40b9-9c23-c3fc71e24ee5
+# begin 
+# 	html"""
+# 	<hr>
+# 	<p style="padding-bottom:1cm"> </p>
+# 	<div align=center style="font-size:35px; font-weight:bold; font-family:family:Georgia"> </div>
+	
+# 	<p style="padding-bottom:1cm"> </p>
+# 	<hr>
+# 	"""
+# end
+begin 
+	html"""
+	<p style="padding-bottom:1cm"> </p>
+	<div align=center style="font-size:35px; font-weight:bold; font-family:family:Georgia"> </div>
+	
 	<p style="padding-bottom:1cm"> </p>
 	"""
 end
@@ -166,11 +173,23 @@ md"""
 begin
 	html"""
 	<fieldset>      
-        <legend>Our goals for today</legend>      
+        <legend>Learning Objectives</legend>      
 		<br>
         <input type="checkbox" value="">Understand how prices for Treasury securities are quoted in secondary markets.<br><br>
 	    <input type="checkbox" value="">Know how to calculate accrued interest.<br><br>
 	</fieldset>      
+	"""
+end
+
+# ╔═╡ 7b28df2f-9978-4df6-9adf-ee247195b305
+begin 
+	html"""
+	
+	<p style="padding-bottom:1cm"> </p>
+	<div align=center style="font-size:35px; font-weight:bold; font-family:family:Georgia"> </div>
+	
+	<p style="padding-bottom:1cm"> </p>
+	
 	"""
 end
 
@@ -200,6 +219,7 @@ LocalResource("./Assets/TreasuryNotePriceQuoteBloomberg.png",:width => 1200)
 
 # ╔═╡ 30ce6f74-1d7e-465d-abf1-245881fec53b
 md"""
+#
 ### Price Quotes for Treasury Coupon Securities
 - Expressed as a percent of face value (often called “points”) and numbers after the hyphens denote 32nds (often called “ticks”).
 """
@@ -335,6 +355,7 @@ begin
 	p191=102
 	p192=18
 	p193=1
+	display("")
 end
 
 # ╔═╡ 9a1aa162-d274-4af7-8f13-5a9d6bab98b0
@@ -753,42 +774,6 @@ md"""
 - Strips created from the Treasury coupons are called **coupon STRIPS** and those from the principal are called **principal STRIPS**. 
 """
 
-# ╔═╡ 617539a4-ce24-46cd-9124-9dad0f1a3eb9
-md"""
-# Question 1
-> What is a Treasury Bill?
-"""
-
-# ╔═╡ a0b85fc3-79dd-4712-9628-a28398c50531
-md"""
-!!! hint
-    A Treasury Bill is a short-term fixed-income security issued by the U.S. Treasury with time-to-maturity of less than one year. A Treasury Bill does not pay coupon interest.
-"""
-
-# ╔═╡ 9db65279-d4cd-4ec4-9cb8-faa9f3900b52
-md"""
-# Question 2
-> What is the longest time-to-maturity of Treasury bonds in years?
-"""
-
-# ╔═╡ 85d4544e-9090-4fa7-8970-14586e5f4649
-@bind fld NumberField(0:100, default=20)
-
-# ╔═╡ 7e5a0741-8b10-4f30-bdbe-72a374dee0f0
-begin
-	if fld == 30.0 
-		md"""
-		!!! correct
-		Well done!
-		"""
-	else
-		md"""
-		!!! warning "Incorrect"
-		Keep working on it!
-		"""
-	end
-end
-
 # ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
 md"""
 ## Wrap-Up
@@ -798,7 +783,7 @@ md"""
 begin
 	html"""
 	<fieldset>      
-        <legend>Our goals for today</legend>      
+        <legend>Learning Objectives</legend>      
 		<br>
         <input type="checkbox" value="" checked>Understand how prices for Treasury securities are quoted in secondary markets.<br><br>
 	    <input type="checkbox" value="" checked>Know how to calculate accrued interest.<br><br>
@@ -812,9 +797,6 @@ md"""
 Fabozzi, Fabozzi, 2021, Bond Markets, Analysis, and Strategies, 10th Edition\
 Chapter 7 and Chapter 2
 """
-
-# ╔═╡ 6d6d42fc-1fac-4e15-b8e8-9c3d32a7df7a
-
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1228,7 +1210,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1290,6 +1272,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1387,7 +1373,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1676,6 +1662,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1722,106 +1712,95 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
-# ╠═f0545c67-5cfd-438f-a9ef-92c35ebaefa4
-# ╠═2fb302c5-6002-4571-bda0-5d337413ef9b
-# ╠═5ad14e2f-726f-43c4-9428-8fc87267881a
-# ╠═fcdbefd3-73ac-4f0d-88b0-7869160ae049
-# ╠═91f62e02-a265-4a6e-9e6c-a058a7ca76e2
-# ╠═52db118a-719f-41f1-a41f-4a366bf2d5f0
-# ╠═a07cff2b-d1d3-4bb6-8780-ec893694fe63
-# ╠═2e3fa133-fc18-4376-b48d-136b43ffdee6
-# ╠═41d7b190-2a14-11ec-2469-7977eac40f12
-# ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
-# ╠═a5de5746-3df0-45b4-a62c-3daf36f015a5
+# ╟─41d7b190-2a14-11ec-2469-7977eac40f12
+# ╟─f0545c67-5cfd-438f-a9ef-92c35ebaefa4
+# ╟─b1462143-60bc-4055-a5c7-1dcf4d4d55d5
+# ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
+# ╟─801bb743-2f23-40b9-9c23-c3fc71e24ee5
 # ╟─6498b10d-bece-42bf-a32b-631224857753
-# ╠═95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╠═93db6880-429c-4b9c-a807-eba600e03df1
-# ╠═1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
-# ╠═aac27a3c-e90a-437f-a563-f81d41c8d3f7
-# ╠═39af52c6-ddb1-41ec-be5c-c0e31a2693bb
-# ╠═6561b7a0-368c-43c6-ada9-36b83dc4a749
+# ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
+# ╟─7b28df2f-9978-4df6-9adf-ee247195b305
+# ╟─93db6880-429c-4b9c-a807-eba600e03df1
+# ╟─1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
+# ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
+# ╟─39af52c6-ddb1-41ec-be5c-c0e31a2693bb
+# ╟─6561b7a0-368c-43c6-ada9-36b83dc4a749
 # ╠═30ce6f74-1d7e-465d-abf1-245881fec53b
-# ╠═395335f3-3f6c-4fbc-bf0b-9a238c8b6864
-# ╠═4ad79093-2e8b-4fd7-bc1d-87388947ffde
-# ╠═46566086-d518-49d9-b173-f66f2ea0e131
-# ╠═2d37c722-c5bb-4462-a48d-f9374bed4449
-# ╠═f01f940c-233c-4b90-882b-bd9d33c6b841
-# ╠═64adcfde-8ade-4778-bb01-9d46ee836a55
-# ╠═b294a20b-8710-49bb-a069-75dbc3f19ba6
-# ╠═e68723a6-a1d8-4a3f-8ba0-9acab5d764db
-# ╠═f72ab26d-f986-4ab3-9f15-11cb33b65c69
-# ╠═b65c747b-f08a-408d-8e01-e921dcbd9056
-# ╠═b5ed2793-df92-4f41-97e9-7533b35db4c0
-# ╠═16a751d5-9a6b-40c4-969f-46c2d184c8c6
-# ╠═4576f508-91bd-4fdc-a62d-833d8428f78f
-# ╠═6c57bd92-7d1d-41d3-88d5-0b2c191b7693
-# ╠═9a1aa162-d274-4af7-8f13-5a9d6bab98b0
-# ╠═4bccc40c-953a-4969-b47b-aea4b234919b
-# ╠═729198d1-5795-4b70-85f8-f25717edc244
-# ╠═301c4a13-814e-4853-aa5b-aac611cc40f0
-# ╠═9aa0dec2-c1e1-41c5-9ad5-35b51e41128a
-# ╠═3a2a5dea-4a07-4368-89c9-cde995b9964b
-# ╠═a4670db5-20e5-41cd-a2af-8dd15ce119f6
-# ╠═16d95a82-743e-478c-a50d-36e800910883
-# ╠═be1e2ae2-8b05-42c7-bc54-18c9ff111854
-# ╠═8464e17a-2f95-4bde-8c37-502359bb2dd8
-# ╠═a7c9120b-ee24-48c2-904a-e40ef95fcffa
-# ╠═8f9498b5-a1cf-4be7-b0dd-41aad76c959b
-# ╠═18026407-34e8-4a96-aaaf-410d495f9568
-# ╠═6acadc8a-dbb7-4193-9df7-09504755476b
-# ╠═362273d3-e019-4953-a1dd-21699f7a7def
-# ╠═577c5da8-de61-4f41-96f3-957c4fa93cd2
-# ╠═cedc6044-5eb2-4e95-98c7-e5831597a258
-# ╠═d43ce5da-dee3-4d44-a202-4f5f4770772b
-# ╠═a4a0a069-80d6-4a13-a19d-56b200ca8545
-# ╠═b71c4b72-7004-4600-82d4-651179178a03
-# ╠═fd4aead4-bf25-4125-b094-6edce0e77b1e
-# ╠═fcaff09a-c014-4fe9-81f8-f0fb72d99829
-# ╠═8323c2cc-cc29-416b-aca4-798f7cc844ed
-# ╠═9119860b-2ada-411a-95e7-e1e56ae573c0
-# ╠═8dc2cccb-a682-4c42-99fe-ccc91d3823d1
-# ╠═c6df152f-9f62-4eb4-997e-afd9a0868c9e
-# ╠═41b91a85-ac56-4b36-87e1-b121c756417e
-# ╠═4d039efd-c682-4abe-a2a4-8536ed97a3c7
-# ╠═c78eb09a-0907-47dc-b9c9-65f40432ff47
-# ╠═5752193f-de1f-4832-ab93-a0fc8c4d9c4d
-# ╠═7b376a7e-215e-40af-82af-6be2762aa7eb
-# ╠═70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
-# ╠═6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
-# ╠═e4c4606f-bb51-43c6-98b7-73e1b133b251
-# ╠═a81f9bd5-374d-4238-af83-e39ab1f5982e
-# ╠═bb8b0b23-4313-4764-96bd-c1e34aa09795
-# ╠═a93b91d5-7239-4260-b57f-7afb02ee31c5
-# ╠═dcb12edc-553b-4fe7-9525-a86d9fd5a78a
-# ╠═25500a55-9c69-42d8-87bf-fb897b6de939
-# ╠═9d874ab6-e3ec-4a87-8842-a8a8074b745c
-# ╠═a92a604a-429b-4508-9820-c99839f3b431
-# ╠═4f6af650-763a-4c56-a564-d3c1447be1fd
-# ╠═28112b4a-fbeb-4409-b3f7-88578191a704
-# ╠═e2e15eb3-c339-49ea-85b6-5436835cddea
-# ╠═448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
-# ╠═61228793-317c-40a2-b9f8-cb661704f799
-# ╠═e88cafc2-ad9a-4c46-bbc6-2f442ce0615a
-# ╠═7b091f73-2454-4690-b1f9-3f0008561da9
-# ╠═574ee503-37f4-4d27-8bc2-7688b60fe839
-# ╠═80e6068f-5876-47c0-a5e8-17125b54de63
-# ╠═d11d60be-9909-47c6-8ce9-438e2cf28d6f
-# ╠═5a00909a-8279-46ef-8570-bbbb7adffcf4
-# ╠═2e4b644c-9b50-42fe-9775-2619baff2518
-# ╠═628ba57e-39ee-4072-8935-c44fae56b0bd
-# ╠═371a326e-f13b-44ce-91e8-50d43b7ae59a
-# ╠═b7bdc144-7648-403f-bce7-2b6df6a8dd2f
-# ╠═fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
-# ╠═02748d79-5707-4130-9aae-0c6141e4f760
-# ╠═1217e6ec-8479-4a85-b0e7-088eee30bc63
-# ╟─617539a4-ce24-46cd-9124-9dad0f1a3eb9
-# ╠═a0b85fc3-79dd-4712-9628-a28398c50531
-# ╠═9db65279-d4cd-4ec4-9cb8-faa9f3900b52
-# ╠═85d4544e-9090-4fa7-8970-14586e5f4649
-# ╠═7e5a0741-8b10-4f30-bdbe-72a374dee0f0
+# ╟─395335f3-3f6c-4fbc-bf0b-9a238c8b6864
+# ╟─4ad79093-2e8b-4fd7-bc1d-87388947ffde
+# ╟─46566086-d518-49d9-b173-f66f2ea0e131
+# ╟─2d37c722-c5bb-4462-a48d-f9374bed4449
+# ╟─f01f940c-233c-4b90-882b-bd9d33c6b841
+# ╟─64adcfde-8ade-4778-bb01-9d46ee836a55
+# ╟─b294a20b-8710-49bb-a069-75dbc3f19ba6
+# ╟─e68723a6-a1d8-4a3f-8ba0-9acab5d764db
+# ╟─f72ab26d-f986-4ab3-9f15-11cb33b65c69
+# ╟─b65c747b-f08a-408d-8e01-e921dcbd9056
+# ╟─b5ed2793-df92-4f41-97e9-7533b35db4c0
+# ╟─16a751d5-9a6b-40c4-969f-46c2d184c8c6
+# ╟─4576f508-91bd-4fdc-a62d-833d8428f78f
+# ╟─6c57bd92-7d1d-41d3-88d5-0b2c191b7693
+# ╟─9a1aa162-d274-4af7-8f13-5a9d6bab98b0
+# ╟─4bccc40c-953a-4969-b47b-aea4b234919b
+# ╟─729198d1-5795-4b70-85f8-f25717edc244
+# ╟─301c4a13-814e-4853-aa5b-aac611cc40f0
+# ╟─9aa0dec2-c1e1-41c5-9ad5-35b51e41128a
+# ╟─3a2a5dea-4a07-4368-89c9-cde995b9964b
+# ╟─a4670db5-20e5-41cd-a2af-8dd15ce119f6
+# ╟─16d95a82-743e-478c-a50d-36e800910883
+# ╟─be1e2ae2-8b05-42c7-bc54-18c9ff111854
+# ╟─8464e17a-2f95-4bde-8c37-502359bb2dd8
+# ╟─a7c9120b-ee24-48c2-904a-e40ef95fcffa
+# ╟─8f9498b5-a1cf-4be7-b0dd-41aad76c959b
+# ╟─18026407-34e8-4a96-aaaf-410d495f9568
+# ╟─6acadc8a-dbb7-4193-9df7-09504755476b
+# ╟─362273d3-e019-4953-a1dd-21699f7a7def
+# ╟─577c5da8-de61-4f41-96f3-957c4fa93cd2
+# ╟─cedc6044-5eb2-4e95-98c7-e5831597a258
+# ╟─d43ce5da-dee3-4d44-a202-4f5f4770772b
+# ╟─a4a0a069-80d6-4a13-a19d-56b200ca8545
+# ╟─b71c4b72-7004-4600-82d4-651179178a03
+# ╟─fd4aead4-bf25-4125-b094-6edce0e77b1e
+# ╟─fcaff09a-c014-4fe9-81f8-f0fb72d99829
+# ╟─8323c2cc-cc29-416b-aca4-798f7cc844ed
+# ╟─9119860b-2ada-411a-95e7-e1e56ae573c0
+# ╟─8dc2cccb-a682-4c42-99fe-ccc91d3823d1
+# ╟─c6df152f-9f62-4eb4-997e-afd9a0868c9e
+# ╟─41b91a85-ac56-4b36-87e1-b121c756417e
+# ╟─4d039efd-c682-4abe-a2a4-8536ed97a3c7
+# ╟─c78eb09a-0907-47dc-b9c9-65f40432ff47
+# ╟─5752193f-de1f-4832-ab93-a0fc8c4d9c4d
+# ╟─7b376a7e-215e-40af-82af-6be2762aa7eb
+# ╟─70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
+# ╟─6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
+# ╟─e4c4606f-bb51-43c6-98b7-73e1b133b251
+# ╟─a81f9bd5-374d-4238-af83-e39ab1f5982e
+# ╟─bb8b0b23-4313-4764-96bd-c1e34aa09795
+# ╟─a93b91d5-7239-4260-b57f-7afb02ee31c5
+# ╟─dcb12edc-553b-4fe7-9525-a86d9fd5a78a
+# ╟─25500a55-9c69-42d8-87bf-fb897b6de939
+# ╟─9d874ab6-e3ec-4a87-8842-a8a8074b745c
+# ╟─a92a604a-429b-4508-9820-c99839f3b431
+# ╟─4f6af650-763a-4c56-a564-d3c1447be1fd
+# ╟─28112b4a-fbeb-4409-b3f7-88578191a704
+# ╟─e2e15eb3-c339-49ea-85b6-5436835cddea
+# ╟─448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
+# ╟─61228793-317c-40a2-b9f8-cb661704f799
+# ╟─e88cafc2-ad9a-4c46-bbc6-2f442ce0615a
+# ╟─7b091f73-2454-4690-b1f9-3f0008561da9
+# ╟─574ee503-37f4-4d27-8bc2-7688b60fe839
+# ╟─80e6068f-5876-47c0-a5e8-17125b54de63
+# ╟─d11d60be-9909-47c6-8ce9-438e2cf28d6f
+# ╟─5a00909a-8279-46ef-8570-bbbb7adffcf4
+# ╟─2e4b644c-9b50-42fe-9775-2619baff2518
+# ╟─628ba57e-39ee-4072-8935-c44fae56b0bd
+# ╟─371a326e-f13b-44ce-91e8-50d43b7ae59a
+# ╟─b7bdc144-7648-403f-bce7-2b6df6a8dd2f
+# ╟─fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
+# ╟─02748d79-5707-4130-9aae-0c6141e4f760
+# ╟─1217e6ec-8479-4a85-b0e7-088eee30bc63
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
-# ╠═670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
-# ╠═2ee2c328-5ebe-488e-94a9-2fce2200484c
-# ╠═6d6d42fc-1fac-4e15-b8e8-9c3d32a7df7a
+# ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

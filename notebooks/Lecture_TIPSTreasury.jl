@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
@@ -17,70 +17,60 @@ end
 # ╔═╡ f0545c67-5cfd-438f-a9ef-92c35ebaefa4
 #Set-up packages
 begin
-	using DataFrames, CSV, HTTP, XLSX, Dates, Plots, Random, PlutoUI, Printf
+	
+	using DataFrames, HTTP, CSV, Dates, Plots, PlutoUI, Printf, LaTeXStrings, HypertextLiteral
+	
 	gr();
 	Plots.GRBackend()
-end
 
-# ╔═╡ 2fb302c5-6002-4571-bda0-5d337413ef9b
-#Define html elements
-begin
+
+	#Define html elements
 	nbsp = html"&nbsp" #non-breaking space
 	vspace = html"""<div style="margin-bottom:0.05cm;"></div>"""
 	br = html"<br>"
-end
 
-# ╔═╡ 5ad14e2f-726f-43c4-9428-8fc87267881a
-# #Sets the width of cells, caps the cell width by 90% of screen width
-# #(setting overwritten by cell below)
-# begin
-# 	using HypertextLiteral
+	#Sets the width of cells, caps the cell width by 90% of screen width
+	#(setting overwritten by cell below)
+	@bind screenWidth @htl("""
+		<div>
+		<script>
+			var div = currentScript.parentElement
+			div.value = screen.width
+		</script>
+		</div>
+	""")
 
-# 	@bind screenWidth @hml("""
-# 		<div>
-# 		<script>
-# 			var div = currentScript.parentElement
-# 			div.value = screen.width
-# 		</script>
-# 		</div>
-# 	""")
+	
+		cellWidth= min(1000, screenWidth*0.9)
+		@htl("""
+			<style>
+				pluto-notebook {
+					margin: auto;
+					width: $(cellWidth)px;
+				}
+			</style>
+		""")
+	
 
-# 	begin
-# 		cellWidth= min(1000, screenWidth*0.9)
-# 		@hml("""
-# 			<style>
-# 				pluto-notebook {
-# 					margin: auto;
-# 					width: $(cellWidth)px;
-# 				}
-# 			</style>
-# 		""")
-# 	end
-# end
+	#Sets the width of the cells
+	#begin
+	#	html"""<style>
+	#	main {
+	#		max-width: 900px;
+	#	}
+	#	"""
+	#end
 
-# ╔═╡ fcdbefd3-73ac-4f0d-88b0-7869160ae049
-#Sets the width of the cells
-# begin
-# 	html"""<style>
-# 	main {
-# 		max-width: 900px;
-# 	}
-# 	"""
-# end
 
-# ╔═╡ 91f62e02-a265-4a6e-9e6c-a058a7ca76e2
-#Sets the height of displayed tables
-begin
+	#Sets the height of displayed tables
 	html"""<style>
-	pluto-output.scroll_y {
-		max-height: 550px; /* changed this from 400 to 550 */
-	}
-	"""
-end
+		pluto-output.scroll_y {
+			max-height: 550px; /* changed this from 400 to 550 */
+		}
+		"""
+	
 
-# ╔═╡ 52db118a-719f-41f1-a41f-4a366bf2d5f0
-#Two-column cell
-begin
+	#Two-column cell
 	struct TwoColumn{A, B}
 		left::A
 		right::B
@@ -105,12 +95,8 @@ begin
 			</div>
 		""")
 	end
-	
-end
 
-# ╔═╡ a07cff2b-d1d3-4bb6-8780-ec893694fe63
-#Creates a foldable cell
-begin
+	#Creates a foldable cell
 	struct Foldable{C}
 		title::String
 		content::C
@@ -122,6 +108,12 @@ begin
 		write(io,"</p></details>")
 	end
 	
+	
+	#helper functions
+	#round to digits, e.g. 6 digits then prec=1e-6
+	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
+
+	display("")
 end
 
 # ╔═╡ 41d7b190-2a14-11ec-2469-7977eac40f12
@@ -130,7 +122,7 @@ html"<button onclick='present()'>present</button>"
 
 # ╔═╡ 731c88b4-7daf-480d-b163-7003a5fbd41f
 md"""
-# FINC 462/662 -- Fixed Income Securities
+### UD/ISCTE-IUL Trading and Bloomberg Program
 """
 
 # ╔═╡ a5de5746-3df0-45b4-a62c-3daf36f015a5
@@ -141,7 +133,7 @@ begin
 	<p style="padding-bottom:1cm"> </p>
 	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> The TIPS-Treasury Bond Puzzle</b> <p>
 	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> Spring 2022 <p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
 	<p style="padding-bottom:1cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
 	<p style="padding-bottom:0.5cm"> </p>
@@ -221,12 +213,6 @@ md"""
 
 # ╔═╡ b34099d1-2deb-4ca8-9205-5fbc6b950d3a
 LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
-
-# ╔═╡ eafdbacf-eb26-463a-9b9f-050d9b9cc9f1
-Resource("../Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
-
-# ╔═╡ 7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
-Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
 
 # ╔═╡ 50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 md"""
@@ -444,31 +430,6 @@ begin
 		plot(plot_Treas)
 	end
 end
-
-# ╔═╡ fca79d01-0d46-40fa-b341-3d2ae794bdfc
-md"""
-#
-"""
-
-# ╔═╡ a21aa196-6c64-4838-9e77-10efd985c97b
-md"""
-# Review: Price-Quoting Conventions in the U.S. Treasury Market
-"""
-
-# ╔═╡ f8b6cf7e-9559-4f02-9d82-edddb15a254a
-md"""
-See notebook Lecture_03.jl
-"""
-
-# ╔═╡ e838be48-fbd1-4bf3-84b1-5f1cbf948559
-md"""
-Review: Review of Bond Pricing Basics
-"""
-
-# ╔═╡ 21677457-a2a5-47c8-9994-474a7659c907
-md"""
-See Lecture_04.jl
-"""
 
 # ╔═╡ 144cfebc-b1ee-46bb-8ccd-a538e9bd9e19
 md"""
@@ -1690,19 +1651,20 @@ CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
-Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
-XLSX = "fdbf4ff8-1666-58a4-91e7-1b58723a45e0"
 
 [compat]
 CSV = "~0.9.11"
 DataFrames = "~1.2.2"
 HTTP = "~0.9.17"
+HypertextLiteral = "~0.9.3"
+LaTeXStrings = "~1.3.0"
 Plots = "~1.22.4"
 PlutoUI = "~0.7.15"
-XLSX = "~0.7.8"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -1837,12 +1799,6 @@ git-tree-sha1 = "b3bfd02e98aedfa5cf885665493c5598c350cd2f"
 uuid = "2e619515-83b5-522b-bb60-26c02a35a201"
 version = "2.2.10+0"
 
-[[EzXML]]
-deps = ["Printf", "XML2_jll"]
-git-tree-sha1 = "0fa3b52a04a4e210aeb1626def9c90df3ae65268"
-uuid = "8f5d6c58-4d21-5cfd-889c-e3ad7ee6a615"
-version = "1.1.0"
-
 [[FFMPEG]]
 deps = ["FFMPEG_jll"]
 git-tree-sha1 = "b57e3acbe22f8484b4b5ff66a7499717fe1a9cc8"
@@ -1961,9 +1917,9 @@ uuid = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
 version = "0.0.4"
 
 [[HypertextLiteral]]
-git-tree-sha1 = "f6532909bf3d40b308a0f360b6a0e626c0e263a8"
+git-tree-sha1 = "2b078b5a615c6c0396c77810d92ee8c6f470d238"
 uuid = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
-version = "0.9.1"
+version = "0.9.3"
 
 [[IOCapture]]
 deps = ["Logging", "Random"]
@@ -2033,9 +1989,9 @@ uuid = "dd4b983a-f0e5-5f8d-a1b7-129d4a5fb1ac"
 version = "2.10.1+0"
 
 [[LaTeXStrings]]
-git-tree-sha1 = "c7f1c695e06c01b95a67f0cd1d34994f3e7db104"
+git-tree-sha1 = "f2355693d6778a178ade15952b7ac47a4ff97996"
 uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
-version = "1.2.1"
+version = "1.3.0"
 
 [[Latexify]]
 deps = ["Formatting", "InteractiveUtils", "LaTeXStrings", "MacroTools", "Markdown", "Printf", "Requires"]
@@ -2111,7 +2067,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[Logging]]
@@ -2167,6 +2123,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2264,7 +2224,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -2417,12 +2377,6 @@ git-tree-sha1 = "c69f9da3ff2f4f02e811c3323c22e5dfcb584cfa"
 uuid = "ea10d353-3f73-51f8-a26c-33c1cb351aa5"
 version = "1.4.1"
 
-[[XLSX]]
-deps = ["Dates", "EzXML", "Printf", "Tables", "ZipFile"]
-git-tree-sha1 = "96d05d01d6657583a22410e3ba416c75c72d6e1d"
-uuid = "fdbf4ff8-1666-58a4-91e7-1b58723a45e0"
-version = "0.7.8"
-
 [[XML2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Libiconv_jll", "Pkg", "Zlib_jll"]
 git-tree-sha1 = "1acf5bdf07aa0907e0a37d3718bb88d4b687b74a"
@@ -2561,12 +2515,6 @@ git-tree-sha1 = "79c31e7844f6ecf779705fbc12146eb190b7d845"
 uuid = "c5fb5394-a638-5e4d-96e5-b29de1b5cf10"
 version = "1.4.0+3"
 
-[[ZipFile]]
-deps = ["Libdl", "Printf", "Zlib_jll"]
-git-tree-sha1 = "3593e69e469d2111389a9bd06bac1f3d730ac6de"
-uuid = "a5390f91-8eb1-5f08-bee0-b1d1ffed6cea"
-version = "0.9.4"
-
 [[Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
@@ -2582,6 +2530,10 @@ deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "HarfBuzz_jll"
 git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
+
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
 
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2629,14 +2581,8 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
-# ╠═f0545c67-5cfd-438f-a9ef-92c35ebaefa4
-# ╟─2fb302c5-6002-4571-bda0-5d337413ef9b
-# ╟─5ad14e2f-726f-43c4-9428-8fc87267881a
-# ╟─fcdbefd3-73ac-4f0d-88b0-7869160ae049
-# ╟─91f62e02-a265-4a6e-9e6c-a058a7ca76e2
-# ╟─52db118a-719f-41f1-a41f-4a366bf2d5f0
-# ╟─a07cff2b-d1d3-4bb6-8780-ec893694fe63
 # ╟─41d7b190-2a14-11ec-2469-7977eac40f12
+# ╟─f0545c67-5cfd-438f-a9ef-92c35ebaefa4
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
 # ╟─6498b10d-bece-42bf-a32b-631224857753
@@ -2648,9 +2594,7 @@ version = "0.9.1+5"
 # ╟─84a4314f-b871-4f09-bec5-b140196e4134
 # ╟─6bcc4fb6-531c-44f9-8cd4-cea8b0eba4ae
 # ╟─aa580b94-1ea6-45d1-8508-10e0a20888e0
-# ╠═b34099d1-2deb-4ca8-9205-5fbc6b950d3a
-# ╠═eafdbacf-eb26-463a-9b9f-050d9b9cc9f1
-# ╠═7ee26492-f5f5-47b0-b2f0-3fc7fc69d0e8
+# ╟─b34099d1-2deb-4ca8-9205-5fbc6b950d3a
 # ╟─50f69f83-aaa5-4748-800a-6ffb09cd2fd2
 # ╟─1c90bd2e-67e2-4bb5-aceb-a39228f22872
 # ╟─c8d89c51-c6a3-46b0-9dd3-a51de9680128
@@ -2680,12 +2624,7 @@ version = "0.9.1+5"
 # ╟─6f5c7dc2-4500-461e-8569-8e1ff6f66e8d
 # ╟─ffa772e6-8e12-4780-b079-debb7e995f6c
 # ╟─560ebf95-d6ae-4c91-a5ba-1ab5c8571cbd
-# ╠═f3963af9-c276-4423-b724-b01de1983c0d
-# ╟─fca79d01-0d46-40fa-b341-3d2ae794bdfc
-# ╠═a21aa196-6c64-4838-9e77-10efd985c97b
-# ╠═f8b6cf7e-9559-4f02-9d82-edddb15a254a
-# ╠═e838be48-fbd1-4bf3-84b1-5f1cbf948559
-# ╠═21677457-a2a5-47c8-9994-474a7659c907
+# ╟─f3963af9-c276-4423-b724-b01de1983c0d
 # ╟─144cfebc-b1ee-46bb-8ccd-a538e9bd9e19
 # ╟─6e957b4b-4a27-4bc9-9fe4-e85052bfdda4
 # ╟─3b399844-b41b-4c7a-abe5-8238a1ab22bf
@@ -2702,7 +2641,7 @@ version = "0.9.1+5"
 # ╟─03de2578-dff5-4b26-ad75-84c92fab1603
 # ╟─414f4a76-f3dd-436f-a07a-b38a377c61a0
 # ╟─ad216456-046b-4281-a416-b0c54feb9fcb
-# ╠═0bfd0309-672c-4926-b2e2-673add7662f4
+# ╟─0bfd0309-672c-4926-b2e2-673add7662f4
 # ╟─80e100ee-2de9-44b3-9295-865c062a1f6f
 # ╟─458e8893-c76f-4a69-8e15-07974f5c5397
 # ╟─61f2fb5f-5537-4a3c-8e01-4915f312a461
