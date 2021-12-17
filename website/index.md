@@ -19,10 +19,36 @@
 
 > The largest arbitrage ever documented...
 
+In this course we discuss a persistent violation of the law of one price that occured in the multi-trillion dollar 
+U.S. Treasury bond market, one of the largest and most liquid financial markets in the world.
+We first give an introduction to the U.S. Treasury market and cover the basics of bond pricing.
+Then, we discuss how the prices of TIPS and Treasury notes/bonds are related via the law of one price. 
+We analyze the nature of the violation of the law of one price that occured in the U.S. Treasury bond and 
+Treasury Inflation-Protected Securities (TIPS) markets and discuss how hedge funds took advantage of this "arbitrage" opportunity.
 
 
+## Lecture Material
+[The U.S. Treasury Market](../lecture1-pluto_treasurymarket)
 
-## License
+[Intro to Bond Pricing](../lecture2-pluto_bondpricing)
+
+[The TIPS-Treasury Trading Strategy](../lecture3-pluto_tipstreasury)
+
+~~~
+<br>
+~~~
+
+### Resources
+
+* [Fleckenstein, Longstaff, and Lustig, 2014, The TIPS–Treasury Bond Puzzle, Journal of Finance, Volume 69, Issue 5, 2014, 2151–2197.](https://doi.org/10.1111/jofi.12032)
+
+* [Fabozzi, Fabozzi, 2021, Bond Markets, Analysis, and Strategies, 10th Edition](https://mitpress.mit.edu/books/bond-markets-analysis-and-strategies-tenth-edition)
+
+~~~
+<br>
+~~~
+
+#### License
 
 The copyright notice to be included in any copies and other derivative work of this material is:
 

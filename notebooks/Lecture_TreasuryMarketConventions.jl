@@ -17,17 +17,23 @@ end
 # ╔═╡ f0545c67-5cfd-438f-a9ef-92c35ebaefa4
 #Set-up packages
 begin
-	using DataFrames, Dates, Plots, PlutoUI, Printf, LaTeXStrings
-	gr();
+	using DataFrames, Dates, Plots, PlutoUI, Printf, LaTeXStrings, HypertextLiteral
+	gr() 
 	Plots.GRBackend()
+end
+
+# ╔═╡ 2fb302c5-6002-4571-bda0-5d337413ef9b
+#Define html elements
+begin
+	nbsp = html"&nbsp" #non-breaking space
+	vspace = html"""<div style="margin-bottom:0.05cm;"></div>"""
+	br = html"<br>"
 end
 
 # ╔═╡ 5ad14e2f-726f-43c4-9428-8fc87267881a
 #Sets the width of cells, caps the cell width by 90% of screen width
 #(setting overwritten by cell below)
 begin
-	using HypertextLiteral
-
 	@bind screenWidth @htl("""
 		<div>
 		<script>
@@ -48,14 +54,6 @@ begin
 			</style>
 		""")
 	end
-end
-
-# ╔═╡ 2fb302c5-6002-4571-bda0-5d337413ef9b
-#Define html elements
-begin
-	nbsp = html"&nbsp" #non-breaking space
-	vspace = html"""<div style="margin-bottom:0.05cm;"></div>"""
-	br = html"<br>"
 end
 
 # ╔═╡ fcdbefd3-73ac-4f0d-88b0-7869160ae049
@@ -132,10 +130,6 @@ roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec);
 
 end
 
-# ╔═╡ 0ed89230-c98a-43d7-8b62-814b25aec605
-Foldable("What is the gravitational acceleration?", md"Correct, it's
-``\pi^2``.")
-
 # ╔═╡ 41d7b190-2a14-11ec-2469-7977eac40f12
 #add button to trigger presentation mode
 html"<button onclick='present()'>present</button>"
@@ -149,11 +143,11 @@ md"""
 begin 
 	html"""
 	<p style="padding-bottom:1cm"> </p>
-	<div align=center style="font-size:25px; font-family:family:Georgia"> FINC-462/662: Fixed Income Securities </div>
+	<div align=center style="font-size:25px; font-family:family:Georgia"> Fixed Income Securities </div>
 	<p style="padding-bottom:1cm"> </p>
 	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Price-Quoting Conventions in the U.S. Treasury Market</b> <p>
 	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> Spring 2022 <p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
 	<p style="padding-bottom:1cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
 	<p style="padding-bottom:0.5cm"> </p>
@@ -193,7 +187,7 @@ md"""
 """
 
 # ╔═╡ aac27a3c-e90a-437f-a563-f81d41c8d3f7
-LocalResource("TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
+LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
 
 # ╔═╡ 39af52c6-ddb1-41ec-be5c-c0e31a2693bb
 md"""
@@ -202,7 +196,7 @@ md"""
 """
 
 # ╔═╡ 6561b7a0-368c-43c6-ada9-36b83dc4a749
-LocalResource("TreasuryNotePriceQuoteBloomberg.png",:width => 1200) 
+LocalResource("./Assets/TreasuryNotePriceQuoteBloomberg.png",:width => 1200) 
 
 # ╔═╡ 30ce6f74-1d7e-465d-abf1-245881fec53b
 md"""
@@ -393,10 +387,10 @@ md"""
 """
 
 # ╔═╡ 8464e17a-2f95-4bde-8c37-502359bb2dd8
-LocalResource("TreasuryNoteDescrExampleBloomberg_2.png",:width => 1200) 
+LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg_2.png",:width => 1200) 
 
 # ╔═╡ a7c9120b-ee24-48c2-904a-e40ef95fcffa
-LocalResource("TreasuryNoteDescrExampleBloombergDirtyPrice_2.png",:width => 1200) 
+LocalResource("./Assets/TreasuryNoteDescrExampleBloombergDirtyPrice_2.png",:width => 1200) 
 
 # ╔═╡ 8f9498b5-a1cf-4be7-b0dd-41aad76c959b
 md"""
@@ -623,7 +617,7 @@ md"""
 """
 
 # ╔═╡ a93b91d5-7239-4260-b57f-7afb02ee31c5
-LocalResource("TreasuryBillDescrExampleBloomberg.png",:width => 1200) 
+LocalResource("./Assets/TreasuryBillDescrExampleBloomberg.png",:width => 1200) 
 
 # ╔═╡ dcb12edc-553b-4fe7-9525-a86d9fd5a78a
 md"""
@@ -632,7 +626,7 @@ md"""
 """
 
 # ╔═╡ 25500a55-9c69-42d8-87bf-fb897b6de939
-LocalResource("TreasuryBillPriceQuoteBloomberg.png",:width => 1200) 
+LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg.png",:width => 1200) 
 
 # ╔═╡ 9d874ab6-e3ec-4a87-8842-a8a8074b745c
 md"""
@@ -673,7 +667,7 @@ Example from Bloomberg of the Treasury Bill with maturity on 4/30/2020
 """
 
 # ╔═╡ 448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
-LocalResource("TbillExampleBloomberg_1.svg",:width => 1200) 
+LocalResource("./Assets/TbillExampleBloomberg_1.svg",:width => 1200) 
 
 # ╔═╡ 61228793-317c-40a2-b9f8-cb661704f799
 md"""
@@ -681,7 +675,7 @@ Quoted discount yield on 02/07/2020.
 """
 
 # ╔═╡ e88cafc2-ad9a-4c46-bbc6-2f442ce0615a
-LocalResource("TreasuryBillPriceQuoteBloomberg_3.svg",:width => 300) 
+LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg_3.svg",:width => 300) 
 
 # ╔═╡ 7b091f73-2454-4690-b1f9-3f0008561da9
 md"""
@@ -705,7 +699,7 @@ md"""
 """
 
 # ╔═╡ d11d60be-9909-47c6-8ce9-438e2cf28d6f
-LocalResource("TreasuryBillPriceQuoteBloomberg_2.svg",:width => 300) 
+LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg_2.svg",:width => 300) 
 
 # ╔═╡ 5a00909a-8279-46ef-8570-bbbb7adffcf4
 md"""
@@ -746,10 +740,10 @@ md"""
 """
 
 # ╔═╡ fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
-LocalResource("TreasurySTRIPS_1.png",:width => 1200) 
+LocalResource("./Assets/TreasurySTRIPS_1.png",:width => 1200) 
 
 # ╔═╡ 02748d79-5707-4130-9aae-0c6141e4f760
-LocalResource("TreasurySTRIPS_2.png",:width => 600) 
+LocalResource("./Assets/TreasurySTRIPS_2.png",:width => 600) 
 
 # ╔═╡ 1217e6ec-8479-4a85-b0e7-088eee30bc63
 md"""
@@ -835,7 +829,7 @@ Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 
 [compat]
 DataFrames = "~1.2.2"
-HypertextLiteral = "~0.9.1"
+HypertextLiteral = "~0.9.3"
 LaTeXStrings = "~1.2.1"
 Plots = "~1.22.6"
 PlutoUI = "~0.7.16"
@@ -1051,9 +1045,9 @@ version = "0.21.0+0"
 
 [[Glib_jll]]
 deps = ["Artifacts", "Gettext_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Libiconv_jll", "Libmount_jll", "PCRE_jll", "Pkg", "Zlib_jll"]
-git-tree-sha1 = "7bf67e9a481712b3dbe9cb3dac852dc4b1162e02"
+git-tree-sha1 = "74ef6288d071f58033d54fd6708d4bc23a8b8972"
 uuid = "7746bdde-850d-59dc-9ae8-88ece973131d"
-version = "2.68.3+0"
+version = "2.68.3+1"
 
 [[Graphite2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1074,9 +1068,9 @@ version = "0.9.16"
 
 [[HarfBuzz_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "Graphite2_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Pkg"]
-git-tree-sha1 = "8a954fed8ac097d5be04921d595f741115c1b2ad"
+git-tree-sha1 = "129acf094d168394e80ee1dc4bc06ec835e510a3"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
-version = "2.8.1+0"
+version = "2.8.1+1"
 
 [[Hyperscript]]
 deps = ["Test"]
@@ -1085,9 +1079,9 @@ uuid = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
 version = "0.0.4"
 
 [[HypertextLiteral]]
-git-tree-sha1 = "f6532909bf3d40b308a0f360b6a0e626c0e263a8"
+git-tree-sha1 = "2b078b5a615c6c0396c77810d92ee8c6f470d238"
 uuid = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
-version = "0.9.1"
+version = "0.9.3"
 
 [[IOCapture]]
 deps = ["Logging", "Random"]
@@ -1736,7 +1730,6 @@ version = "0.9.1+5"
 # ╠═52db118a-719f-41f1-a41f-4a366bf2d5f0
 # ╠═a07cff2b-d1d3-4bb6-8780-ec893694fe63
 # ╠═2e3fa133-fc18-4376-b48d-136b43ffdee6
-# ╠═0ed89230-c98a-43d7-8b62-814b25aec605
 # ╠═41d7b190-2a14-11ec-2469-7977eac40f12
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╠═a5de5746-3df0-45b4-a62c-3daf36f015a5
