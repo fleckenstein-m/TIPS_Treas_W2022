@@ -35,7 +35,7 @@ end
 #(setting overwritten by cell below)
 begin
 	
-	@bind screenWidth @html("""
+	@bind screenWidth @htl("""
 		<div>
 		<script>
 			var div = currentScript.parentElement
@@ -46,7 +46,7 @@ begin
 
 	begin
 		cellWidth= min(1000, screenWidth*0.9)
-		@html("""
+		@htl("""
 			<style>
 				pluto-notebook {
 					margin: auto;
@@ -147,11 +147,11 @@ md"""
 begin 
 	html"""
 	<p style="padding-bottom:1cm"> </p>
-	<div align=center style="font-size:25px; font-family:family:Georgia"> FINC-462/662: Fixed Income Securities </div>
+	<div align=center style="font-size:25px; font-family:family:Georgia"> Fixed Income Securities </div>
 	<p style="padding-bottom:1cm"> </p>
 	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Bond Pricing Fundamentals</b> <p>
 	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> Spring 2022 <p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
 	<p style="padding-bottom:1cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
 	<p style="padding-bottom:0.5cm"> </p>
@@ -196,10 +196,10 @@ println("test")
 # end
 
 # ╔═╡ 13102a49-65b2-4b14-824c-412894cf2a95
-LocalResource("TreasuryNoteCashflowExampleBloomberg.png",:width => 1200) 
+LocalResource("./Assets/TreasuryNoteCashflowExampleBloomberg.png",:width => 1200) 
 
 # ╔═╡ aac27a3c-e90a-437f-a563-f81d41c8d3f7
-LocalResource("TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
+LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
 
 # ╔═╡ 2293d075-6ea9-4757-9921-3251f9bab67b
 md"""
@@ -1215,9 +1215,9 @@ version = "0.21.0+0"
 
 [[Glib_jll]]
 deps = ["Artifacts", "Gettext_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Libiconv_jll", "Libmount_jll", "PCRE_jll", "Pkg", "Zlib_jll"]
-git-tree-sha1 = "7bf67e9a481712b3dbe9cb3dac852dc4b1162e02"
+git-tree-sha1 = "74ef6288d071f58033d54fd6708d4bc23a8b8972"
 uuid = "7746bdde-850d-59dc-9ae8-88ece973131d"
-version = "2.68.3+0"
+version = "2.68.3+1"
 
 [[Graphite2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1238,9 +1238,9 @@ version = "0.9.16"
 
 [[HarfBuzz_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "Graphite2_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Pkg"]
-git-tree-sha1 = "8a954fed8ac097d5be04921d595f741115c1b2ad"
+git-tree-sha1 = "129acf094d168394e80ee1dc4bc06ec835e510a3"
 uuid = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
-version = "2.8.1+0"
+version = "2.8.1+1"
 
 [[Hyperscript]]
 deps = ["Test"]
