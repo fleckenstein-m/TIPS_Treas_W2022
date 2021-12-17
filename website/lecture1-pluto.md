@@ -1,1 +1,1 @@
-{{ plutonotebookpage  ../notebooks/week1/03-introSIR.jl }}
+{{ plutonotebookpage  ../notebooks/Lecture_TIPSTreasury.jl }}
