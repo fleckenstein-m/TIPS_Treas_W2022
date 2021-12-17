@@ -419,17 +419,10 @@ begin
 	TreasMkt = DataFrame()
 	plot_Treas = plot()
 	let
-		data_url = "https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/US-Treasury-Securities-Statistics-SIFMA.xlsx"
-		my_file = CSV.File(HTTP.get(data_url).body)
- 		df = DataFrame(my_file)
-		
-		file="https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/US-Treasury-Securities-Statistics-SIFMA.xlsx"
-		sheet="Outstanding"
-		cols="A:G"
-		startrow = 8
-		xlsxFile = XLSX.readtable(file, sheet, cols; first_row=startrow, 
-			header=true, infer_eltypes=true)
-		TreasMkt = DataFrame(xlsxFile...)
+		data_url = "https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/US-Treasury-Securities-Statistics-SIFMA_Outstanding.csv"
+		my_file = CSV.File(HTTP.get(data_url).body; missingstring="-999")
+		# my_file = CSV.File("./Assets/US-Treasury-Securities-Statistics-SIFMA_Outstanding.csv")
+ 		TreasMkt = DataFrame(my_file)
 		
 		transform!(TreasMkt, [:Notes,:Bonds] => (+) => :NotesAndBonds)
 		transform!(TreasMkt, 
@@ -2687,7 +2680,7 @@ version = "0.9.1+5"
 # ╟─6f5c7dc2-4500-461e-8569-8e1ff6f66e8d
 # ╟─ffa772e6-8e12-4780-b079-debb7e995f6c
 # ╟─560ebf95-d6ae-4c91-a5ba-1ab5c8571cbd
-# ╟─f3963af9-c276-4423-b724-b01de1983c0d
+# ╠═f3963af9-c276-4423-b724-b01de1983c0d
 # ╟─fca79d01-0d46-40fa-b341-3d2ae794bdfc
 # ╠═a21aa196-6c64-4838-9e77-10efd985c97b
 # ╠═f8b6cf7e-9559-4f02-9d82-edddb15a254a
