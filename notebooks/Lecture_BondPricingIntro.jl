@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.3
+# v0.17.1
 
 using Markdown
 using InteractiveUtils
@@ -31,35 +31,35 @@ begin
 
 	#Sets the width of cells, caps the cell width by 90% of screen width
 	#(setting overwritten by cell below)
-	@bind screenWidth @htl("""
-		<div>
-		<script>
-			var div = currentScript.parentElement
-			div.value = screen.width
-		</script>
-		</div>
-	""")
+	# @bind screenWidth @htl("""
+	# 	<div>
+	# 	<script>
+	# 		var div = currentScript.parentElement
+	# 		div.value = screen.width
+	# 	</script>
+	# 	</div>
+	# """)
 
 	
-		cellWidth= min(1000, screenWidth*0.9)
-		@htl("""
-			<style>
-				pluto-notebook {
-					margin: auto;
-					width: $(cellWidth)px;
-				}
-			</style>
-		""")
+	# cellWidth= min(1000, screenWidth*0.9)
+	# @htl("""
+	# 	<style>
+	# 		pluto-notebook {
+	# 			margin: auto;
+	# 			width: $(cellWidth)px;
+	# 		}
+	# 	</style>
+	# """)
 	
 
 	#Sets the width of the cells
-	#begin
-	#	html"""<style>
-	#	main {
-	#		max-width: 900px;
-	#	}
-	#	"""
-	#end
+	begin
+		html"""<style>
+		main {
+			max-width: 900px;
+		}
+		"""
+	end
 
 
 	#Sets the height of displayed tables
@@ -976,7 +976,7 @@ PlutoUI = "~0.7.23"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.0"
+julia_version = "1.6.3"
 manifest_format = "2.0"
 
 [[deps.AbstractPlutoDingetjes]]
@@ -1386,7 +1386,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[deps.LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.LogExpFunctions]]
@@ -1448,10 +1448,6 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
-
-[[deps.OpenBLAS_jll]]
-deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
-uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[deps.OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1549,7 +1545,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[deps.Random]]
-deps = ["SHA", "Serialization"]
+deps = ["Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[deps.RecipesBase]]
@@ -1844,10 +1840,6 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
-[[deps.libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
-uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-
 [[deps.libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1999,7 +1991,7 @@ version = "0.9.1+5"
 # ╟─5091fc3d-ba6a-4892-9637-fa91b219b727
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
 # ╟─a70b2db9-7699-488a-bd93-02bf6154eef3
-# ╠═670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
