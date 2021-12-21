@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>lecture3-pluto_tipstreasury/index.html</loc>
+    <loc>lecture5-pluto_tipstreasury/index.html</loc>
+    <lastmod>2021-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>lecture1-pluto_intro/index.html</loc>
+    <lastmod>2021-12-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>lecture2-pluto_treasurymarket/index.html</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -14,13 +26,13 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>lecture1-pluto_treasurymarket/index.html</loc>
+    <loc>lecture4-pluto_bondpricing/index.html</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>lecture2-pluto_bondpricing/index.html</loc>
+    <loc>lecture3-pluto_marketconventions/index.html</loc>
     <lastmod>2021-12-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

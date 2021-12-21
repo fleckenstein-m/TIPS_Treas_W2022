@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -120,9 +120,11 @@ end
 html"<button onclick='present()'>present</button>"
 
 # ╔═╡ b1462143-60bc-4055-a5c7-1dcf4d4d55d5
-md"""
-#### UD/ISCTE-IUL Trading and Bloomberg Program
-"""
+begin 
+	html"""
+	<p align=left style="font-size:25px; font-family:family:Georgia"> <b> UD/ISCTE-IUL Trading and Bloomberg Program</b> <p>
+	"""
+end
 
 # ╔═╡ a5de5746-3df0-45b4-a62c-3daf36f015a5
 begin 
@@ -162,9 +164,12 @@ begin
 	"""
 end
 
+# ╔═╡ afe52267-20f5-45b2-b49e-81aa89403e21
+TableOfContents(aside=true, depth=1)
+
 # ╔═╡ 6498b10d-bece-42bf-a32b-631224857753
 md"""
-# Goals
+# Overview
 """
 
 # ╔═╡ 95db374b-b10d-4877-a38d-1d0ac45877c4
@@ -179,26 +184,14 @@ begin
 	"""
 end
 
-# ╔═╡ 7b28df2f-9978-4df6-9adf-ee247195b305
-begin 
-	html"""
-	
-	<p style="padding-bottom:1cm"> </p>
-	<div align=center style="font-size:35px; font-weight:bold; font-family:family:Georgia"> </div>
-	
-	<p style="padding-bottom:1cm"> </p>
-	
-	"""
-end
-
 # ╔═╡ 93db6880-429c-4b9c-a807-eba600e03df1
 md"""
-# Treasury Notes/Bonds
+# Treasury Notes/Bonds Price Quoting Convenstions
 """
 
 # ╔═╡ 1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
 md"""
-#### Example: 5-year Treasury Note in Bloomberg
+## Example: 5-year Treasury Note in Bloomberg
 - On the Bloomberg Terminal type `91282CCZ2` and click on the security in the search result. 
 - Next, type `DES` and `Enter`.
 """
@@ -208,7 +201,7 @@ LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg.png",:width => 1200)
 
 # ╔═╡ 39af52c6-ddb1-41ec-be5c-c0e31a2693bb
 md"""
-#### Price Quotes for 5-year Treasury Note
+## Price Quotes for 5-year Treasury Note
 - On the Bloomberg Terminal click on `ALLQ` under _Quick Links_
 """
 
@@ -217,8 +210,7 @@ LocalResource("./Assets/TreasuryNotePriceQuoteBloomberg.png",:width => 1200)
 
 # ╔═╡ 30ce6f74-1d7e-465d-abf1-245881fec53b
 md"""
-#
-### Price Quotes for Treasury Coupon Securities
+## Price Quotes for Treasury Coupon Securities
 - Expressed as a percent of face value (often called “points”) and numbers after the hyphens denote 32nds (often called “ticks”).
 """
 
@@ -230,7 +222,7 @@ md"""
 
 # ╔═╡ 395335f3-3f6c-4fbc-bf0b-9a238c8b6864
 Markdown.parse("
-**Example**:
+## **Example 1**
 - Suppose the price of a Treasury note is quoted as **$(p1)**-**$(p2)**.
 - For \$100 par value, the quoted price of **$(p1)**-**$(p2)** refers to a dollar price of $p1 dollars plus $p2 ``32^{\\textrm{nd}}`` of a dollar.
 - In short, the price is calculated as 
@@ -255,7 +247,7 @@ md"""
 
 # ╔═╡ 2d37c722-c5bb-4462-a48d-f9374bed4449
 Markdown.parse("
-**Example**:
+## **Example 2**
 - Suppose the price of a Treasury note is quoted as **$(p3)**-**$(p4)+**.
 - For \$100 par value, the quoted price of **$(p3)**-**$(p4)+** refers to a dollar price of $p1 dollars plus $p3 ``32^{\\textrm{nd}}`` plus 1 ``64^{\\textrm{th}}``of a dollar.
 - In short, the price is calculated as 
@@ -274,7 +266,7 @@ md"""
 
 # ╔═╡ 64adcfde-8ade-4778-bb01-9d46ee836a55
 Markdown.parse("
-**Example**:
+## **Example 3**
 - Suppose the price of a Treasury note is quoted as **$(p5)**-**$(p6)$(p7)**.
 - For \$100 par value, the quoted price of **$(p5)**-**$(p6)$(p7)** refers to a dollar price of $p5 dollars plus $p6 ``32^{\\textrm{nd}}`` plus $(p7) ``256^{\\textrm{th}}``of a dollar.
 - In short, the price is calculated as 
@@ -293,7 +285,7 @@ md"""
 
 # ╔═╡ e68723a6-a1d8-4a3f-8ba0-9acab5d764db
 Markdown.parse("
-**Example**:
+## **Example 4**:
 - Often, trading system such as Bloomberg display _fractions_ after the ``32^{\\textrm{nd}}``.
 - Suppose the price of a Treasury note is quoted as ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}``.
 - For \$100 par value, the quoted price of ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}`` refers to a dollar price of $p11 dollars plus ``($p12 + \\frac{$p13}{4})`` ``32^{\\textrm{nd}}`` of a dollar.
@@ -313,7 +305,7 @@ md"""
 
 # ╔═╡ b65c747b-f08a-408d-8e01-e921dcbd9056
 Markdown.parse("
-**Example**:
+## **Example 5**
 - One last example. Suppose the price of a Treasury note is quoted as ``\\mathbf{$p14 + $p15 \\frac{$p16}{8}}``.
 - For \$100 par value, the quoted price of ``\\mathbf{$p14 + $p15 \\frac{$p16}{8}}`` refers to a dollar price of $p14 dollars plus ``($p15 + \\frac{$p16}{8})`` ``32^{\\textrm{nd}}`` of a dollar.
 - In short, the price is calculated as 
@@ -334,7 +326,7 @@ Markdown.parse("
 
 # ╔═╡ 4576f508-91bd-4fdc-a62d-833d8428f78f
 md"""
-#### Practice Exercise
+## Practice Exercise
 For each quoted price shown below, enter the price per \$100 par value in decimals.
 """
 
@@ -423,7 +415,7 @@ md"""
 
 # ╔═╡ 18026407-34e8-4a96-aaaf-410d495f9568
 md"""
-#### Example
+## Example 6
 """
 
 # ╔═╡ 6acadc8a-dbb7-4193-9df7-09504755476b
@@ -469,7 +461,7 @@ end
 
 # ╔═╡ cedc6044-5eb2-4e95-98c7-e5831597a258
 md"""
-#### Calculating Accrued Interest for Treasury notes and bonds
+## Calculating Accrued Interest for Treasury notes and bonds
 """
 
 # ╔═╡ d43ce5da-dee3-4d44-a202-4f5f4770772b
@@ -488,7 +480,7 @@ $$\textrm{Accrued Interest} = \textrm{Coupon Interest Cash Flow} \times \left( \
 
 # ╔═╡ b71c4b72-7004-4600-82d4-651179178a03
 md"""
-##### Calculate the **Days in Accrued Interest Period**
+## Calculate the **Days in Accrued Interest Period**
 
 - We need three key dates: 
 - **Trade date**
@@ -508,13 +500,13 @@ $$\textrm{Days from and \textbf{including} the previous coupon date up to \textb
 
 # ╔═╡ fd4aead4-bf25-4125-b094-6edce0e77b1e
 md"""
-##### Calculate the **Days in Coupon Period**
+## Calculate the **Days in Coupon Period**
 - Simply the number of days between the previous coupon date and the next coupon date.
 """
 
 # ╔═╡ fcaff09a-c014-4fe9-81f8-f0fb72d99829
 md"""
-#### Example
+#### Example 7
 """
 
 # ╔═╡ 8323c2cc-cc29-416b-aca4-798f7cc844ed
@@ -560,7 +552,7 @@ $$\textrm{Accrued Interest} = \textrm{\$4} \times \left( \frac{ \textrm{118}}{\t
 
 # ╔═╡ 41b91a85-ac56-4b36-87e1-b121c756417e
 md"""
-#### Accrued Interest Example 2
+#### Example 8
 """
 
 # ╔═╡ 4d039efd-c682-4abe-a2a4-8536ed97a3c7
@@ -599,7 +591,7 @@ Markdown.parse("""
 
 # ╔═╡ 70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
 md"""
-#### Daycount Conventions
+## Daycount Conventions
 - In calculating the number of days between two dates, the actual number of days is **not** always the same as the number of days that should be used in the accrued interest formula.
 - The number of days used depends on the **day count convention** for the particular security.
 - For Treasury notes/bonds, the day count convention is to use the **actual** number of days between two dates.
@@ -625,12 +617,13 @@ md"""
 
 # ╔═╡ a81f9bd5-374d-4238-af83-e39ab1f5982e
 md"""
-# Treasury Bills
+# Treasury Bills Pricing Quoting Conventions
 """
 
 # ╔═╡ bb8b0b23-4313-4764-96bd-c1e34aa09795
 md"""
-#### Example: 52-week Treasury Bill in Bloomberg
+## Example 9
+- 52-week Treasury Bill in Bloomberg
 - On the Bloomberg Terminal type `912796M89` and click on the security in the search result. 
 - Next, type `DES` and `Enter`.
 """
@@ -649,7 +642,7 @@ LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg.png",:width => 1200)
 
 # ╔═╡ 9d874ab6-e3ec-4a87-8842-a8a8074b745c
 md"""
-#### Treasury Bill Price Quoting Convention
+## Discount Yield
 """
 
 # ╔═╡ a92a604a-429b-4508-9820-c99839f3b431
@@ -666,19 +659,15 @@ $$y_d = \frac{100-\textrm{Price}}{100} \times \left( \frac{360}{\textrm{Days to 
 
 # ╔═╡ 4f6af650-763a-4c56-a564-d3c1447be1fd
 Markdown.parse("
-#### Example
+## Example 10
 - Consider a Treasury bill with 85 days to maturity, a face value of 100, and a purchase price of 99.10.
 - This Treasury bill would be quoted with a discount yield \$y_d\$ of
 \$y_d = \\frac{100-99.10}{100} \\times \\frac{360}{85}= $(roundmult((100-99.10)/100*360/85,1e-6))=$(roundmult((100-99.10)*(360/85),1e-6))\\%\$ 
 ")
 
-# ╔═╡ 28112b4a-fbeb-4409-b3f7-88578191a704
-md"""
-Example
-"""
-
 # ╔═╡ e2e15eb3-c339-49ea-85b6-5436835cddea
 md"""
+## Example 11
 Example from Bloomberg of the Treasury Bill with maturity on 4/30/2020
 - Quote (as discount yield) on 2/07/2020.
 - Settlement date is 2/10/2020.
@@ -722,7 +711,7 @@ LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg_2.svg",:width => 300)
 
 # ╔═╡ 5a00909a-8279-46ef-8570-bbbb7adffcf4
 md"""
-##### Example
+## Example 12
 - Quoted discount yield [% p.a.]: $(@bind yd_4 Slider(0:0.01:3, default=1.85, show_value=true))
 - Par value [\$]: $(@bind par_4 Slider(100:1000, default=100, show_value=true))
 - Settlement date: $(@bind settle_4 DateField(default=Date(2022,03,1)))
@@ -747,7 +736,7 @@ Markdown.parse("
 
 # ╔═╡ 371a326e-f13b-44ce-91e8-50d43b7ae59a
 md"""
-## Treasury STRIPS
+# Treasury STRIPS
 """
 
 # ╔═╡ b7bdc144-7648-403f-bce7-2b6df6a8dd2f
@@ -848,9 +837,9 @@ version = "1.0.8+0"
 
 [[Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
-git-tree-sha1 = "f2202b55d816427cd385a9a4f3ffb226bee80f99"
+git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
 uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
-version = "1.16.1+0"
+version = "1.16.1+1"
 
 [[ChainRulesCore]]
 deps = ["Compat", "LinearAlgebra", "SparseArrays"]
@@ -1037,9 +1026,9 @@ version = "0.21.0+0"
 
 [[Glib_jll]]
 deps = ["Artifacts", "Gettext_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Libiconv_jll", "Libmount_jll", "PCRE_jll", "Pkg", "Zlib_jll"]
-git-tree-sha1 = "74ef6288d071f58033d54fd6708d4bc23a8b8972"
+git-tree-sha1 = "a32d672ac2c967f3deb8a81d828afc739c838a06"
 uuid = "7746bdde-850d-59dc-9ae8-88ece973131d"
-version = "2.68.3+1"
+version = "2.68.3+2"
 
 [[Graphite2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1731,9 +1720,9 @@ version = "0.9.1+5"
 # ╟─b1462143-60bc-4055-a5c7-1dcf4d4d55d5
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
 # ╟─801bb743-2f23-40b9-9c23-c3fc71e24ee5
+# ╟─afe52267-20f5-45b2-b49e-81aa89403e21
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╟─7b28df2f-9978-4df6-9adf-ee247195b305
 # ╟─93db6880-429c-4b9c-a807-eba600e03df1
 # ╟─1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
 # ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
@@ -1796,7 +1785,6 @@ version = "0.9.1+5"
 # ╟─9d874ab6-e3ec-4a87-8842-a8a8074b745c
 # ╟─a92a604a-429b-4508-9820-c99839f3b431
 # ╟─4f6af650-763a-4c56-a564-d3c1447be1fd
-# ╟─28112b4a-fbeb-4409-b3f7-88578191a704
 # ╟─e2e15eb3-c339-49ea-85b6-5436835cddea
 # ╟─448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
 # ╟─61228793-317c-40a2-b9f8-cb661704f799
