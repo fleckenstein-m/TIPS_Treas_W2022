@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -164,6 +164,9 @@ begin
 	</fieldset>      
 	"""
 end
+
+# ╔═╡ d2908a7c-51af-431c-ac09-4a7d89dbf02f
+TableOfContents(aside=true)
 
 # ╔═╡ 886da2d4-c1ec-4bb4-8733-e3b46c95dd36
 md"""
@@ -1700,9 +1703,9 @@ version = "0.9.11"
 
 [[Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
-git-tree-sha1 = "f2202b55d816427cd385a9a4f3ffb226bee80f99"
+git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
 uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
-version = "1.16.1+0"
+version = "1.16.1+1"
 
 [[CodecZlib]]
 deps = ["TranscodingStreams", "Zlib_jll"]
@@ -1883,9 +1886,9 @@ version = "0.21.0+0"
 
 [[Glib_jll]]
 deps = ["Artifacts", "Gettext_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Libiconv_jll", "Libmount_jll", "PCRE_jll", "Pkg", "Zlib_jll"]
-git-tree-sha1 = "74ef6288d071f58033d54fd6708d4bc23a8b8972"
+git-tree-sha1 = "a32d672ac2c967f3deb8a81d828afc739c838a06"
 uuid = "7746bdde-850d-59dc-9ae8-88ece973131d"
-version = "2.68.3+1"
+version = "2.68.3+2"
 
 [[Graphite2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -2579,6 +2582,7 @@ version = "0.9.1+5"
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
+# ╠═d2908a7c-51af-431c-ac09-4a7d89dbf02f
 # ╟─886da2d4-c1ec-4bb4-8733-e3b46c95dd36
 # ╟─19119cba-d324-4568-8060-167aae0e9a32
 # ╟─5b5c7b91-5800-4fbc-b425-ee8d7a55732f
