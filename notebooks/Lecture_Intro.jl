@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.1
 
 using Markdown
 using InteractiveUtils
@@ -18,7 +18,7 @@ end
 #Set-up packages
 begin
 	
-	using DataFrames, Dates, Plots, PlutoUI, Printf, LaTeXStrings, HypertextLiteral
+	using DataFrames, HTTP, CSV, Dates, Plots, PlutoUI, Printf, LaTeXStrings, HypertextLiteral, ShortCodes
 	
 	gr();
 	Plots.GRBackend()
@@ -46,19 +46,21 @@ begin
 	# 	<style>
 	# 		pluto-notebook {
 	# 			margin: auto;
-		# 			width: $(cellWidth)px;
-		# 		}
-		# 	</style>
-		# """)
+	# 			width: $(cellWidth)px;
+	# 		}
+	# 	</style>
+	# """)
 	
 
-	# Sets the width of the cells
-	html"""<style>
-		main {
-			max-width: 900px;
-	}
-	"""
-	
+	#Sets the width of the cells
+	#begin
+	#	html"""<style>
+	#	main {
+	#		max-width: 900px;
+	#	}
+	#	"""
+	#end
+
 
 	#Sets the height of displayed tables
 	html"""<style>
@@ -110,16 +112,15 @@ begin
 	#helper functions
 	#round to digits, e.g. 6 digits then prec=1e-6
 	roundmult(val, prec) = (inv_prec = 1 / prec; round(val * inv_prec) / inv_prec); 
-	
+
 	display("")
-	
 end
 
 # ╔═╡ 41d7b190-2a14-11ec-2469-7977eac40f12
 #add button to trigger presentation mode
 html"<button onclick='present()'>present</button>"
 
-# ╔═╡ b1462143-60bc-4055-a5c7-1dcf4d4d55d5
+# ╔═╡ 41f2df7c-9740-4de2-8a35-f435fed5e57a
 begin 
 	html"""
 	<p align=left style="font-size:25px; font-family:family:Georgia"> <b> UD/ISCTE-IUL Trading and Bloomberg Program</b> <p>
@@ -130,678 +131,139 @@ end
 begin 
 	html"""
 	<p style="padding-bottom:1cm"> </p>
-	<div align=center style="font-size:25px; font-family:family:Georgia"> Fixed Income Securities </div>
+	<div align=center style="font-size:25px; font-family:family:Georgia">Fixed Income Securities </div>
 	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Market Conventions in the U.S. Treasury Market</b> <p>
-	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
-	<p style="padding-bottom:1cm"> </p>
-	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> The TIPS-Treasury Bond Puzzle</b> <p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> Introduction </b> <p>
 	<p style="padding-bottom:0.5cm"> </p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
+	<p style="padding-bottom:0.5cm"> </p>
+	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
+	<p style="padding-bottom:0.00cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> University of Delaware, 
 	Lerner College of Business and Economics </div>
 	<p style="padding-bottom:1cm"> </p>
 	"""
 end
 
-# ╔═╡ 801bb743-2f23-40b9-9c23-c3fc71e24ee5
-# begin 
-# 	html"""
-# 	<hr>
-# 	<p style="padding-bottom:1cm"> </p>
-# 	<div align=center style="font-size:35px; font-weight:bold; font-family:family:Georgia"> </div>
-	
-# 	<p style="padding-bottom:1cm"> </p>
-# 	<hr>
-# 	"""
-# end
-begin 
-	html"""
-	<p style="padding-bottom:1cm"> </p>
-	<div align=center style="font-size:35px; font-weight:bold; font-family:family:Georgia"> </div>
-	
-	<p style="padding-bottom:1cm"> </p>
-	"""
-end
-
-# ╔═╡ afe52267-20f5-45b2-b49e-81aa89403e21
+# ╔═╡ d2908a7c-51af-431c-ac09-4a7d89dbf02f
 TableOfContents(aside=true, depth=1)
 
-# ╔═╡ 6498b10d-bece-42bf-a32b-631224857753
+# ╔═╡ 886da2d4-c1ec-4bb4-8733-e3b46c95dd36
 md"""
-# Overview
+# The TIPS-Treasury Bond Puzzle
 """
 
-# ╔═╡ 95db374b-b10d-4877-a38d-1d0ac45877c4
-begin
-	html"""
-	<fieldset>      
-        <legend>Learning Objectives</legend>      
-		<br>
-        <input type="checkbox" value="">Understand how prices for Treasury securities are quoted in secondary markets.<br><br>
-	    <input type="checkbox" value="">Know how to calculate accrued interest.<br><br>
-	</fieldset>      
-	"""
-end
-
-# ╔═╡ 93db6880-429c-4b9c-a807-eba600e03df1
+# ╔═╡ 19119cba-d324-4568-8060-167aae0e9a32
 md"""
-# Treasury Notes/Bonds Price Quoting Convenstions
+# The Largest Arbitrage Ever Documented
+
+> - _“... you can forget about the concept of picking up pennies in front of a steamroller because ... this **arbitrage** can run to as much **$20 per $100 notional amount**.”_\
+> - _“The trade was Barnegat’s most profitable and saw the fund make an impressive **132 per cent return that year**, outpacing almost every other fund in the industry.”_
+
+Sources: [The largest arbitrage ever documented](https://www.ft.com/content/3ec205b7-4351-3c0b-a46c-e23ab86c3a44); [Hedge funds reap rewards from Treasuries](https://www.ft.com/content/a5aa3c38-c111-11df-afe0-00144feab49a)
 """
 
-# ╔═╡ 1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
+# ╔═╡ a9bb4760-275e-46ed-9b78-c00525cc7dab
 md"""
-## Example: 5-year Treasury Note in Bloomberg
-- On the Bloomberg Terminal type `91282CCZ2` and click on the security in the search result. 
-- Next, type `DES` and `Enter`.
+##
 """
 
-# ╔═╡ aac27a3c-e90a-437f-a563-f81d41c8d3f7
-LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
-
-# ╔═╡ 39af52c6-ddb1-41ec-be5c-c0e31a2693bb
+# ╔═╡ b264dbf1-d759-4502-8e57-1d3d56725024
 md"""
-## Price Quotes for 5-year Treasury Note
-- On the Bloomberg Terminal click on `ALLQ` under _Quick Links_
+> - _**“For Barnegat the opportunity was clear: the fund bought TIPS bonds and went short on regular Treasury bonds of a matched maturity, hedging out the effect of inflation along the way with a swap contract.”**_ \
+> - _“The result was a trade that would make money if the divergent prices between the two securities converged. The difference in price between the two securities narrowed sharply through 2009.”_\
+> - _“ 'If 2009 was an excellent year, then 2010 is still a very good year. The opportunities are huge in some cases,' says Mr Treue. Indeed, Barnegat is up 15.75 per cent so far this year.”_
+
+Source: [Hedge funds reap rewards from Treasuries](https://www.ft.com/content/a5aa3c38-c111-11df-afe0-00144feab49a)
 """
 
-# ╔═╡ 6561b7a0-368c-43c6-ada9-36b83dc4a749
-LocalResource("./Assets/TreasuryNotePriceQuoteBloomberg.png",:width => 1200) 
-
-# ╔═╡ 30ce6f74-1d7e-465d-abf1-245881fec53b
+# ╔═╡ 4299cb5a-e16f-44aa-affe-cff510682284
 md"""
-## Price Quotes for Treasury Coupon Securities
-- Expressed as a percent of face value (often called “points”) and numbers after the hyphens denote 32nds (often called “ticks”).
+##
 """
 
-# ╔═╡ 4ad79093-2e8b-4fd7-bc1d-87388947ffde
+# ╔═╡ 84a4314f-b871-4f09-bec5-b140196e4134
 md"""
-- Points: $(@bind p1 Slider(90:1:120, default=98, show_value=true))
-- 32nd: $(@bind p2 Slider(10:1:31, default=26, show_value=true))
+[Presentation by Bob Treue, Fixed Income Arbitrage, Barnegat Fund Management](https://youtu.be/V-ssGaTnl8o)
 """
 
-# ╔═╡ 395335f3-3f6c-4fbc-bf0b-9a238c8b6864
-Markdown.parse("
-## **Example 1**
-- Suppose the price of a Treasury note is quoted as **$(p1)**-**$(p2)**.
-- For \$100 par value, the quoted price of **$(p1)**-**$(p2)** refers to a dollar price of $p1 dollars plus $p2 ``32^{\\textrm{nd}}`` of a dollar.
-- In short, the price is calculated as 
-	
-\$$p1 + \\frac{$p2}{32} = $(p1+p2/32.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p1+p2/32.0).
-")
+# ╔═╡ 23eb879e-23ca-4b46-8bfa-670ce12ad7f1
+YouTube("https://youtu.be/V-ssGaTnl8o")
 
-# ╔═╡ 46566086-d518-49d9-b173-f66f2ea0e131
+# ╔═╡ 16d6c5ce-860e-4e49-ab68-b22d6725ee37
 md"""
-The 32nd are themselves often split by the addition of a **plus** sign or a **third** digit. 
-- ``+`` sign means 1/64$^{\textrm{th}}$
-- A _third_ digit means that this third digit is multiplied by 1/256.
+# The TIPS-Treasury Bond Puzzle in the Journal of Finance
 """
 
-# ╔═╡ f01f940c-233c-4b90-882b-bd9d33c6b841
+# ╔═╡ 6bcc4fb6-531c-44f9-8cd4-cea8b0eba4ae
 md"""
-- Points: $(@bind p3 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p4 Slider(10:1:31, default=25, show_value=true))
+> _"It’s contained in a great little paper published earlier this month and it isn’t a fancy, schmancy accessible to high frequency traders only type of trade."_
+
+Source: [Kaminska (2010), FT.com](https://www.ft.com/content/3ec205b7-4351-3c0b-a46c-e23ab86c3a44)
 """
 
-# ╔═╡ 2d37c722-c5bb-4462-a48d-f9374bed4449
-Markdown.parse("
-## **Example 2**
-- Suppose the price of a Treasury note is quoted as **$(p3)**-**$(p4)+**.
-- For \$100 par value, the quoted price of **$(p3)**-**$(p4)+** refers to a dollar price of $p1 dollars plus $p3 ``32^{\\textrm{nd}}`` plus 1 ``64^{\\textrm{th}}``of a dollar.
-- In short, the price is calculated as 
-	
-\$$p3 + \\frac{$p4}{32} + \\frac{1}{64}= $(p3+p4/32.0+1/64.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p3+p4/32.0+1/64.0)\$.
-")
+# ╔═╡ b34099d1-2deb-4ca8-9205-5fbc6b950d3a
+LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
 
-# ╔═╡ b294a20b-8710-49bb-a069-75dbc3f19ba6
+# ╔═╡ 1c90bd2e-67e2-4bb5-aceb-a39228f22872
 md"""
-- Points: $(@bind p5 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p6 Slider(10:1:31, default=25, show_value=true))
-- 256$^{\textrm{th}}$: $(@bind p7 Slider(1:1:9, default=2, show_value=true))
+# International Inflation-Linked Bond Puzzle
+> - _Italian bond markets, for example, exhibited unprecedented price discrepancies between different classes of bond issued by the government as a result of the ECB’s LTRO liquidity injection._\
+> - _In January, investors dumped inflation-protected Italian bonds, fearful that they would automatically drop out of key European bond indices if the country’s credit rating was downgraded, while at the same time Italian banks snapped up regular Italian bonds with LTRO cash._\
+> - **_Hedge funds bought the cheap inflation-protected bonds, wrote swaps to offset inflation and then shorted expensive regular Italian bonds, thereby completely hedging out credit risk and inflation and locking in the supply and demand-driven difference between the two bonds._**\
+> - _The spread between them was more than 200 basis points, according to Bob Treue, the founder of Barnegat, a US-based fixed income arbitrage hedge fund that has made 18 per cent on its investments so far this year._
+Source: [ECB liquidity fuels high stakes hedging](https://www.ft.com/content/cb74d63a-7e75-11e1-b009-00144feab49a#axzz24lB77mEm)
 """
 
-# ╔═╡ 64adcfde-8ade-4778-bb01-9d46ee836a55
-Markdown.parse("
-## **Example 3**
-- Suppose the price of a Treasury note is quoted as **$(p5)**-**$(p6)$(p7)**.
-- For \$100 par value, the quoted price of **$(p5)**-**$(p6)$(p7)** refers to a dollar price of $p5 dollars plus $p6 ``32^{\\textrm{nd}}`` plus $(p7) ``256^{\\textrm{th}}``of a dollar.
-- In short, the price is calculated as 
-	
-\$$p5 + \\frac{$p6}{32} + \\frac{$p7}{256}= $(p5+p6/32.0+p7/256.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p5+p6/32.0+p7/256.0)\$.
-")
-
-# ╔═╡ f72ab26d-f986-4ab3-9f15-11cb33b65c69
+# ╔═╡ 588125ae-e790-4b05-8564-5062d7a556fe
 md"""
-- Points: $(@bind p11 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p12 Slider(10:1:31, default=25, show_value=true))
-- Quarters of a 32$^{\textrm{nd}}$: $(@bind p13 Slider(1:1:3, default=1, show_value=true))
+# The U.S. Treasury Market
+- The Department of the Treasury is the largest single issuer of debt in the world.
+- The large volume of total debt and the large size of any single issue have contributed to making the Treasury market the most active and hence the most liquid market in the world
+
+
+[SIFMA Fixed Income Statistics](https://www.sifma.org/resources/research/fixed-income-chart)
 """
 
-# ╔═╡ e68723a6-a1d8-4a3f-8ba0-9acab5d764db
-Markdown.parse("
-## **Example 4**:
-- Often, trading system such as Bloomberg display _fractions_ after the ``32^{\\textrm{nd}}``.
-- Suppose the price of a Treasury note is quoted as ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}``.
-- For \$100 par value, the quoted price of ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}`` refers to a dollar price of $p11 dollars plus ``($p12 + \\frac{$p13}{4})`` ``32^{\\textrm{nd}}`` of a dollar.
-- In short, the price is calculated as 
-	
-\$$p11 + \\frac{$p12+\\frac{$p13}{4}}{32} = $(p11+(p12+0.25*p13)/32.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p11+(p12+0.25*p13)/32.0)\$.
-")
+# ╔═╡ 1539816e-2a47-4ae4-a2a3-7892958cc3ef
+Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryOutstandingSIFMA.svg",:width => 900)
 
-# ╔═╡ b5ed2793-df92-4f41-97e9-7533b35db4c0
+# ╔═╡ 014f362b-ccbb-41ba-ba87-08df662378a4
 md"""
-- Points: $(@bind p14 Slider(90:1:120, default=98, show_value=true))
-- 32$^{\textrm{nd}}$: $(@bind p15 Slider(10:1:31, default=25, show_value=true))
-- Eights of a 32$^{\textrm{nd}}$: $(@bind p16 Slider(1:1:7, default=1, show_value=true))
+[Link to SIFMA](https://www.sifma.org/resources/research/fixed-income-chart/)
 """
-
-# ╔═╡ b65c747b-f08a-408d-8e01-e921dcbd9056
-Markdown.parse("
-## **Example 5**
-- One last example. Suppose the price of a Treasury note is quoted as ``\\mathbf{$p14 + $p15 \\frac{$p16}{8}}``.
-- For \$100 par value, the quoted price of ``\\mathbf{$p14 + $p15 \\frac{$p16}{8}}`` refers to a dollar price of $p14 dollars plus ``($p15 + \\frac{$p16}{8})`` ``32^{\\textrm{nd}}`` of a dollar.
-- In short, the price is calculated as 
-	
-\$$p14 + \\frac{$p15+\\frac{$p16}{8}}{32} = $(p14+(p15+1/8*p16)/32.0)\$	
- 
-- This means that the price per \$ 100 par value is \$$(p14+(p15+1/8*p16)/32.0)\$.
-")
-
-# ╔═╡ 16a751d5-9a6b-40c4-969f-46c2d184c8c6
-Markdown.parse("
-!!! important
-- In some trading system, hyphens in quotes such as in **$(p1)-$(p2)** are replaced with a decimal points. 
-- That is the quote is displayed as **$(p1).$(p2)**
-- The interpretation is the same. Thus, the price per \$100 par value is \$$(p1+p2/32.0).
-\$$p1 + \\frac{$p2}{32} = $(p1+p2/32.0)\$	
-")
-
-# ╔═╡ 4576f508-91bd-4fdc-a62d-833d8428f78f
-md"""
-## Practice Exercise
-For each quoted price shown below, enter the price per \$100 par value in decimals.
-"""
-
-# ╔═╡ 6c57bd92-7d1d-41d3-88d5-0b2c191b7693
-begin
-	p161=100
-	p162=27
-	
-	p171=108
-	p172=31
-		
-	p181=102
-	p182=12
-	p183=3
-	
-	p191=102
-	p192=18
-	p193=1
-	display("")
-end
-
-# ╔═╡ 9a1aa162-d274-4af7-8f13-5a9d6bab98b0
-Markdown.parse("""
-- Quoted Price: ``$p161 - $p162`` 
-""")
-
-# ╔═╡ 4bccc40c-953a-4969-b47b-aea4b234919b
-Markdown.parse("""
-!!! hint
-    Price in Decimals: ``$(p161+p162/32)``
-""")
-
-# ╔═╡ 729198d1-5795-4b70-85f8-f25717edc244
-Markdown.parse("""
-- Quoted Price: ``$p171 - $p172 +`` 
-""")
-
-# ╔═╡ 301c4a13-814e-4853-aa5b-aac611cc40f0
-Markdown.parse("""
-!!! hint
-    Price in Decimals: ``$(p171+p172/32+1/64)``
-""")
-
-# ╔═╡ 9aa0dec2-c1e1-41c5-9ad5-35b51e41128a
-Markdown.parse("""
-- Quoted Price: ``$p181 - $p182 \\frac{$p183}{4}`` 
-""")
-
-# ╔═╡ 3a2a5dea-4a07-4368-89c9-cde995b9964b
-Markdown.parse("""
-!!! hint
-    Price in Decimals: ``$(p181+(p182+p183/4)/32)``
-""")
-
-# ╔═╡ a4670db5-20e5-41cd-a2af-8dd15ce119f6
-Markdown.parse("""
-- Quoted Price: ``$p191 - $p192 \\frac{$p193}{8}`` 
-""")
-
-# ╔═╡ 16d95a82-743e-478c-a50d-36e800910883
-Markdown.parse("""
-!!! hint
-    Price in Decimals: ``$(p191+(p192+p193/8)/32)``
-""")
-
-# ╔═╡ be1e2ae2-8b05-42c7-bc54-18c9ff111854
-md"""
-# Accrued Interest
-"""
-
-# ╔═╡ 8464e17a-2f95-4bde-8c37-502359bb2dd8
-LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg_2.png",:width => 1200) 
-
-# ╔═╡ a7c9120b-ee24-48c2-904a-e40ef95fcffa
-LocalResource("./Assets/TreasuryNoteDescrExampleBloombergDirtyPrice_2.png",:width => 1200) 
-
-# ╔═╡ 8f9498b5-a1cf-4be7-b0dd-41aad76c959b
-md"""
-- U.S. Treasury securities pay coupon interest every six months.
-- At any date between two coupon payments, we must take the **accrued interest** into account.
-- The convention in the Treasury market is that _in addition to_ the **quoted price**, the bond buyer must _pay_ the bond seller the **accrued interest**.
-- Thus, the amount that the buyer pays the seller is the **quoted price** plus **accrued interest**.
-  - This is the actual purchase price and it is called the **dirty price.**
-  - The **quoted price** of a bond (_without accrued interest_) is called the **clean price.** 
-"""
-
-# ╔═╡ 18026407-34e8-4a96-aaaf-410d495f9568
-md"""
-## Example 6
-"""
-
-# ╔═╡ 6acadc8a-dbb7-4193-9df7-09504755476b
-md"""
-- Days between coupon payments: 180
-- Coupon rate [% p.a.]: $(@bind cpnAI_1 Slider(0:1:10, default=2, show_value=true))
-
-- Days after previous coupon: $(@bind daysAI_1 Slider(1:1:180, default=60, show_value=true))
-- Days to next coupon: $(180-daysAI_1)
-"""
-
-# ╔═╡ 362273d3-e019-4953-a1dd-21699f7a7def
-Markdown.parse("""
-- To illustrate, suppose a Treasury note has a coupon rate of $(cpnAI_1) % (paid semi-annually) and that there are 180 days between coupon payments.
-- Suppose you own \$ 100 par value of this Treasury note and that $(daysAI_1) days have passed since the previous coupon cash flow.
-- The next coupon cash flow in $(180-daysAI_1) days is 
-\$\\frac{$cpnAI_1\\%}{2} \\times 100 = $((cpnAI_1/100)/2*100)\$	
-- Now, suppose you decide to sell the Treasury note.
-- When you sell the Treasury note, you no longer receive the coupon cash flow in $(180-daysAI_1). 
-- The buyer receives the full coupon interest of \$ $((cpnAI_1/100)/2*100).
-- However, you owned the bond for $(daysAI_1) out of the 180 days between coupon interest cash flows.
-- Thus, you should be entitled to receive a fraction equal to \$\\frac{$daysAI_1}{180} = $(roundmult(daysAI_1/180,1e-2))\$ of the total  $((cpnAI_1/100)/2*100) coupon interest.
-- This amount of \$ $(roundmult(daysAI_1/180 * (cpnAI_1/100)/2*100,1e-2)) is referred to as **accrued interest** and it is added to the *quoted* price.
-- The total price paid by the buyer is called the **full price** or the **dirty price**.
-- The quoted price (without accrued interest) is called the **flat price** or the **clean price**.
-- Thus,
-\$\\textrm{Full Price}=\\textrm{Flat Price} + \\textrm{Accrued Interest}\$
-\$\\textrm{or}\$
-\$\\textrm{Dirty Price}=\\textrm{Clean Price} + \\textrm{Accrued Interest}\$
-""")
-
-# ╔═╡ 577c5da8-de61-4f41-96f3-957c4fa93cd2
-begin
-	
-	daysAI_2 = repeat(collect(0:179),3)
-	cpnAI_2 = ((cpnAI_1/100)/2*100).*daysAI_2/180
-	plot(cpnAI_2,xticks = ( [0:30:length(daysAI_2);], string.(daysAI_2[1:30:end])),
-		ylabel="Accrued Interest",xlabel="Days since last coupon", label=""
-	)
-	
-	 
-end
-
-# ╔═╡ cedc6044-5eb2-4e95-98c7-e5831597a258
-md"""
-## Calculating Accrued Interest for Treasury notes and bonds
-"""
-
-# ╔═╡ d43ce5da-dee3-4d44-a202-4f5f4770772b
-md"""
-- To calculate accrued interest, the following are needed: 
-  - the number of days in the accrued interest period (represents the number of days over which the investor has earned interest)
-  - the number of days in the coupon period (representes the number of days between the last and the next coupon payment)
-  - the dollar amount of the coupon payment
-"""
-
-# ╔═╡ a4a0a069-80d6-4a13-a19d-56b200ca8545
-md"""
-- Accrued Interest is the calculated as
-$$\textrm{Accrued Interest} = \textrm{Coupon Interest Cash Flow} \times \left( \frac{ \textrm{Days in Accrued Interest Period}}{\textrm{Days in Coupon Period}} \right)$$
-"""
-
-# ╔═╡ b71c4b72-7004-4600-82d4-651179178a03
-md"""
-## Calculate the **Days in Accrued Interest Period**
-
-- We need three key dates: 
-- **Trade date**
-  - The trade date (also referred to as the transaction date) is the date on which the transaction is executed (referred to as “T”).
-- **Settlement date** 
-  - The settlement date is the date a transaction is deemed to be completed and the seller must transfer the ownership of the bond to the buyer in exchange for the payment
-  - Treasury securities settle on the next business day after the trade date. This is referred to as *T+1 Settlement*
-- **Date of previous coupon cash flow**
-- Days in Accrued Interest Period are then calculated as
-
-$$\textrm{Days in Accrued Interest Period=}$$ 
-$$\textrm{Days from and \textbf{including} the previous coupon date up to \textbf{excluding} the settlement date}$$.
-
-
-
-"""
-
-# ╔═╡ fd4aead4-bf25-4125-b094-6edce0e77b1e
-md"""
-## Calculate the **Days in Coupon Period**
-- Simply the number of days between the previous coupon date and the next coupon date.
-"""
-
-# ╔═╡ fcaff09a-c014-4fe9-81f8-f0fb72d99829
-md"""
-#### Example 7
-"""
-
-# ╔═╡ 8323c2cc-cc29-416b-aca4-798f7cc844ed
-md"""
-- Consider a Treasury note whose previous coupon payment was May 15. Assume that the coupon rate is 8% p.a. (paid semi-annually) and par value of \$100.
-  - Thus, the coupon interest cash flows are $\frac{8\%}{2}\times 100 =$ \$4
-- Suppose you buy Treasury security with a settlement date of September 10.
-- Since Treasury notes pay semi-annual coupon interest, the next coupon payment is on November 15. 
-"""
-
-# ╔═╡ 9119860b-2ada-411a-95e7-e1e56ae573c0
-md"""
-
-- **Step 1**: *Days in Accrued Interest Period*
-  - We count the actual number of days between May 15 (the previous coupon date) and September 10 (the settlement date). 
-    - May: **17** days (we count the day of the previous coupon cash flow)
-    - June: 30 days
-    - July: 31 days
-    - August: 31 days
-    - September: **9** days (we do not count the settlement date)
-   - Thus, *Days in Accrued Interest Period* = 118
-"""
-
-# ╔═╡ 8dc2cccb-a682-4c42-99fe-ccc91d3823d1
-md"""
-- **Step 2**: *Days in Coupon Period*
-  - We count the actual number of days between May 15 (the previous coupon date) and Nov 15 (the next coupon date)
-    - May: **16 days**
-    - June: 30 days
-    - July: 31 days
-    - September: 30 days
-    - October: 31 days
-    - November: **15 days**
-  - Thus, *Days in Coupon Period*=184
-"""
-
-# ╔═╡ c6df152f-9f62-4eb4-997e-afd9a0868c9e
-md"""
-- **Step 3**: *Accrued Interest*
-$$\textrm{Accrued Interest} = \textrm{Coupon Interest Cash Flow} \times \left( \frac{ \textrm{Days in Accrued Interest Period}}{\textrm{Days in Coupon Period}} \right)$$
-$$\textrm{Accrued Interest} = \textrm{\$4} \times \left( \frac{ \textrm{118}}{\textrm{184}} \right) = \textrm{\$4} \times 0.641304 = \textrm{\$2.565217}$$
-"""
-
-# ╔═╡ 41b91a85-ac56-4b36-87e1-b121c756417e
-md"""
-#### Example 8
-"""
-
-# ╔═╡ 4d039efd-c682-4abe-a2a4-8536ed97a3c7
-md"""
-- Coupon rate [% p.a.]: $(@bind cpnAI_3 Slider(0:0.25:10, default=8, show_value=true))
-- Par value [\$]: $(@bind par_3 Slider(100:100000, default=100, show_value=true))
-- Previous coupon cash flow date: $(@bind prev_3 DateField(default=Date(2015,5,15)))
-- Next coupon cash flow date: $(@bind next_3 DateField(default=Date(2015,11,15)))
-- Settlement date: $(@bind settle_3 DateField(default=Date(2015,09,10)))
-"""
-
-# ╔═╡ c78eb09a-0907-47dc-b9c9-65f40432ff47
-@bind go Button("Calculate Accrued Interest")
-
-# ╔═╡ 5752193f-de1f-4832-ab93-a0fc8c4d9c4d
-begin 
-	go
-	daysAIPeriod = Date(settle_3) - Date(prev_3)
-	daysCpnPeriod = Date(next_3) - Date(prev_3)
-	accrInt_3 = Dates.value(daysAIPeriod)/Dates.value(daysCpnPeriod)*cpnAI_3/(200)*
-par_3
-	md"""
-	- Coupon interest cash flow:  $(roundmult(par_3 * (cpnAI_3/200),1e-6))
-	- Number of Days in Accrued Interest Period: $(daysAIPeriod)
-	- Number of Days in Coupon Period: $(daysCpnPeriod)
-	"""
-end
-
-# ╔═╡ 7b376a7e-215e-40af-82af-6be2762aa7eb
-Markdown.parse("""
-``\\begin{align}
-\\textrm{Accrued Interest} &= \\textrm{Coupon Interest Cash Flow} \\times \\left( \\frac{ \\textrm{Days in Accrued Interest Period}}{\\textrm{Days in Coupon Period}} \\right)\\\\ 
-&= \\\$ $(roundmult(cpnAI_3/(200)*par_3,1e-6)) \\times \\frac{$(Dates.value(daysAIPeriod)) \\textrm{ days}}{$(Dates.value(daysCpnPeriod)) \\textrm{ days}} =\\\$ $(roundmult(accrInt_3,1e-6))
-\\end{align}``
-""")
-
-# ╔═╡ 70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
-md"""
-## Daycount Conventions
-- In calculating the number of days between two dates, the actual number of days is **not** always the same as the number of days that should be used in the accrued interest formula.
-- The number of days used depends on the **day count convention** for the particular security.
-- For Treasury notes/bonds, the day count convention is to use the **actual** number of days between two dates.
-  - This is referred to as the **actual/actual** day count convention.
-"""
-
-# ╔═╡ 6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
-md"""
-- For coupon-bearing agency, municipal, and corporate bonds, a different day count convention is used.
-- It is assumed that every month has **30 days**, that any 6-month period has **180 days**, and that there are **360 days** in a year.
-- This day count convention is referred to as **30/360.**
-- The calculations are analogous to the examples we covered, except that 30 days are used for each month.
-"""
-
-# ╔═╡ e4c4606f-bb51-43c6-98b7-73e1b133b251
-md"""
-- To illustrate the “30/360” convention, suppose the **settlement date** is *July 17* and the *next coupon cash flow* is on *September 1*.
-- The number of days between July 17 and September 1 (the date of the next coupon payment) is 44 days, 
-  - July is assumed to have 30 days. Thus we count 13 days in July.
-  - The month of August is assumed to have 30 days, so we add 30 days.
-  - September 1 is one day, so the total number of days is 13 days + 30 days + 1 day = 44 days.
-"""
-
-# ╔═╡ a81f9bd5-374d-4238-af83-e39ab1f5982e
-md"""
-# Treasury Bills Pricing Quoting Conventions
-"""
-
-# ╔═╡ bb8b0b23-4313-4764-96bd-c1e34aa09795
-md"""
-## Example 9
-- 52-week Treasury Bill in Bloomberg
-- On the Bloomberg Terminal type `912796M89` and click on the security in the search result. 
-- Next, type `DES` and `Enter`.
-"""
-
-# ╔═╡ a93b91d5-7239-4260-b57f-7afb02ee31c5
-LocalResource("./Assets/TreasuryBillDescrExampleBloomberg.png",:width => 1200) 
-
-# ╔═╡ dcb12edc-553b-4fe7-9525-a86d9fd5a78a
-md"""
-#### Price Quotes for 52-week Treasury Bill
-- On the Bloomberg Terminal click on `ALLQ` under _Quick Links_
-"""
-
-# ╔═╡ 25500a55-9c69-42d8-87bf-fb897b6de939
-LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg.png",:width => 1200) 
-
-# ╔═╡ 9d874ab6-e3ec-4a87-8842-a8a8074b745c
-md"""
-## Discount Yield
-"""
-
-# ╔═╡ a92a604a-429b-4508-9820-c99839f3b431
-md"""
-- The convention for quoting prices for Treasury bills is **not** the same as for Treasury bonds.
-- Treasury bill prices are quoted as yields on **bank discount basis**.
-- The yield on a bank discount basis $y_d$ for $100 par value is computed as follows: 
-$$y_d = \frac{100-\textrm{Price}}{100} \times \left( \frac{360}{\textrm{Days to Maturity}} \right)$$
-- where $\textrm{Price}$ is the purchase price of the Treasury bill and $\textrm{Days to Maturity}$ is the number of days until the maturity date of the Treasury bill.
-- In calculating the $\textrm{Days to Maturity}$ Treasury bills use the **actual/360** convention.
-  - Thus, the number of days between two dates is the **actual** number of days.
-  - Each year is assumed to have **360** days.
-"""
-
-# ╔═╡ 4f6af650-763a-4c56-a564-d3c1447be1fd
-Markdown.parse("
-## Example 10
-- Consider a Treasury bill with 85 days to maturity, a face value of 100, and a purchase price of 99.10.
-- This Treasury bill would be quoted with a discount yield \$y_d\$ of
-\$y_d = \\frac{100-99.10}{100} \\times \\frac{360}{85}= $(roundmult((100-99.10)/100*360/85,1e-6))=$(roundmult((100-99.10)*(360/85),1e-6))\\%\$ 
-")
-
-# ╔═╡ e2e15eb3-c339-49ea-85b6-5436835cddea
-md"""
-## Example 11
-Example from Bloomberg of the Treasury Bill with maturity on 4/30/2020
-- Quote (as discount yield) on 2/07/2020.
-- Settlement date is 2/10/2020.
-- There are 80 days from settlement date to maturity. 
-"""
-
-# ╔═╡ 448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
-LocalResource("./Assets/TbillExampleBloomberg_1.svg",:width => 1200) 
-
-# ╔═╡ 61228793-317c-40a2-b9f8-cb661704f799
-md"""
-Quoted discount yield on 02/07/2020.
-"""
-
-# ╔═╡ e88cafc2-ad9a-4c46-bbc6-2f442ce0615a
-LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg_3.svg",:width => 300) 
-
-# ╔═╡ 7b091f73-2454-4690-b1f9-3f0008561da9
-md"""
-What is the purchase price?
-- Simply solve the equation for the discount yield $y_d$ for the price.
-
-$$P = 100 \times \left( 1- y_d \times \frac{\textrm{Days to Maturity}}{360}\right)$$
-"""
-
-# ╔═╡ 574ee503-37f4-4d27-8bc2-7688b60fe839
-md"""
-- Using the quoted discount yield
-
-$$P=100 \times \left( 1- y_d \times \frac{\textrm{Days to Maturity}}{360}\right)= 
-\$100 \times \left( 1- 1.5225\% \times \frac{80}{360}\right)=\$99.6617$$
-"""
-
-# ╔═╡ 80e6068f-5876-47c0-a5e8-17125b54de63
-md"""
-- Let's verify
-"""
-
-# ╔═╡ d11d60be-9909-47c6-8ce9-438e2cf28d6f
-LocalResource("./Assets/TreasuryBillPriceQuoteBloomberg_2.svg",:width => 300) 
-
-# ╔═╡ 5a00909a-8279-46ef-8570-bbbb7adffcf4
-md"""
-## Example 12
-- Quoted discount yield [% p.a.]: $(@bind yd_4 Slider(0:0.01:3, default=1.85, show_value=true))
-- Par value [\$]: $(@bind par_4 Slider(100:1000, default=100, show_value=true))
-- Settlement date: $(@bind settle_4 DateField(default=Date(2022,03,1)))
-- Maturity date: $(@bind mat_4 DateField(default=Date(2022,3,31)))
-"""
-
-# ╔═╡ 2e4b644c-9b50-42fe-9775-2619baff2518
-begin 
-	daysMat = Date(mat_4) - Date(settle_4)
-	px_4 = (1-yd_4/100*Dates.value(daysMat)/360)*par_4
-	md"""
-	- Number of days to maturity: $(daysMat)
-	- Dollar Price: \$ $(roundmult(px_4,1e-6)) per \$$(par_4) notional amount.
-	"""
-end
-
-# ╔═╡ 628ba57e-39ee-4072-8935-c44fae56b0bd
-Markdown.parse("
-- This Treasury bill has a dollar purchase price of 
-``P=\\left(1 - y_d \\times \\frac{\\textrm{Days to Maturity}}{360}\\right)=\\left(1 - $yd_4\\% \\times \\frac{$(Dates.value(daysMat))}{360} \\right) = \\\$ $(roundmult(px_4,1e-6))`` per \$ $(par_4) notional.
-")
-
-# ╔═╡ 371a326e-f13b-44ce-91e8-50d43b7ae59a
-md"""
-# Treasury STRIPS
-"""
-
-# ╔═╡ b7bdc144-7648-403f-bce7-2b6df6a8dd2f
-md"""
-- The Treasury does not issue **zero**-coupon notes or bonds. 
-- However, by “stripping” coupon payments from Treasury bonds, zero coupon bonds are created synthetically. 
-- The process of separating the interest on a bond from the underlying principal is called coupon stripping.
-
-"""
-
-# ╔═╡ fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
-LocalResource("./Assets/TreasurySTRIPS_1.png",:width => 1200) 
-
-# ╔═╡ 02748d79-5707-4130-9aae-0c6141e4f760
-LocalResource("./Assets/TreasurySTRIPS_2.png",:width => 600) 
-
-# ╔═╡ 1217e6ec-8479-4a85-b0e7-088eee30bc63
-md"""
-- Zero-coupon Treasury securities were first created in August 1982 by large dealer firms on Wall Street. 
-- Today, all Treasury notes and bonds (fixed-principal and inflation-indexed) are eligible for stripping. 
-- The zero-coupon Treasury securities created under the STRIPS program are direct obligations of the U.S. government.
-- Strips created from the Treasury coupons are called **coupon STRIPS** and those from the principal are called **principal STRIPS**. 
-"""
-
-# ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
-md"""
-## Wrap-Up
-"""
-
-# ╔═╡ 670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
-begin
-	html"""
-	<fieldset>      
-        <legend>Learning Objectives</legend>      
-		<br>
-        <input type="checkbox" value="" checked>Understand how prices for Treasury securities are quoted in secondary markets.<br><br>
-	    <input type="checkbox" value="" checked>Know how to calculate accrued interest.<br><br>
-	</fieldset>      
-	"""
-end
 
 # ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
 md"""
 #### Reading: 
-Fabozzi, Fabozzi, 2021, Bond Markets, Analysis, and Strategies, 10th Edition\
-Chapter 7 and Chapter 2
+Fleckenstein, Matthias, Francis A. Longstaff, and Hanno Lustig, 2014, The TIPS–Treasury Bond Puzzle, Journal of Finance, Volume 69, Issue 5, 2014, 2151–2197.
+
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+ShortCodes = "f62ebe17-55c5-4640-972f-b59c0dd11ccf"
 
 [compat]
-DataFrames = "~1.3.0"
+CSV = "~0.9.11"
+DataFrames = "~1.3.1"
+HTTP = "~0.9.17"
 HypertextLiteral = "~0.9.3"
 LaTeXStrings = "~1.3.0"
-Plots = "~1.25.2"
-PlutoUI = "~0.7.23"
+Plots = "~1.25.3"
+PlutoUI = "~0.7.26"
+ShortCodes = "~0.3.2"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -810,9 +272,9 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 [[AbstractPlutoDingetjes]]
 deps = ["Pkg"]
-git-tree-sha1 = "abb72771fd8895a7ebd83d5632dc4b989b022b5b"
+git-tree-sha1 = "37b730f25b5662ac452f7bb2c50a0567cbb748d4"
 uuid = "6e696c72-6542-2067-7265-42206c756150"
-version = "1.1.2"
+version = "1.1.3"
 
 [[Adapt]]
 deps = ["LinearAlgebra"]
@@ -835,6 +297,12 @@ git-tree-sha1 = "19a35467a82e236ff51bc17a3a44b69ef35185a2"
 uuid = "6e34b625-4abd-537c-b88f-471c36dfa7a0"
 version = "1.0.8+0"
 
+[[CSV]]
+deps = ["CodecZlib", "Dates", "FilePathsBase", "InlineStrings", "Mmap", "Parsers", "PooledArrays", "SentinelArrays", "Tables", "Unicode", "WeakRefStrings"]
+git-tree-sha1 = "49f14b6c56a2da47608fe30aed711b5882264d7a"
+uuid = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+version = "0.9.11"
+
 [[Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
 git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
@@ -852,6 +320,12 @@ deps = ["ChainRulesCore", "LinearAlgebra", "Test"]
 git-tree-sha1 = "bf98fa45a0a4cee295de98d4c1462be26345b9a1"
 uuid = "9e997f8a-9a97-42d5-a9f1-ce6bfc15e2c0"
 version = "0.1.2"
+
+[[CodecZlib]]
+deps = ["TranscodingStreams", "Zlib_jll"]
+git-tree-sha1 = "ded953804d019afa9a3f98981d99b33e3db7b6da"
+uuid = "944b1d66-785c-5afd-91f1-9de20f533193"
+version = "0.7.0"
 
 [[ColorSchemes]]
 deps = ["ColorTypes", "Colors", "FixedPointNumbers", "Random"]
@@ -899,9 +373,9 @@ version = "1.9.0"
 
 [[DataFrames]]
 deps = ["Compat", "DataAPI", "Future", "InvertedIndices", "IteratorInterfaceExtensions", "LinearAlgebra", "Markdown", "Missings", "PooledArrays", "PrettyTables", "Printf", "REPL", "Reexport", "SortingAlgorithms", "Statistics", "TableTraits", "Tables", "Unicode"]
-git-tree-sha1 = "2e993336a3f68216be91eb8ee4625ebbaba19147"
+git-tree-sha1 = "cfdfef912b7f93e4b848e80b9befdf9e331bc05a"
 uuid = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
-version = "1.3.0"
+version = "1.3.1"
 
 [[DataStructures]]
 deps = ["Compat", "InteractiveUtils", "OrderedCollections"]
@@ -959,6 +433,12 @@ deps = ["Artifacts", "Bzip2_jll", "FreeType2_jll", "FriBidi_jll", "JLLWrappers",
 git-tree-sha1 = "d8a578692e3077ac998b50c0217dfd67f21d1e5f"
 uuid = "b22a6f82-2f65-5046-a5b2-351ab43fb4e5"
 version = "4.4.0+0"
+
+[[FilePathsBase]]
+deps = ["Compat", "Dates", "Mmap", "Printf", "Test", "UUIDs"]
+git-tree-sha1 = "04d13bfa8ef11720c24e4d840c0033d145537df7"
+uuid = "48062228-2e41-5def-b9a4-89aafe57970f"
+version = "0.9.17"
 
 [[FixedPointNumbers]]
 deps = ["Statistics"]
@@ -1076,6 +556,12 @@ git-tree-sha1 = "098e4d2c533924c921f9f9847274f2ad89e018b8"
 uuid = "83e8ac13-25f8-5344-8a64-a9f2b223428f"
 version = "0.5.0"
 
+[[InlineStrings]]
+deps = ["Parsers"]
+git-tree-sha1 = "8d70835a3759cdd75881426fced1508bb7b7e1b6"
+uuid = "842dd82b-1e85-43dc-bf29-5d0ee9dffc48"
+version = "1.1.1"
+
 [[InteractiveUtils]]
 deps = ["Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
@@ -1117,6 +603,12 @@ deps = ["Dates", "Mmap", "Parsers", "Unicode"]
 git-tree-sha1 = "8076680b162ada2a031f707ac7b4953e30667a37"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.2"
+
+[[JSON3]]
+deps = ["Dates", "Mmap", "Parsers", "StructTypes", "UUIDs"]
+git-tree-sha1 = "7d58534ffb62cd947950b3aa9b993e63307a6125"
+uuid = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+version = "1.9.2"
 
 [[JpegTurbo_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1252,6 +744,12 @@ git-tree-sha1 = "e498ddeee6f9fdb4551ce855a46f54dbd900245f"
 uuid = "442fdcdd-2543-5da2-b0f3-8c86c306513e"
 version = "0.3.1"
 
+[[Memoize]]
+deps = ["MacroTools"]
+git-tree-sha1 = "2b1dfcba103de714d31c033b5dacc2e4a12c7caa"
+uuid = "c03570c3-d221-55d1-a50c-7939bbd78826"
+version = "0.4.4"
+
 [[Missings]]
 deps = ["DataAPI"]
 git-tree-sha1 = "bf210ce90b6c9eed32d25dbcae1ebc565df2687f"
@@ -1330,16 +828,16 @@ uuid = "995b91a9-d308-5afd-9ec6-746e21dbc043"
 version = "1.1.1"
 
 [[Plots]]
-deps = ["Base64", "Contour", "Dates", "Downloads", "FFMPEG", "FixedPointNumbers", "GR", "GeometryBasics", "JSON", "Latexify", "LinearAlgebra", "Measures", "NaNMath", "PlotThemes", "PlotUtils", "Printf", "REPL", "Random", "RecipesBase", "RecipesPipeline", "Reexport", "Requires", "Scratch", "Showoff", "SparseArrays", "Statistics", "StatsBase", "UUIDs", "UnicodeFun"]
-git-tree-sha1 = "65ebc27d8c00c84276f14aaf4ff63cbe12016c70"
+deps = ["Base64", "Contour", "Dates", "Downloads", "FFMPEG", "FixedPointNumbers", "GR", "GeometryBasics", "JSON", "Latexify", "LinearAlgebra", "Measures", "NaNMath", "PlotThemes", "PlotUtils", "Printf", "REPL", "Random", "RecipesBase", "RecipesPipeline", "Reexport", "Requires", "Scratch", "Showoff", "SparseArrays", "Statistics", "StatsBase", "UUIDs", "UnicodeFun", "Unzip"]
+git-tree-sha1 = "7eda8e2a61e35b7f553172ef3d9eaa5e4e76d92e"
 uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
-version = "1.25.2"
+version = "1.25.3"
 
 [[PlutoUI]]
-deps = ["AbstractPlutoDingetjes", "Base64", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
-git-tree-sha1 = "5152abbdab6488d5eec6a01029ca6697dff4ec8f"
+deps = ["AbstractPlutoDingetjes", "Base64", "ColorTypes", "Dates", "Hyperscript", "HypertextLiteral", "IOCapture", "InteractiveUtils", "JSON", "Logging", "Markdown", "Random", "Reexport", "UUIDs"]
+git-tree-sha1 = "b9fea70c10da76ef2d34fdefe643fc4204db634b"
 uuid = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
-version = "0.7.23"
+version = "0.7.26"
 
 [[PooledArrays]]
 deps = ["DataAPI", "Future"]
@@ -1355,9 +853,9 @@ version = "1.2.2"
 
 [[PrettyTables]]
 deps = ["Crayons", "Formatting", "Markdown", "Reexport", "Tables"]
-git-tree-sha1 = "d940010be611ee9d67064fe559edbb305f8cc0eb"
+git-tree-sha1 = "dfb54c4e414caa595a1f2ed759b160f5a3ddcba5"
 uuid = "08abe8d2-0d0c-5749-adfa-8a2ac140af0d"
-version = "1.2.3"
+version = "1.3.1"
 
 [[Printf]]
 deps = ["Unicode"]
@@ -1408,12 +906,24 @@ git-tree-sha1 = "0b4b7f1393cff97c33891da2a0bf69c6ed241fda"
 uuid = "6c6a2e73-6563-6170-7368-637461726353"
 version = "1.1.0"
 
+[[SentinelArrays]]
+deps = ["Dates", "Random"]
+git-tree-sha1 = "244586bc07462d22aed0113af9c731f2a518c93e"
+uuid = "91c51154-3ec4-41a3-a24f-3f23e20d615c"
+version = "1.3.10"
+
 [[Serialization]]
 uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 
 [[SharedArrays]]
 deps = ["Distributed", "Mmap", "Random", "Serialization"]
 uuid = "1a1011a3-84de-559e-8e89-a11a2f7dc383"
+
+[[ShortCodes]]
+deps = ["Base64", "CodecZlib", "HTTP", "JSON3", "Memoize", "UUIDs"]
+git-tree-sha1 = "866962b3cc79ad3fee73f67408c649498bad1ac0"
+uuid = "f62ebe17-55c5-4640-972f-b59c0dd11ccf"
+version = "0.3.2"
 
 [[Showoff]]
 deps = ["Dates", "Grisu"]
@@ -1461,6 +971,12 @@ git-tree-sha1 = "2ce41e0d042c60ecd131e9fb7154a3bfadbf50d3"
 uuid = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
 version = "0.6.3"
 
+[[StructTypes]]
+deps = ["Dates", "UUIDs"]
+git-tree-sha1 = "d24a825a95a6d98c385001212dc9020d609f2d4f"
+uuid = "856f2bd8-1eba-4b0a-8007-ebc267875bd4"
+version = "1.8.1"
+
 [[TOML]]
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
@@ -1485,6 +1001,12 @@ uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
+[[TranscodingStreams]]
+deps = ["Random", "Test"]
+git-tree-sha1 = "216b95ea110b5972db65aa90f88d8d89dcb8851c"
+uuid = "3bb67fe8-82b1-5028-8e26-92a6c54297fa"
+version = "0.9.6"
+
 [[URIs]]
 git-tree-sha1 = "97bbe755a53fe859669cd907f2d96aee8d2c1355"
 uuid = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
@@ -1503,6 +1025,11 @@ git-tree-sha1 = "53915e50200959667e78a92a418594b428dffddf"
 uuid = "1cfade01-22cf-5700-b092-accc4b62d6e1"
 version = "0.4.1"
 
+[[Unzip]]
+git-tree-sha1 = "34db80951901073501137bdbc3d5a8e7bbd06670"
+uuid = "41fe7b60-77ed-43a1-b4f0-825fd5a5650d"
+version = "0.1.2"
+
 [[Wayland_jll]]
 deps = ["Artifacts", "Expat_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Pkg", "XML2_jll"]
 git-tree-sha1 = "3e61f0b86f90dacb0bc0e73a0c5a83f6a8636e23"
@@ -1514,6 +1041,12 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "66d72dc6fcc86352f01676e8f0f698562e60510f"
 uuid = "2381bf8a-dfd0-557d-9999-79630e7b1b91"
 version = "1.23.0+0"
+
+[[WeakRefStrings]]
+deps = ["DataAPI", "InlineStrings", "Parsers"]
+git-tree-sha1 = "c69f9da3ff2f4f02e811c3323c22e5dfcb584cfa"
+uuid = "ea10d353-3f73-51f8-a26c-33c1cb351aa5"
+version = "1.4.1"
 
 [[XML2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Libiconv_jll", "Pkg", "Zlib_jll"]
@@ -1717,92 +1250,23 @@ version = "0.9.1+5"
 # ╔═╡ Cell order:
 # ╟─41d7b190-2a14-11ec-2469-7977eac40f12
 # ╟─f0545c67-5cfd-438f-a9ef-92c35ebaefa4
-# ╟─b1462143-60bc-4055-a5c7-1dcf4d4d55d5
+# ╟─41f2df7c-9740-4de2-8a35-f435fed5e57a
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
-# ╟─801bb743-2f23-40b9-9c23-c3fc71e24ee5
-# ╟─afe52267-20f5-45b2-b49e-81aa89403e21
-# ╟─6498b10d-bece-42bf-a32b-631224857753
-# ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╟─93db6880-429c-4b9c-a807-eba600e03df1
-# ╟─1fa89db5-8185-4c32-81ad-4cc7e4ec44c4
-# ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
-# ╟─39af52c6-ddb1-41ec-be5c-c0e31a2693bb
-# ╟─6561b7a0-368c-43c6-ada9-36b83dc4a749
-# ╟─30ce6f74-1d7e-465d-abf1-245881fec53b
-# ╟─395335f3-3f6c-4fbc-bf0b-9a238c8b6864
-# ╟─4ad79093-2e8b-4fd7-bc1d-87388947ffde
-# ╟─46566086-d518-49d9-b173-f66f2ea0e131
-# ╟─2d37c722-c5bb-4462-a48d-f9374bed4449
-# ╟─f01f940c-233c-4b90-882b-bd9d33c6b841
-# ╟─64adcfde-8ade-4778-bb01-9d46ee836a55
-# ╟─b294a20b-8710-49bb-a069-75dbc3f19ba6
-# ╟─e68723a6-a1d8-4a3f-8ba0-9acab5d764db
-# ╟─f72ab26d-f986-4ab3-9f15-11cb33b65c69
-# ╟─b65c747b-f08a-408d-8e01-e921dcbd9056
-# ╟─b5ed2793-df92-4f41-97e9-7533b35db4c0
-# ╟─16a751d5-9a6b-40c4-969f-46c2d184c8c6
-# ╟─4576f508-91bd-4fdc-a62d-833d8428f78f
-# ╟─6c57bd92-7d1d-41d3-88d5-0b2c191b7693
-# ╟─9a1aa162-d274-4af7-8f13-5a9d6bab98b0
-# ╟─4bccc40c-953a-4969-b47b-aea4b234919b
-# ╟─729198d1-5795-4b70-85f8-f25717edc244
-# ╟─301c4a13-814e-4853-aa5b-aac611cc40f0
-# ╟─9aa0dec2-c1e1-41c5-9ad5-35b51e41128a
-# ╟─3a2a5dea-4a07-4368-89c9-cde995b9964b
-# ╟─a4670db5-20e5-41cd-a2af-8dd15ce119f6
-# ╟─16d95a82-743e-478c-a50d-36e800910883
-# ╟─be1e2ae2-8b05-42c7-bc54-18c9ff111854
-# ╟─8464e17a-2f95-4bde-8c37-502359bb2dd8
-# ╟─a7c9120b-ee24-48c2-904a-e40ef95fcffa
-# ╟─8f9498b5-a1cf-4be7-b0dd-41aad76c959b
-# ╟─18026407-34e8-4a96-aaaf-410d495f9568
-# ╟─6acadc8a-dbb7-4193-9df7-09504755476b
-# ╟─362273d3-e019-4953-a1dd-21699f7a7def
-# ╟─577c5da8-de61-4f41-96f3-957c4fa93cd2
-# ╟─cedc6044-5eb2-4e95-98c7-e5831597a258
-# ╟─d43ce5da-dee3-4d44-a202-4f5f4770772b
-# ╟─a4a0a069-80d6-4a13-a19d-56b200ca8545
-# ╟─b71c4b72-7004-4600-82d4-651179178a03
-# ╟─fd4aead4-bf25-4125-b094-6edce0e77b1e
-# ╟─fcaff09a-c014-4fe9-81f8-f0fb72d99829
-# ╟─8323c2cc-cc29-416b-aca4-798f7cc844ed
-# ╟─9119860b-2ada-411a-95e7-e1e56ae573c0
-# ╟─8dc2cccb-a682-4c42-99fe-ccc91d3823d1
-# ╟─c6df152f-9f62-4eb4-997e-afd9a0868c9e
-# ╟─41b91a85-ac56-4b36-87e1-b121c756417e
-# ╟─4d039efd-c682-4abe-a2a4-8536ed97a3c7
-# ╟─c78eb09a-0907-47dc-b9c9-65f40432ff47
-# ╟─5752193f-de1f-4832-ab93-a0fc8c4d9c4d
-# ╟─7b376a7e-215e-40af-82af-6be2762aa7eb
-# ╟─70661dd7-0acf-4b6c-b7dd-f4ad71c1cee9
-# ╟─6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
-# ╟─e4c4606f-bb51-43c6-98b7-73e1b133b251
-# ╟─a81f9bd5-374d-4238-af83-e39ab1f5982e
-# ╟─bb8b0b23-4313-4764-96bd-c1e34aa09795
-# ╟─a93b91d5-7239-4260-b57f-7afb02ee31c5
-# ╟─dcb12edc-553b-4fe7-9525-a86d9fd5a78a
-# ╟─25500a55-9c69-42d8-87bf-fb897b6de939
-# ╟─9d874ab6-e3ec-4a87-8842-a8a8074b745c
-# ╟─a92a604a-429b-4508-9820-c99839f3b431
-# ╟─4f6af650-763a-4c56-a564-d3c1447be1fd
-# ╟─e2e15eb3-c339-49ea-85b6-5436835cddea
-# ╟─448e7b7e-b4b7-4eec-a331-f72f6aac7ff2
-# ╟─61228793-317c-40a2-b9f8-cb661704f799
-# ╟─e88cafc2-ad9a-4c46-bbc6-2f442ce0615a
-# ╟─7b091f73-2454-4690-b1f9-3f0008561da9
-# ╟─574ee503-37f4-4d27-8bc2-7688b60fe839
-# ╟─80e6068f-5876-47c0-a5e8-17125b54de63
-# ╟─d11d60be-9909-47c6-8ce9-438e2cf28d6f
-# ╟─5a00909a-8279-46ef-8570-bbbb7adffcf4
-# ╟─2e4b644c-9b50-42fe-9775-2619baff2518
-# ╟─628ba57e-39ee-4072-8935-c44fae56b0bd
-# ╟─371a326e-f13b-44ce-91e8-50d43b7ae59a
-# ╟─b7bdc144-7648-403f-bce7-2b6df6a8dd2f
-# ╟─fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
-# ╟─02748d79-5707-4130-9aae-0c6141e4f760
-# ╟─1217e6ec-8479-4a85-b0e7-088eee30bc63
-# ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
-# ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─d2908a7c-51af-431c-ac09-4a7d89dbf02f
+# ╟─886da2d4-c1ec-4bb4-8733-e3b46c95dd36
+# ╟─19119cba-d324-4568-8060-167aae0e9a32
+# ╟─a9bb4760-275e-46ed-9b78-c00525cc7dab
+# ╟─b264dbf1-d759-4502-8e57-1d3d56725024
+# ╟─4299cb5a-e16f-44aa-affe-cff510682284
+# ╟─84a4314f-b871-4f09-bec5-b140196e4134
+# ╠═23eb879e-23ca-4b46-8bfa-670ce12ad7f1
+# ╟─16d6c5ce-860e-4e49-ab68-b22d6725ee37
+# ╟─6bcc4fb6-531c-44f9-8cd4-cea8b0eba4ae
+# ╟─b34099d1-2deb-4ca8-9205-5fbc6b950d3a
+# ╟─1c90bd2e-67e2-4bb5-aceb-a39228f22872
+# ╟─588125ae-e790-4b05-8564-5062d7a556fe
+# ╟─1539816e-2a47-4ae4-a2a3-7892958cc3ef
+# ╟─014f362b-ccbb-41ba-ba87-08df662378a4
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

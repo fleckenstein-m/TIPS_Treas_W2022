@@ -3,8 +3,8 @@
 
 
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
-* **Class Times:** TBD
-* **Class Location:** TBD
+* **Class Times:** Jan 20/21, 1.30pm-3.30pm; Jan 24, 9.00am-11.00am 
+* **Class Location:** Geltzeiler Trading Center
 
 @def mintoclevel=2 
 @def maxtoclevel=3
@@ -21,8 +21,7 @@
 
 > The largest arbitrage ever documented...
 
-In this series of lectures we discuss a persistent violation of the law of one price that occured in the multi-trillion dollar 
-U.S. Treasury bond market, one of the largest and most liquid financial markets in the world.
+In this series of lectures we discuss a persistent violation of the law of one price that occured in the multi-trillion dollar U.S. Treasury bond market, one of the largest and most liquid financial markets in the world.
 We first give an introduction to the U.S. Treasury market and cover the basics of bond pricing.
 Then, we discuss how the prices of TIPS and Treasury notes/bonds are related via the law of one price. 
 We analyze the nature of the violation of the law of one price that occured in the U.S. Treasury bond and 
@@ -30,11 +29,15 @@ Treasury Inflation-Protected Securities (TIPS) markets and discuss how hedge fun
 
 
 ## Lecture Material
-[The U.S. Treasury Market](../lecture1-pluto_treasurymarket)
+[Introduction](../lecture1-pluto_intro)
 
-[Intro to Bond Pricing](../lecture2-pluto_bondpricing)
+[The U.S. Treasury Market](../lecture2-pluto_treasurymarket)
 
-[The TIPS-Treasury Trading Strategy](../lecture3-pluto_tipstreasury)
+[Treasury Market Conventions](../lecture3-pluto_marketconventions)
+
+[Intro to Bond Pricing](../lecture4-pluto_bondpricing)
+
+[The TIPS-Treasury Trading Strategy](../lecture5-pluto_tipstreasury)
 
 ~~~
 <br>

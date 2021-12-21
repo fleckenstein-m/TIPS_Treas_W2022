@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.2
 
 using Markdown
 using InteractiveUtils
@@ -121,9 +121,11 @@ end
 html"<button onclick='present()'>present</button>"
 
 # ╔═╡ 731c88b4-7daf-480d-b163-7003a5fbd41f
-md"""
-### UD/ISCTE-IUL Trading and Bloomberg Program
-"""
+begin 
+	html"""
+	<p align=left style="font-size:25px; font-family:family:Georgia"> <b> UD/ISCTE-IUL Trading and Bloomberg Program</b> <p>
+	"""
+end
 
 # ╔═╡ a5de5746-3df0-45b4-a62c-3daf36f015a5
 begin 
@@ -136,7 +138,7 @@ begin
 	<p align=center style="font-size:25px; font-family:family:Georgia"> Winter 2022 <p>
 	<p style="padding-bottom:1cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
-	<p style="padding-bottom:0.5cm"> </p>
+	<p style="padding-bottom:0.0cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> University of Delaware, 
 	Lerner College of Business and Economics </div>
 	<p style="padding-bottom:1cm"> </p>
@@ -155,9 +157,12 @@ end
 # 	"""
 # end
 
+# ╔═╡ e7d9bd79-0652-4df8-a25f-3269bbbea5f8
+TableOfContents(aside=true, depth=1)
+
 # ╔═╡ 6498b10d-bece-42bf-a32b-631224857753
 md"""
-# Goals
+# Overview
 """
 
 # ╔═╡ 95db374b-b10d-4877-a38d-1d0ac45877c4
@@ -185,6 +190,11 @@ begin
 	<hr>
 	"""
 end
+
+# ╔═╡ 78ee290d-b775-4601-90ab-569204e737e1
+md"""
+# Valuing Treasury Note/Bonds
+"""
 
 # ╔═╡ 13102a49-65b2-4b14-824c-412894cf2a95
 LocalResource("./Assets/TreasuryNoteCashflowExampleBloomberg.png",:width => 1200) 
@@ -228,7 +238,7 @@ end
 
 # ╔═╡ 7e5f2316-212e-454a-a01f-d71197ce1993
 md"""
-## Bond Pricing Building Blocks
+# Bond Pricing Building Blocks
 """
 
 # ╔═╡ 93319502-aafb-4b53-a887-e1dee962464d
@@ -246,7 +256,7 @@ md"""
 
 # ╔═╡ ac2c6913-cb1f-48cc-9fbe-c4bfa30f2153
 md"""
-#### Time Value of Money and Interest Rates
+## Time Value of Money and Interest Rates
 - Suppose you won the lottery and you can choose to receive your prize of \$1000 today or one year from today.
 - Clearly, you prefer to get the \$1,000 today instead of waiting for another year.
 - However, suppose you were offered \$1,100 one year from today for waiting another year.
@@ -285,7 +295,9 @@ $$\textrm{PV}=\frac{\textrm{FV}_t}{(1+r)^t}$$
 # ╔═╡ ba1728fd-6fc9-4194-a85c-fcee35c32d1b
 md""" 
 !!! important
-#### Present Value (Annual Compounding)
+## Present Value 
+**Annual Compounding**
+
 The present value of a cash flow $\textrm{FV}_t$ to be received in $t$ years given the interest rate $r$ (also called discount rate) is 
 
 $$\textrm{PV}=\frac{\textrm{FV}_t}{(1+r)^t}$$ 
@@ -294,7 +306,9 @@ $$\textrm{PV}=\frac{\textrm{FV}_t}{(1+r)^t}$$
 # ╔═╡ d5ad6113-e839-40e0-a7d9-620167bdcd2f
 md""" 
 !!! important
-#### Future Value (Annual Compounding)
+## Future Value 
+**Annual Compounding**
+
 The future value $\textrm{FV}_t$ in $t$ years of a cash flow with present value (PV) given the interest rate $r$ is 
 
 $$\textrm{FV}_t=\textrm{PV}\times (1+r)^t$$ 
@@ -302,12 +316,8 @@ $$\textrm{FV}_t=\textrm{PV}\times (1+r)^t$$
 
 # ╔═╡ 36e6512e-a077-48ad-8fe8-70a1bd1bed93
 md"""
-#### Present Value Example
-"""
-
-# ╔═╡ 0eba88ce-6d30-47b3-89e4-7125cbba0359
-md"""
-- Instead of 
+## Example 1
+**Present Value**
 """
 
 # ╔═╡ d82e3e70-a1bb-4860-8e1f-64a1cdda1aa5
@@ -331,7 +341,8 @@ Markdown.parse("
 
 # ╔═╡ a4f4cb87-c7e7-492c-8641-2829d9be0104
 md"""
-#### Future Value Example
+## Example 2
+**Future Value**
 """
 
 # ╔═╡ eafc7e08-8490-460a-a52c-59ee862265ef
@@ -355,7 +366,7 @@ Markdown.parse("
 
 # ╔═╡ 78e9af96-4b63-4aa7-91f4-8f5c1b7cead1
 md"""
-#### Calculating the present value of multiple future cash flows
+## Calculating the present value of multiple future cash flows
 """
 
 # ╔═╡ a1b4981b-ca8a-49e4-ad2a-a1921a88f78e
@@ -367,7 +378,7 @@ md"""
 
 # ╔═╡ 9ef41bdc-54c5-499d-8577-f4b7cd0a3c1e
 md"""
-#### Example
+## Example 3
 """
 
 # ╔═╡ d881d1ea-c070-46e9-aa8c-41f5f310b1d5
@@ -409,7 +420,7 @@ Present Value = $(tmpStr31)
 
 # ╔═╡ c5374949-54aa-43b2-8aaa-d336f6bab239
 md"""
-#### Perpetuities
+## Perpetuities
 """
 
 # ╔═╡ ffe4a1d1-2656-4db3-9659-b3b02ab7c3d7
@@ -421,7 +432,7 @@ md"""
 
 # ╔═╡ 2c9ae23c-8f2f-405a-aa9f-98a22b3c9ae0
 md"""
-#### Types of perpetuities exist in reality
+## Types of perpetuities exist in reality
 """
 
 # ╔═╡ 60dbef01-269c-4650-83c7-ac0f771f7d20
@@ -469,7 +480,7 @@ Present Value = \$ $(roundmult(PVTotal_4,1e-4))
 # ╔═╡ f36006b6-7e55-47b0-8515-0939b485ec81
 md""" 
 !!! important
-#### Present Value of Perpetuity
+## Present Value of Perpetuity
 The present value today (time $t=0$) of a perpetuity paying a dollar cash flow of $C$ forever is
 
 $$\textrm{PV}=\frac{\textrm{C}}{r}$$ 
@@ -489,7 +500,7 @@ Cash Flow     | 0   | C  | C | C | C
 
 # ╔═╡ fe7aa04e-009f-46ef-ac9d-c5037df85bba
 md"""
-#### Growing Perpetuity
+## Growing Perpetuity
 """
 
 # ╔═╡ 73059c24-0be1-400d-ae1b-2c9464c0454e
@@ -544,7 +555,7 @@ Present Value = \$ $(roundmult(PVTotal_5,1e-4))
 # ╔═╡ 92685ca8-ec81-4631-a7ca-c9bf58f023c3
 md""" 
 !!! important
-#### Present Value of Growing Perpetuity
+## Present Value of Growing Perpetuity
 The present value today (time $t=0$) of a perpetuity paying a dollar cash flow of $C$ forever that grows at a constant percentage rate $g$ each period **after** the first cash flow is
 
 $$\textrm{PV}=\frac{\textrm{FV}}{r-g}$$ 
@@ -559,7 +570,7 @@ Cash Flow     | 0   | $C$  | $C\times(1+g)$ | $C\times(1+g)^2$ | $C\times(1+g)^3
 
 # ╔═╡ 7f164f1c-4f2e-4aef-8544-c5ec6e10f43b
 md"""
-#### Annuity
+## Annuity
 """
 
 # ╔═╡ 7a797bc5-0ae1-4015-8708-57145183fd9b
@@ -627,7 +638,7 @@ $$\rightarrow \textrm{PV} = \left( \frac{50}{r} \right) \left(1 - \frac{1}{(1+r)
 # ╔═╡ 3f7f5303-98ad-4d63-aff7-4a612dcc1bec
 md""" 
 !!! important
-#### Present Value of Annuity
+## Present Value of Annuity
 The present value today (time $t=0$) of an annuity paying a dollar cash flow of $C$ for $T$ years is
 
 $$\textrm{PV} = \left( \frac{C}{r} \right) \left(1 - \frac{1}{(1+r)^{T}} \right)$$
@@ -640,7 +651,7 @@ Cash Flow     | 0   | $C$  | $C$ | $C$ | $C$ |...|$C$|0|0
 
 # ╔═╡ a6929d69-a27d-4099-bd9f-987b70985748
 md"""
-#### Compounding Frequencies
+## Compounding Frequencies
 """
 
 # ╔═╡ d7bf6089-29cb-45cd-b7d4-9290bd131d94
@@ -685,7 +696,7 @@ md"""
 # ╔═╡ 63da993b-f86f-4bb2-8805-c05df8ceb857
 md""" 
 !!! important
-#### Present and Future Values with different compounding frequencies
+## Present and Future Values with different compounding frequencies
 - Let $r$ be the **annual** interest rate and let $T$ be the number of years.
 - Let $PV$ be the the value today and $FV_T$ be the future value after $T$ years.
 - Let $m$ be the compounding frequency
@@ -710,7 +721,7 @@ TwoColumn(
 
 # ╔═╡ 2f5619f4-a1ba-4fbd-8a44-0bb998024b80
 md"""
-#### Future Value Example
+## Future Value Example
 """
 
 # ╔═╡ 039bad7e-7e8b-4891-935a-6b33ca8fdab7
@@ -733,14 +744,9 @@ Markdown.parse("
 \\\$ \\textrm{$PV_6} \\times \\left(1+\\frac{$r_6\\%}{$m_6} \\right)^{$m_6 \\times $T_6}=\\\$$(roundmult(PV_6*(1+r_1/(parse(Int64,m_6)*100))^(parse(Int64,m_6)*T_6),1e-6))\$
 ``")
 
-# ╔═╡ 71c89dfc-69dc-4383-b57d-939521904325
-md"""
-#### Example 
-"""
-
 # ╔═╡ 1628f265-12ef-41fc-b4c4-0218ea1c9001
 md"""
-#### Present Value Example
+## Present Value Example
 """
 
 # ╔═╡ b7f06890-a3d2-4a79-aa07-62107acf4b08
@@ -765,9 +771,9 @@ Markdown.parse("
 
 # ╔═╡ db973c76-2338-4c7d-be42-1c72b1d9e246
 md"""
-#### Annuity formula with difference compounding frequencies
+## Annuity formula with difference compounding frequencies
 - The annuity formula with different compounding frequencies becomes
-#### Present Value of Annuity
+## Present Value of Annuity
 The present value today (time $t=0$) of an annuity paying a dollar cash flow of $C$ for $T$ years when interest is compounded $m$ times per year is
 
 $$\textrm{PV} = \left( \frac{C}{r/m} \right) \left(1 - \frac{1}{\left(1+\frac{r}{m}\right)^{m \times T}} \right)$$
@@ -776,7 +782,7 @@ $$\textrm{PV} = \left( \frac{C}{r/m} \right) \left(1 - \frac{1}{\left(1+\frac{r}
 
 # ╔═╡ 0916378c-bcd9-4331-90d0-f5397483340f
 md"""
-#### Example
+## Example
 """
 
 # ╔═╡ 2f9d2971-1ac3-4429-83da-4c9eaabc4c7f
@@ -801,12 +807,12 @@ Markdown.parse("
 
 # ╔═╡ 693388a9-981e-4345-b04f-f28c10818cb6
 md"""
-#### Continuous Compounding
+## Continuous Compounding
 """
 
 # ╔═╡ 896724e2-942d-4889-bb0f-df5539a8c6aa
 md"""
-#### Future Value and Present Value with continuous compounding
+## Future Value and Present Value with continuous compounding
 """
 
 # ╔═╡ 43b0a108-d7f7-4846-a5b8-d69c9273ca1f
@@ -839,7 +845,7 @@ TwoColumn(
 
 # ╔═╡ be174887-523f-4a7a-9d69-e655dfaeb004
 md"""
-#### Example
+## Example
 """
 
 # ╔═╡ 4d8c3380-b7b6-4404-8032-6a792e6262e5
@@ -862,12 +868,12 @@ Markdown.parse("
 
 # ╔═╡ 787d53ec-f09e-4e7c-b9ae-3d60bcce46bc
 md"""
-#### Annuity formula with continuous compounding
+## Annuity formula with continuous compounding
 """
 
 # ╔═╡ 8d2b39a5-8da6-4c42-b71b-321f629121f8
 md"""
-#### Present Value of Annuity with continuous compounding
+## Present Value of Annuity with continuous compounding
 The present value today (time $t=0$) of an annuity paying a (continuous) dollar cash flow of $C$ for $T$ years when interest is continuously compounded is
 
 $$\textrm{PV} =  \frac{C}{\exp(r)-1} \times \left(1 - \exp(-r \times T) \right)$$
@@ -876,7 +882,7 @@ $$\textrm{PV} =  \frac{C}{\exp(r)-1} \times \left(1 - \exp(-r \times T) \right)$
 
 # ╔═╡ 20f818e2-57a9-4554-90ad-55abe69c9638
 md"""
-#### Example
+## Example
 """
 
 # ╔═╡ 299623b1-27df-4156-9cf4-55c95c074929
@@ -899,7 +905,7 @@ Markdown.parse("
 
 # ╔═╡ b49e25b7-26d3-4539-b3de-ccf02bb9398c
 md"""
-#### Converting between differently compounded interest rates
+## Converting between differently compounded interest rates
 """
 
 # ╔═╡ 643f8034-fdc5-4577-aad8-29106ac8ec5e
@@ -912,7 +918,7 @@ md"""
 
 # ╔═╡ 5091fc3d-ba6a-4892-9637-fa91b219b727
 md"""
-#### Example
+## Example
 - Suppose, the semi-annually compounded interest rate is 4%.
 - We want to find the equivalent continuously-compounded interest rate.
 - Step 1:
@@ -926,11 +932,8 @@ $$\exp(r_c)=1.0816 \rightarrow r_c=\ln(1.0816) \rightarrow r_c = 7.8441\%$$
 
 # ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
 md"""
-## Wrap-Up
+# Wrap-Up
 """
-
-# ╔═╡ a70b2db9-7699-488a-bd93-02bf6154eef3
-
 
 # ╔═╡ 670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
 begin
@@ -948,7 +951,7 @@ end
 
 # ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
 md"""
-#### Reading: 
+## Reading: 
 Fabozzi, Fabozzi, 2021, Bond Markets, Analysis, and Strategies, 10th Edition\
 Chapter 2
 """
@@ -1008,9 +1011,9 @@ version = "1.0.8+0"
 
 [[deps.Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
-git-tree-sha1 = "f2202b55d816427cd385a9a4f3ffb226bee80f99"
+git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
 uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
-version = "1.16.1+0"
+version = "1.16.1+1"
 
 [[deps.ChainRulesCore]]
 deps = ["Compat", "LinearAlgebra", "SparseArrays"]
@@ -1197,9 +1200,9 @@ version = "0.21.0+0"
 
 [[deps.Glib_jll]]
 deps = ["Artifacts", "Gettext_jll", "JLLWrappers", "Libdl", "Libffi_jll", "Libiconv_jll", "Libmount_jll", "PCRE_jll", "Pkg", "Zlib_jll"]
-git-tree-sha1 = "74ef6288d071f58033d54fd6708d4bc23a8b8972"
+git-tree-sha1 = "a32d672ac2c967f3deb8a81d828afc739c838a06"
 uuid = "7746bdde-850d-59dc-9ae8-88ece973131d"
-version = "2.68.3+1"
+version = "2.68.3+2"
 
 [[deps.Graphite2_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1891,9 +1894,11 @@ version = "0.9.1+5"
 # ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
 # ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
 # ╟─328c7014-e78e-4ee8-8013-a19c2abbb776
+# ╟─e7d9bd79-0652-4df8-a25f-3269bbbea5f8
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
 # ╟─c129017e-c128-4a82-a176-b7d13ceb351f
+# ╟─78ee290d-b775-4601-90ab-569204e737e1
 # ╟─13102a49-65b2-4b14-824c-412894cf2a95
 # ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
 # ╟─2293d075-6ea9-4757-9921-3251f9bab67b
@@ -1910,7 +1915,6 @@ version = "0.9.1+5"
 # ╟─ba1728fd-6fc9-4194-a85c-fcee35c32d1b
 # ╟─d5ad6113-e839-40e0-a7d9-620167bdcd2f
 # ╟─36e6512e-a077-48ad-8fe8-70a1bd1bed93
-# ╟─0eba88ce-6d30-47b3-89e4-7125cbba0359
 # ╟─ce1e6bc3-3e22-4163-9c1f-f91976954376
 # ╟─d82e3e70-a1bb-4860-8e1f-64a1cdda1aa5
 # ╟─ef610fc4-d8e9-4fa2-a922-3af51d1b9a8f
@@ -1961,7 +1965,6 @@ version = "0.9.1+5"
 # ╟─9dad18a2-93f3-4fdd-bbad-ff879a9f6e5b
 # ╟─039bad7e-7e8b-4891-935a-6b33ca8fdab7
 # ╟─19139d1d-e8a9-4a7a-8409-3c46d90ec799
-# ╟─71c89dfc-69dc-4383-b57d-939521904325
 # ╟─1628f265-12ef-41fc-b4c4-0218ea1c9001
 # ╟─b27d3893-908f-41f8-969a-c3df976243ef
 # ╟─b7f06890-a3d2-4a79-aa07-62107acf4b08
@@ -1990,7 +1993,6 @@ version = "0.9.1+5"
 # ╟─643f8034-fdc5-4577-aad8-29106ac8ec5e
 # ╟─5091fc3d-ba6a-4892-9637-fa91b219b727
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
-# ╟─a70b2db9-7699-488a-bd93-02bf6154eef3
 # ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
