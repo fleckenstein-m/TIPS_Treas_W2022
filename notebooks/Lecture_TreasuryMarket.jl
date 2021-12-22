@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
@@ -192,7 +192,7 @@ md"""
 
 # ╔═╡ e991ab0b-f2e9-403b-a157-c382268ae80b
 md"""
-### Treasury Bill (T-Bill)
+## Treasury Bill (T-Bill)
 - Short-term securities with maturities of 4, 13, 26, and 52 weeks.
 - Treasury bills do not pay interest before maturity.
   - This is often referred to as a _discount security_ or _zero-coupon security_.
@@ -203,7 +203,7 @@ md"""
 
 # ╔═╡ 794a93d4-b1b5-4fa6-8d58-14089c5935d9
 md"""
-### Treasury Note (T-Note)
+## Treasury Note (T-Note)
 - Medium-term securities with maturities of 2, 3, 5, 7, and 10 years.
 - Treasury notes pay interest every six months up to and including the maturity date.
   - Example: A 2-year T-note has its last interest payment in two years, and it pays interest after 6 months, 12 months, and 18 months.
@@ -212,7 +212,7 @@ md"""
 
 # ╔═╡ b2e3d6ae-714b-421c-b7c5-e888e8799126
 md"""
-### Treasury Bond (T-Bond)
+## Treasury Bond (T-Bond)
 - Long-term securities with maturities of 20 and 30 years.
   - Currently, the Treasury does not issue 15-year Treasury bonds.
 - Treasury bonds notes pay interest every six months up to and including the maturity date. At maturity, Treasury notes pay back their par value.
@@ -223,22 +223,32 @@ md"""
 
 # ╔═╡ 39810523-c2db-44df-a79d-86944b5e9782
 md"""
-### Coupon bonds
+## Coupon bonds
 - Treasury notes and bonds are referred to as **coupon** securities. Why?
 """
 
 # ╔═╡ 442528d3-e052-4c1c-b715-f137f00c39e7
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryCouponPicture.svg",:width => 900)
 
+# ╔═╡ b145eb3f-bf7a-4b22-ab1c-7ecf7c16c54e
+md"""
+##
+"""
+
 # ╔═╡ 13fe3b83-f41e-4df6-8241-9621dae2e432
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryNoteDescrExampleBloomberg.png",:width => 900)
+
+# ╔═╡ 949f92b6-dd65-43cb-9b5d-c5c7e728ddb6
+md"""
+##
+"""
 
 # ╔═╡ 7cc4e9fe-ce39-492e-9b91-5b02d5f48e8d
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TreasuryNoteCashflowExampleBloomberg.png",:width => 900)
 
 # ╔═╡ 516b4ddb-887c-4292-bc1d-5c7f93bbe88d
 md"""
-### Treasury STRIPS
+## Treasury STRIPS
 
 - The Treasury does not issue zero-coupon notes or bonds.
 - However, because of the demand for zero-coupon instruments with no credit risk, the private sector has created such securities.
@@ -252,7 +262,7 @@ md"""
 
 # ╔═╡ b988449f-0ad2-4cae-b4ab-230cf5edaf60
 md"""
-### Treasury Floating Rate Note (FRN)
+## Treasury Floating Rate Note (FRN)
 - First issued in 2014 by the U.S. Treasury.
 - Maturity of 2 years.
 - Pay interest every three months up to and including the maturity date.
@@ -262,7 +272,7 @@ md"""
 
 # ╔═╡ ffa772e6-8e12-4780-b079-debb7e995f6c
 md"""
-### Treasury Inflation Protected Securities (TIPS)
+## Treasury Inflation Protected Securities (TIPS)
 - First issued in 1997 by the U.S. Treasury.
 - Maturities of 5, 10, and 30 years.
 - TIPS pay interest every six months up to and including the maturity date. At maturity, Treasury notes pay back their par value.
@@ -270,6 +280,11 @@ md"""
 - Key difference is that the par value of a TIPS goes up with the rate of inflation.
 
 [Link to Treasury](https://www.treasurydirect.gov/indiv/products/prod_tips_glance.htm)
+"""
+
+# ╔═╡ 31c6387f-6a78-47dc-accc-f0eee3996edd
+md"""
+##
 """
 
 # ╔═╡ f3963af9-c276-4423-b724-b01de1983c0d
@@ -311,7 +326,7 @@ md"""
 
 # ╔═╡ 6e957b4b-4a27-4bc9-9fe4-e85052bfdda4
 md"""
-### Historical Background
+## Historical Background
 """
 
 # ╔═╡ 3b399844-b41b-4c7a-abe5-8238a1ab22bf
@@ -324,7 +339,7 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 35e52c31-80d0-4876-a0ed-2ced82592fd0
 md"""
-#
+##
 """
 
 # ╔═╡ 9f8eccc3-5303-4a19-b51a-ba9bd9475d49
@@ -333,6 +348,11 @@ md"""
 _Source: “Inflation-indexed Securities: Bonds, Swaps and Other Derivatives”, 2nd Edition, M. Deacon, A. Derry, D. Mirfendereski, Wiley._
 
 
+"""
+
+# ╔═╡ 8419226c-198f-4fe8-8259-bb49b7cbc8e5
+md"""
+##
 """
 
 # ╔═╡ 455197c6-65c2-4aba-a755-c1c7fd604a7e
@@ -345,7 +365,7 @@ Emerging market countries started to issue inflation-linked bonds in the 1950s.
 
 # ╔═╡ b377eec4-0433-48ec-960d-5e59d8696ced
 md"""
-#### Index-Linked Bonds
+## Index-Linked Bonds
 """
 
 # ╔═╡ 01dd6da6-5c07-4c65-b403-c322961e638e
@@ -359,7 +379,7 @@ md"""
 
 # ╔═╡ 796c0dc9-fd6a-4519-b9ba-5c2b730b27bc
 md"""
-#### U.S. Consumer Price Index
+## U.S. Consumer Price Index
 - In the U.S. this price index is the Consumer Price Index for All Urban Consumers (_CPI-U_).
 - The CPI-U measures the level of prices paid by consumers for goods and services. 
 - This index is published by the Bureau of Labor Statistics (BLS) every month.
@@ -374,8 +394,18 @@ md"""
 Source: [BLS.gov](https://www.bls.gov/charts/consumer-price-index/consumer-price-index-by-category-line-chart.htm)
 """
 
+# ╔═╡ 203f3298-da56-4b30-b246-ebf571b3caad
+md"""
+##
+"""
+
 # ╔═╡ 0bfd0309-672c-4926-b2e2-673add7662f4
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/USCPI_ReleaseSchedule.svg",:width => 600)
+
+# ╔═╡ 8c0edbf0-9767-4690-8af5-92c681327932
+md"""
+##
+"""
 
 # ╔═╡ 458e8893-c76f-4a69-8e15-07974f5c5397
 md"""
@@ -394,7 +424,7 @@ md"""
 
 # ╔═╡ 68e4fc51-7e44-469e-bb5a-ea562224c51e
 md"""
-#### TIPS Inflation-Adjustment Basics
+## TIPS Inflation-Adjustment Basics
 """
 
 # ╔═╡ 1a217214-86c3-4cde-9613-e2e2d6f85e71
@@ -402,18 +432,23 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 
 # ╔═╡ 52c01f5f-75fa-4195-bc77-9ab4613f4926
 md"""
-#### TIPS Inflation Adjustment
+## TIPS Inflation Adjustment
 """
 
 # ╔═╡ 0184f6a2-578c-49a0-a532-34c1d322d1ea
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/ReferenceCPI_Des.png",:width => 900)
+
+# ╔═╡ 4cef58be-71eb-46cb-9480-da49feecaaae
+md"""
+##
+"""
 
 # ╔═╡ be17325c-713b-4df1-a4bd-ad80942e0860
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/ReferenceCPI_Graph.png",:width => 900)
 
 # ╔═╡ 7e0b8581-deb2-42d9-baa9-ccff7db60448
 md"""
-#### TIPS Inflation Adjustment Details
+## TIPS Inflation Adjustment Details
 
 - The principal amount of a TIPS (assume $100 at issuance) is adjusted daily based on the CPI-U. 
 - The inflation adjustment $I_t$ is computed as the ratio of the **Reference CPI** at the time $t$ divided by the reference CPI when the TIPS was first issued ($t=0$). 
@@ -427,17 +462,17 @@ $$I_t = \frac{\textrm{Reference CPI at time } t}{\textrm{Reference CPI at TIPS i
 
 """
 
+# ╔═╡ e8f85d65-66f8-4ddd-9d3c-7e798848f7f3
+md"""
+##
+"""
+
 # ╔═╡ d1f23485-74dc-4d86-9f8f-490a8345cd4c
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/IndexationLag_Chart.svg",:width => 900)
 
-# ╔═╡ c59abf9a-b54d-457e-a5e3-6e089f365f60
-md"""
-#
-"""
-
 # ╔═╡ 78ef0e36-b989-45f9-a43e-305e612d02fc
 md"""
-#### Reference CPI Caluclation Example for January 25, 1997
+## Reference CPI Caluclation Example for January 25, 1997
 - To find the **Reference CPI** for any date in Janurary 1997, we first find the **Reference CPI** index levels for January 1, 1997 and for February 1, 1997.
   - The **Reference CPI** level is the US CPI-U index from three months prior.
   - For January this is the CPI-U from October 1996 (published by the BLS in November) and for February this is the CPI-U from November 1996 (published by the BLS in December).
@@ -447,8 +482,18 @@ md"""
 - Finally, add this result to the January 1st, CPI-U index level.
 """
 
+# ╔═╡ 561ef352-71e7-4394-8d84-a5bc95fddff2
+md"""
+##
+"""
+
 # ╔═╡ 2749f2c5-291d-40cb-aff4-42ddc75ebaef
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/RefCPICalc1997.png",:width => 900)
+
+# ╔═╡ 1b7bb9e9-5877-4b37-b2b7-d3b65b54fa78
+md"""
+##
+"""
 
 # ╔═╡ 5e5e6d9b-29b0-425c-a53d-136cd1968c90
 md"""
@@ -467,7 +512,7 @@ md"""
 
 # ╔═╡ d078baa7-265f-4d7a-b8ff-5ac65e790bb8
 md"""
-#### Inflation Adjustment 
+## Inflation Adjustment 
 """
 
 # ╔═╡ 632909cd-59be-4e5a-93aa-2f6953723701
@@ -484,7 +529,7 @@ md"""
 
 # ╔═╡ 9ca43519-78c5-4030-9fc2-b5510aab7533
 md"""
-#### Deflation Protection
+## Deflation Protection
 - TIPS have an embedded option that protects against deflation.
 - The Treasury guarantees that the _final redemption value is no less than \$100 per \$100 nominal_ amount, irrespective of the movements in the CPI over the life of the bond.
 - Let $F$ be the TIPS principal amount and $T$ the time to maturity of the TIPS.
@@ -495,7 +540,7 @@ $$F \times \max\left[\, I_T, 1 \,\right]$$
 
 # ╔═╡ 07785069-79df-484a-ab77-a06dee70b5aa
 md"""
-#### Example
+## Example
 """
 
 # ╔═╡ 140bcc39-510b-4a6f-95df-2c49ae4bc22d
@@ -552,24 +597,39 @@ In addition to the cash inflation market, there is an active derivatives market 
 
 # ╔═╡ 00537229-bc9a-41fb-aeee-4798a24d424c
 md"""
-#### Inflation Swap
+## Inflation Swap
 """
 
 # ╔═╡ d57dc159-839d-4122-bb87-b5d683d37184
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap_Chart.svg",:width => 400)
 
+# ╔═╡ c21420d1-4b77-468d-86d4-a4c56de6a80b
+md"""
+##
+"""
+
 # ╔═╡ 2f5a3344-ff86-4aef-9f80-a9e1dcf017b1
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap1Yr_Des.png",:width => 900)
 
+# ╔═╡ 010b64c5-1f30-4631-9c3f-a18ce981cd25
+md"""
+##
+"""
+
 # ╔═╡ 3e00ebce-d205-4e5e-9926-be3cc4c91623
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap1Yr_PxQuotes.png",:width => 900)
+
+# ╔═╡ a7203e20-8aea-41c3-9e80-b77bd275b4e5
+md"""
+##
+"""
 
 # ╔═╡ 3168837d-cdf2-41a2-8240-191abd824304
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflSwap1Yr_Graph.png",:width => 900)
 
 # ╔═╡ 8b590adc-a0c8-495a-a819-2fede8f1770d
 md"""
-#### Inflation Swap Cash Flows
+## Inflation Swap Cash Flows
 """
 
 # ╔═╡ db493987-cc0d-41dc-8a86-697e636491a7
@@ -591,8 +651,18 @@ $$I_T = 1.015^5 = 1.077284$$
 $$\left[ (1 + 0.0200)^5 -1\right] − \left[1.077284 -1 \right]= 0.026797$$ 
 """
 
+# ╔═╡ 1b44275b-fc25-433a-8107-2c3f0f590160
+md"""
+##
+"""
+
 # ╔═╡ 1e67a9c9-a676-4586-bbbf-b278389e4890
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/InflationSwap_TermSheet.svg",:width => 900)
+
+# ╔═╡ 9d89b0b7-3c74-439e-886c-24d8940c4d1d
+md"""
+## Example
+"""
 
 # ╔═╡ 8d54c511-b8ae-4b9b-80ff-5c9269dd2fde
 md"""
@@ -634,6 +704,11 @@ begin
 	</fieldset>      
 	"""
 end
+
+# ╔═╡ 6d106a0e-5473-4000-bed9-e26c44a2c715
+md"""
+##
+"""
 
 # ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
 md"""
@@ -1065,7 +1140,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[Logging]]
@@ -1121,6 +1196,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1218,7 +1297,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1525,6 +1604,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1573,11 +1656,11 @@ version = "0.9.1+5"
 # ╔═╡ Cell order:
 # ╟─41d7b190-2a14-11ec-2469-7977eac40f12
 # ╟─f0545c67-5cfd-438f-a9ef-92c35ebaefa4
-# ╠═731c88b4-7daf-480d-b163-7003a5fbd41f
-# ╠═a5de5746-3df0-45b4-a62c-3daf36f015a5
-# ╠═6498b10d-bece-42bf-a32b-631224857753
-# ╠═95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╠═d2908a7c-51af-431c-ac09-4a7d89dbf02f
+# ╟─731c88b4-7daf-480d-b163-7003a5fbd41f
+# ╟─a5de5746-3df0-45b4-a62c-3daf36f015a5
+# ╟─6498b10d-bece-42bf-a32b-631224857753
+# ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
+# ╟─d2908a7c-51af-431c-ac09-4a7d89dbf02f
 # ╟─588125ae-e790-4b05-8564-5062d7a556fe
 # ╟─1539816e-2a47-4ae4-a2a3-7892958cc3ef
 # ╟─014f362b-ccbb-41ba-ba87-08df662378a4
@@ -1587,36 +1670,45 @@ version = "0.9.1+5"
 # ╟─b2e3d6ae-714b-421c-b7c5-e888e8799126
 # ╟─39810523-c2db-44df-a79d-86944b5e9782
 # ╟─442528d3-e052-4c1c-b715-f137f00c39e7
+# ╟─b145eb3f-bf7a-4b22-ab1c-7ecf7c16c54e
 # ╟─13fe3b83-f41e-4df6-8241-9621dae2e432
+# ╟─949f92b6-dd65-43cb-9b5d-c5c7e728ddb6
 # ╟─7cc4e9fe-ce39-492e-9b91-5b02d5f48e8d
 # ╟─516b4ddb-887c-4292-bc1d-5c7f93bbe88d
 # ╟─b988449f-0ad2-4cae-b4ab-230cf5edaf60
 # ╟─ffa772e6-8e12-4780-b079-debb7e995f6c
+# ╟─31c6387f-6a78-47dc-accc-f0eee3996edd
 # ╟─f3963af9-c276-4423-b724-b01de1983c0d
-# ╠═144cfebc-b1ee-46bb-8ccd-a538e9bd9e19
-# ╠═6e957b4b-4a27-4bc9-9fe4-e85052bfdda4
+# ╟─144cfebc-b1ee-46bb-8ccd-a538e9bd9e19
+# ╟─6e957b4b-4a27-4bc9-9fe4-e85052bfdda4
 # ╟─3b399844-b41b-4c7a-abe5-8238a1ab22bf
 # ╟─210e432f-4c5f-41d9-a593-d8452b56cef5
 # ╟─35e52c31-80d0-4876-a0ed-2ced82592fd0
 # ╟─9f8eccc3-5303-4a19-b51a-ba9bd9475d49
+# ╟─8419226c-198f-4fe8-8259-bb49b7cbc8e5
 # ╟─455197c6-65c2-4aba-a755-c1c7fd604a7e
 # ╟─b377eec4-0433-48ec-960d-5e59d8696ced
 # ╟─01dd6da6-5c07-4c65-b403-c322961e638e
 # ╟─796c0dc9-fd6a-4519-b9ba-5c2b730b27bc
 # ╟─03de2578-dff5-4b26-ad75-84c92fab1603
 # ╟─414f4a76-f3dd-436f-a07a-b38a377c61a0
+# ╟─203f3298-da56-4b30-b246-ebf571b3caad
 # ╟─0bfd0309-672c-4926-b2e2-673add7662f4
+# ╟─8c0edbf0-9767-4690-8af5-92c681327932
 # ╟─458e8893-c76f-4a69-8e15-07974f5c5397
 # ╟─68e4fc51-7e44-469e-bb5a-ea562224c51e
 # ╟─1a217214-86c3-4cde-9613-e2e2d6f85e71
 # ╟─52c01f5f-75fa-4195-bc77-9ab4613f4926
 # ╟─0184f6a2-578c-49a0-a532-34c1d322d1ea
+# ╟─4cef58be-71eb-46cb-9480-da49feecaaae
 # ╟─be17325c-713b-4df1-a4bd-ad80942e0860
 # ╟─7e0b8581-deb2-42d9-baa9-ccff7db60448
+# ╟─e8f85d65-66f8-4ddd-9d3c-7e798848f7f3
 # ╟─d1f23485-74dc-4d86-9f8f-490a8345cd4c
-# ╟─c59abf9a-b54d-457e-a5e3-6e089f365f60
 # ╟─78ef0e36-b989-45f9-a43e-305e612d02fc
+# ╟─561ef352-71e7-4394-8d84-a5bc95fddff2
 # ╟─2749f2c5-291d-40cb-aff4-42ddc75ebaef
+# ╟─1b7bb9e9-5877-4b37-b2b7-d3b65b54fa78
 # ╟─5e5e6d9b-29b0-425c-a53d-136cd1968c90
 # ╟─d078baa7-265f-4d7a-b8ff-5ac65e790bb8
 # ╟─632909cd-59be-4e5a-93aa-2f6953723701
@@ -1630,16 +1722,22 @@ version = "0.9.1+5"
 # ╟─2b8f6d8c-cfe4-4d39-aa43-9c043248c995
 # ╟─00537229-bc9a-41fb-aeee-4798a24d424c
 # ╟─d57dc159-839d-4122-bb87-b5d683d37184
+# ╟─c21420d1-4b77-468d-86d4-a4c56de6a80b
 # ╟─2f5a3344-ff86-4aef-9f80-a9e1dcf017b1
+# ╟─010b64c5-1f30-4631-9c3f-a18ce981cd25
 # ╟─3e00ebce-d205-4e5e-9926-be3cc4c91623
+# ╟─a7203e20-8aea-41c3-9e80-b77bd275b4e5
 # ╟─3168837d-cdf2-41a2-8240-191abd824304
 # ╟─8b590adc-a0c8-495a-a819-2fede8f1770d
 # ╟─db493987-cc0d-41dc-8a86-697e636491a7
+# ╟─1b44275b-fc25-433a-8107-2c3f0f590160
 # ╟─1e67a9c9-a676-4586-bbbf-b278389e4890
+# ╟─9d89b0b7-3c74-439e-886c-24d8940c4d1d
 # ╟─8d54c511-b8ae-4b9b-80ff-5c9269dd2fde
 # ╟─8e347b20-8f10-4c36-8d74-03364fdc683b
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
-# ╠═670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─6d106a0e-5473-4000-bed9-e26c44a2c715
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

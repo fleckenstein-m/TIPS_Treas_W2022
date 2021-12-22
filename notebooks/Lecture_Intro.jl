@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.1
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
@@ -189,7 +189,7 @@ md"""
 """
 
 # ╔═╡ 23eb879e-23ca-4b46-8bfa-670ce12ad7f1
-YouTube("https://youtu.be/V-ssGaTnl8o")
+YouTube("V-ssGaTnl8o")
 
 # ╔═╡ 16d6c5ce-860e-4e49-ab68-b22d6725ee37
 md"""
@@ -201,6 +201,11 @@ md"""
 > _"It’s contained in a great little paper published earlier this month and it isn’t a fancy, schmancy accessible to high frequency traders only type of trade."_
 
 Source: [Kaminska (2010), FT.com](https://www.ft.com/content/3ec205b7-4351-3c0b-a46c-e23ab86c3a44)
+"""
+
+# ╔═╡ 009336cf-7b9e-458f-bf1f-504334555e58
+md"""
+##
 """
 
 # ╔═╡ b34099d1-2deb-4ca8-9205-5fbc6b950d3a
@@ -232,6 +237,11 @@ Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main
 # ╔═╡ 014f362b-ccbb-41ba-ba87-08df662378a4
 md"""
 [Link to SIFMA](https://www.sifma.org/resources/research/fixed-income-chart/)
+"""
+
+# ╔═╡ 2a5ba439-7320-4b90-963d-763815b4f289
+md"""
+##
 """
 
 # ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
@@ -707,7 +717,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -775,6 +785,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -872,7 +886,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1202,6 +1216,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1259,14 +1277,16 @@ version = "0.9.1+5"
 # ╟─b264dbf1-d759-4502-8e57-1d3d56725024
 # ╟─4299cb5a-e16f-44aa-affe-cff510682284
 # ╟─84a4314f-b871-4f09-bec5-b140196e4134
-# ╠═23eb879e-23ca-4b46-8bfa-670ce12ad7f1
+# ╟─23eb879e-23ca-4b46-8bfa-670ce12ad7f1
 # ╟─16d6c5ce-860e-4e49-ab68-b22d6725ee37
 # ╟─6bcc4fb6-531c-44f9-8cd4-cea8b0eba4ae
+# ╟─009336cf-7b9e-458f-bf1f-504334555e58
 # ╟─b34099d1-2deb-4ca8-9205-5fbc6b950d3a
 # ╟─1c90bd2e-67e2-4bb5-aceb-a39228f22872
 # ╟─588125ae-e790-4b05-8564-5062d7a556fe
 # ╟─1539816e-2a47-4ae4-a2a3-7892958cc3ef
 # ╟─014f362b-ccbb-41ba-ba87-08df662378a4
+# ╟─2a5ba439-7320-4b90-963d-763815b4f289
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
