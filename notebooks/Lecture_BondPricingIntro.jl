@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
@@ -179,18 +179,6 @@ begin
 	"""
 end
 
-# ╔═╡ c129017e-c128-4a82-a176-b7d13ceb351f
-begin 
-	html"""
-	<hr>
-	<p style="padding-bottom:1cm"> </p>
-	<div align=center style="font-size:35px; font-weight:bold; font-family:family:Georgia"> </div>
-	
-	<p style="padding-bottom:1cm"> </p>
-	<hr>
-	"""
-end
-
 # ╔═╡ 78ee290d-b775-4601-90ab-569204e737e1
 md"""
 # Valuing Treasury Note/Bonds
@@ -199,8 +187,18 @@ md"""
 # ╔═╡ 13102a49-65b2-4b14-824c-412894cf2a95
 LocalResource("./Assets/TreasuryNoteCashflowExampleBloomberg.png",:width => 1200) 
 
+# ╔═╡ 053ffff2-6014-463d-aab0-7a3b258d17e9
+md"""
+##
+"""
+
 # ╔═╡ aac27a3c-e90a-437f-a563-f81d41c8d3f7
 LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg.png",:width => 1200) 
+
+# ╔═╡ 97d5a5c2-b392-40ce-baa5-1a7ef53cec64
+md"""
+## Example
+"""
 
 # ╔═╡ 2293d075-6ea9-4757-9921-3251f9bab67b
 md"""
@@ -271,6 +269,11 @@ $$\$1\times(1+r) \mathop  = \limits^! $1.10$$
 $$r=\frac{\$1.10}{\$1.00}-1=0.010=10\%$$
 """
 
+# ╔═╡ cea2874e-03fe-4a94-8010-b2af0a19ee9c
+md"""
+##
+"""
+
 # ╔═╡ 78aa5d8d-c960-4898-b47c-caf5abf84ecd
 md"""
 - The interest rate `r` in the example reflects you individual choice.
@@ -294,8 +297,8 @@ $$\textrm{PV}=\frac{\textrm{FV}_t}{(1+r)^t}$$
 
 # ╔═╡ ba1728fd-6fc9-4194-a85c-fcee35c32d1b
 md""" 
-!!! important
 ## Present Value 
+!!! important
 **Annual Compounding**
 
 The present value of a cash flow $\textrm{FV}_t$ to be received in $t$ years given the interest rate $r$ (also called discount rate) is 
@@ -305,8 +308,8 @@ $$\textrm{PV}=\frac{\textrm{FV}_t}{(1+r)^t}$$
 
 # ╔═╡ d5ad6113-e839-40e0-a7d9-620167bdcd2f
 md""" 
-!!! important
 ## Future Value 
+!!! important
 **Annual Compounding**
 
 The future value $\textrm{FV}_t$ in $t$ years of a cash flow with present value (PV) given the interest rate $r$ is 
@@ -438,6 +441,11 @@ md"""
 # ╔═╡ 60dbef01-269c-4650-83c7-ac0f771f7d20
 LocalResource("./Assets/ConsolBondUS.png",:width => 1200) 
 
+# ╔═╡ cf1ded58-9649-461a-aea0-b6be06e67b05
+md"""
+## Example
+"""
+
 # ╔═╡ 512a503c-5433-4f55-8541-86f4e752c128
 @bind bttn_4 Button("Reset")
 
@@ -479,8 +487,8 @@ Present Value = \$ $(roundmult(PVTotal_4,1e-4))
 
 # ╔═╡ f36006b6-7e55-47b0-8515-0939b485ec81
 md""" 
-!!! important
 ## Present Value of Perpetuity
+!!! important
 The present value today (time $t=0$) of a perpetuity paying a dollar cash flow of $C$ forever is
 
 $$\textrm{PV}=\frac{\textrm{C}}{r}$$ 
@@ -489,13 +497,6 @@ Time $\,t$    | 0   | 1  | 2 | 3 | ... |
 :------------ | :-- |:-- |:--|:--|:--
 Cash Flow     | 0   | C  | C | C | C 
 
-"""
-
-# ╔═╡ d18f3d8c-3aee-44a7-aeac-382977ab338a
-md"""
-Time $\,t$    | 0   | 1  | 2 | 3 | ... |  
-:------------ | :-- |:-- |:--|:--|:--
-Cash Flow     | 0   | C  | C | C | C 
 """
 
 # ╔═╡ fe7aa04e-009f-46ef-ac9d-c5037df85bba
@@ -554,8 +555,8 @@ Present Value = \$ $(roundmult(PVTotal_5,1e-4))
 
 # ╔═╡ 92685ca8-ec81-4631-a7ca-c9bf58f023c3
 md""" 
-!!! important
 ## Present Value of Growing Perpetuity
+!!! important
 The present value today (time $t=0$) of a perpetuity paying a dollar cash flow of $C$ forever that grows at a constant percentage rate $g$ each period **after** the first cash flow is
 
 $$\textrm{PV}=\frac{\textrm{FV}}{r-g}$$ 
@@ -582,6 +583,11 @@ md"""
 - An annuity is the differentce between two perpetuities. Why?
 """
 
+# ╔═╡ 2ea19435-e59f-4c30-9099-f767b534d20e
+md"""
+##
+"""
+
 # ╔═╡ 7a469a3d-de9d-4f8a-8612-2faece9125fd
 let
 	T=10
@@ -593,6 +599,11 @@ let
 	annotate!(5, 75, text(tmpStr, :blue, :left, 20))
 end
 
+# ╔═╡ 0f1234ab-fcb9-4db9-99cd-eb0782645430
+md"""
+##
+"""
+
 # ╔═╡ ea51df43-106b-49b8-a8bd-88bbc7a14735
 let
 	T=20
@@ -603,6 +614,11 @@ let
 	:1:(T-5)), xlabel="Year", ylabel="Cash Flow", title="Perpetuity")
 	annotate!(4, 75, text(tmpStr, :blue, :left, 16))
 end
+
+# ╔═╡ 0c8e87c6-8265-4d83-94b3-5f812c339f2c
+md"""
+##
+"""
 
 # ╔═╡ 9ac52810-5be5-4a2f-9f8a-68eb99ddb8f7
 let
@@ -637,8 +653,8 @@ $$\rightarrow \textrm{PV} = \left( \frac{50}{r} \right) \left(1 - \frac{1}{(1+r)
 
 # ╔═╡ 3f7f5303-98ad-4d63-aff7-4a612dcc1bec
 md""" 
-!!! important
 ## Present Value of Annuity
+!!! important
 The present value today (time $t=0$) of an annuity paying a dollar cash flow of $C$ for $T$ years is
 
 $$\textrm{PV} = \left( \frac{C}{r} \right) \left(1 - \frac{1}{(1+r)^{T}} \right)$$
@@ -695,8 +711,8 @@ md"""
 
 # ╔═╡ 63da993b-f86f-4bb2-8805-c05df8ceb857
 md""" 
-!!! important
 ## Present and Future Values with different compounding frequencies
+!!! important
 - Let $r$ be the **annual** interest rate and let $T$ be the number of years.
 - Let $PV$ be the the value today and $FV_T$ be the future value after $T$ years.
 - Let $m$ be the compounding frequency
@@ -979,7 +995,7 @@ PlutoUI = "~0.7.23"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.6.3"
+julia_version = "1.7.0"
 manifest_format = "2.0"
 
 [[deps.AbstractPlutoDingetjes]]
@@ -1389,7 +1405,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[deps.LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.LogExpFunctions]]
@@ -1451,6 +1467,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
+
+[[deps.OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[deps.OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1548,7 +1568,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[deps.Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[deps.RecipesBase]]
@@ -1843,6 +1863,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[deps.libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[deps.libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1897,10 +1921,11 @@ version = "0.9.1+5"
 # ╟─e7d9bd79-0652-4df8-a25f-3269bbbea5f8
 # ╟─6498b10d-bece-42bf-a32b-631224857753
 # ╟─95db374b-b10d-4877-a38d-1d0ac45877c4
-# ╟─c129017e-c128-4a82-a176-b7d13ceb351f
 # ╟─78ee290d-b775-4601-90ab-569204e737e1
 # ╟─13102a49-65b2-4b14-824c-412894cf2a95
+# ╟─053ffff2-6014-463d-aab0-7a3b258d17e9
 # ╟─aac27a3c-e90a-437f-a563-f81d41c8d3f7
+# ╟─97d5a5c2-b392-40ce-baa5-1a7ef53cec64
 # ╟─2293d075-6ea9-4757-9921-3251f9bab67b
 # ╟─de693798-22a3-4e42-936a-372b3b67b77e
 # ╟─46636299-a67a-438b-aedd-d31b13fb696d
@@ -1911,6 +1936,7 @@ version = "0.9.1+5"
 # ╟─7e5f2316-212e-454a-a01f-d71197ce1993
 # ╟─93319502-aafb-4b53-a887-e1dee962464d
 # ╟─ac2c6913-cb1f-48cc-9fbe-c4bfa30f2153
+# ╟─cea2874e-03fe-4a94-8010-b2af0a19ee9c
 # ╟─78aa5d8d-c960-4898-b47c-caf5abf84ecd
 # ╟─ba1728fd-6fc9-4194-a85c-fcee35c32d1b
 # ╟─d5ad6113-e839-40e0-a7d9-620167bdcd2f
@@ -1933,12 +1959,12 @@ version = "0.9.1+5"
 # ╟─ffe4a1d1-2656-4db3-9659-b3b02ab7c3d7
 # ╟─2c9ae23c-8f2f-405a-aa9f-98a22b3c9ae0
 # ╟─60dbef01-269c-4650-83c7-ac0f771f7d20
+# ╠═cf1ded58-9649-461a-aea0-b6be06e67b05
 # ╟─56bd6aed-afd8-4317-a64a-a43a79951473
 # ╟─512a503c-5433-4f55-8541-86f4e752c128
 # ╟─887788ee-b94b-477e-89ba-96394d1c6cf2
 # ╟─e0c58ed9-fe87-4fb2-a09d-b234f46dcd6a
 # ╟─f36006b6-7e55-47b0-8515-0939b485ec81
-# ╟─d18f3d8c-3aee-44a7-aeac-382977ab338a
 # ╟─fe7aa04e-009f-46ef-ac9d-c5037df85bba
 # ╟─73059c24-0be1-400d-ae1b-2c9464c0454e
 # ╟─0d8ba52d-237b-4876-a25f-11ec9e9b4360
@@ -1948,8 +1974,11 @@ version = "0.9.1+5"
 # ╟─92685ca8-ec81-4631-a7ca-c9bf58f023c3
 # ╟─7f164f1c-4f2e-4aef-8544-c5ec6e10f43b
 # ╟─7a797bc5-0ae1-4015-8708-57145183fd9b
+# ╟─2ea19435-e59f-4c30-9099-f767b534d20e
 # ╟─7a469a3d-de9d-4f8a-8612-2faece9125fd
+# ╟─0f1234ab-fcb9-4db9-99cd-eb0782645430
 # ╟─ea51df43-106b-49b8-a8bd-88bbc7a14735
+# ╟─0c8e87c6-8265-4d83-94b3-5f812c339f2c
 # ╟─9ac52810-5be5-4a2f-9f8a-68eb99ddb8f7
 # ╟─dbb0b438-1809-4987-8be6-aac53bc4ca15
 # ╟─3f7f5303-98ad-4d63-aff7-4a612dcc1bec

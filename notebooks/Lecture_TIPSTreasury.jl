@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
@@ -147,7 +147,7 @@ end
 
 # ╔═╡ 6498b10d-bece-42bf-a32b-631224857753
 md"""
-# Goals
+# Overview
 """
 
 # ╔═╡ 95db374b-b10d-4877-a38d-1d0ac45877c4
@@ -186,6 +186,11 @@ $$102 \times I_{0.5} = 102$$
 $$102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1]$$
 - The total cash flow of the TIPS and the inflation swap is:
 $$102 \times I_{0.5} + \left(102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1] \right)$$
+"""
+
+# ╔═╡ faaaae87-46e9-4fbd-82e0-6ac979f332ee
+md"""
+##
 - Simplifying
 $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - This is a deterministic cash flow that does not depend on future inflation.
@@ -213,11 +218,24 @@ md"""
   - Inflation-adjusted coupon cash flow: $(c/2) \times I_{0.5} \times 100 = 0.02 \times I_{0.5} \times 100$
 - The total cash flow from the TIPS is:
 $$102 \times I_{0.5} = 102$$
+"""
+
+# ╔═╡ 361360cb-bdf4-4f99-8ccc-3fee22847dd2
+md"""
 - Next, suppose we enter into an inflation swap with notional amount of $102 as inflation seller. Let the fixed rate on the inflation swap be 0.9828%, i.e. $$f=0.009828$$.
 - The net cash flow on the inflation swap is
 $$102 \times [(1+f)^{0.5}-1] - 102 [\times I_{0.5}-1]$$
 - The total cash flow of the TIPS and the inflation swap is:
 $$102 \times I_{0.5} + \left(102 \times [(1+f)^{0.5}-1] - 102 \times [I_{0.5}-1] \right)$$
+"""
+
+# ╔═╡ 5fea7742-70a3-4a8e-892d-c70a953b0fcf
+md"""
+##
+"""
+
+# ╔═╡ 23e7092b-6006-4ddd-97ff-454128a88e31
+md"""
 - Simplifying
 $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - This is a deterministic cash flow that does not depend on future inflation.
@@ -225,6 +243,16 @@ $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - Next, we take a short position in the Treasury note and buy the TIPS. 
 - We pay $100 for the TIPS and get $102 in cash from shorting the Treasury notes.
 - Our net cash flow is 102 - 100 = 2.
+
+"""
+
+# ╔═╡ 1771917d-3f40-495d-ad52-50bf674ff0b6
+md"""
+##
+"""
+
+# ╔═╡ 76d70fe8-358f-4f2f-9a00-69a147935282
+md"""
 - What is our obligation to pay in six months?
 - First, we need to close out the short in the Treasury note and pay $103. Thus, we have a cash outflow of -103.00.
 - Second, we have a cash flow from the long TIPS position and the inflation swap of $102.5. This is a cash inflow of 102.50.
@@ -233,6 +261,15 @@ $$102 \times (1+f)^{0.5} = 102 \times (1+0.9828\%)^{0.5} = 102.50$$
 - We want to have zero cash flows in six months. How can we achive this?
 - Recall that there are STRIPS which are zero coupon bonds with just one cash flow at maturity.
 - All we need is an inflow of fifty cents from a 6-month STRIPS.
+"""
+
+# ╔═╡ 06b01ce1-94dd-4ddd-ad17-2bdf3aa950ed
+md"""
+##
+"""
+
+# ╔═╡ 2423e58f-2ff0-4c80-9666-ccb45243ae19
+md"""
 - Suppose the price of a 6-month Treasury STRIPS is 99.50 (per 100 par value). The STRIPS will give us a cash inflow of 100 in 6 months.
 - Since we need \$0.50, we buy \$0.50 par value of this STRIPS.
 - This costs us 0.50/100 * 99.50 = $0.4975.
@@ -331,8 +368,18 @@ md"""
 # ╔═╡ 8f3a465e-af54-4b0e-9210-87c140629f2f
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TIPS_912828EA_Des.png",:width => 800)
 
+# ╔═╡ d61da00e-9d8c-43e8-89c5-e70220dc761a
+md"""
+##
+"""
+
 # ╔═╡ 049debc7-b1d5-4908-9b27-70344995a4c4
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TIPS_912828EA_PxGraph.png",:width => 800)
+
+# ╔═╡ abda6c84-f124-4d61-bb40-0517e28fbcf6
+md"""
+##
+"""
 
 # ╔═╡ 72721c2c-f227-469a-91d9-dbec158c2fa7
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/TIPS_912828EA_PxQuotes.png",:width => 800)
@@ -345,8 +392,18 @@ md"""
 # ╔═╡ 97d9ba4b-880f-464e-bd94-7b72a86094b7
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/Treasury_912828EE_Des.png",:width => 800)
 
+# ╔═╡ bf6e7d0a-7e33-47b1-9240-a0af661057f5
+md"""
+##
+"""
+
 # ╔═╡ d16e82d8-faa9-444f-8db7-6f442c5e5fd4
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/Treasury_912828EE_PxQuotes.png",:width => 800)
+
+# ╔═╡ dc265679-85cd-4ff1-a728-6353f36e3a9c
+md"""
+##
+"""
 
 # ╔═╡ e36dc8d3-3b4e-46c4-9259-007f75068591
 Resource("https://raw.githubusercontent.com/fleckenstein-m/TIPS_Treas_W2022/main/notebooks/Assets/Treasury_912828EE_PxGraph_2.png",:width => 800)
@@ -826,6 +883,11 @@ begin
 	"""
 end
 
+# ╔═╡ 011994b7-8b69-49ee-a370-d09600310323
+md"""
+##
+"""
+
 # ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
 md"""
 ## Reading: 
@@ -1256,7 +1318,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[Logging]]
@@ -1312,6 +1374,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1409,7 +1475,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1716,6 +1782,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1771,7 +1841,15 @@ version = "0.9.1+5"
 # ╟─d2908a7c-51af-431c-ac09-4a7d89dbf02f
 # ╟─886da2d4-c1ec-4bb4-8733-e3b46c95dd36
 # ╟─921402f8-a70c-4b45-b134-7fd70f0c699a
+# ╟─faaaae87-46e9-4fbd-82e0-6ac979f332ee
 # ╟─c24ef65a-7dde-4f06-bfd0-c15e2f769822
+# ╟─361360cb-bdf4-4f99-8ccc-3fee22847dd2
+# ╟─5fea7742-70a3-4a8e-892d-c70a953b0fcf
+# ╟─23e7092b-6006-4ddd-97ff-454128a88e31
+# ╟─1771917d-3f40-495d-ad52-50bf674ff0b6
+# ╟─76d70fe8-358f-4f2f-9a00-69a147935282
+# ╟─06b01ce1-94dd-4ddd-ad17-2bdf3aa950ed
+# ╟─2423e58f-2ff0-4c80-9666-ccb45243ae19
 # ╟─201a91a8-4154-414e-86b1-ca578fa105c2
 # ╟─27038fd7-4dc4-4dd5-87dd-0032478d0622
 # ╟─14e6f7ed-2a81-4101-a1b5-af627df7c805
@@ -1780,11 +1858,15 @@ version = "0.9.1+5"
 # ╟─cded3cca-c9ac-4d7d-b9dd-4c5497aa955e
 # ╟─d4dab771-87f1-4fa2-b6a2-900a51af4586
 # ╟─8f3a465e-af54-4b0e-9210-87c140629f2f
+# ╟─d61da00e-9d8c-43e8-89c5-e70220dc761a
 # ╟─049debc7-b1d5-4908-9b27-70344995a4c4
+# ╟─abda6c84-f124-4d61-bb40-0517e28fbcf6
 # ╟─72721c2c-f227-469a-91d9-dbec158c2fa7
 # ╟─312e0229-445e-42d4-8a0d-709c590c1add
 # ╟─97d9ba4b-880f-464e-bd94-7b72a86094b7
+# ╟─bf6e7d0a-7e33-47b1-9240-a0af661057f5
 # ╟─d16e82d8-faa9-444f-8db7-6f442c5e5fd4
+# ╟─dc265679-85cd-4ff1-a728-6353f36e3a9c
 # ╟─e36dc8d3-3b4e-46c4-9259-007f75068591
 # ╟─4ac1725a-d9e5-4587-9b03-ae8b7379ed56
 # ╟─00c3ea64-bbe5-4d7a-a1b2-1197b1455bec
@@ -1832,6 +1914,7 @@ version = "0.9.1+5"
 # ╟─569d7b82-ee46-42e2-b24e-e22272769452
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
 # ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─011994b7-8b69-49ee-a370-d09600310323
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

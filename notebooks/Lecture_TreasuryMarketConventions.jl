@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.2
+# v0.17.3
 
 using Markdown
 using InteractiveUtils
@@ -285,7 +285,7 @@ md"""
 
 # ╔═╡ e68723a6-a1d8-4a3f-8ba0-9acab5d764db
 Markdown.parse("
-## **Example 4**:
+## **Example 4**
 - Often, trading system such as Bloomberg display _fractions_ after the ``32^{\\textrm{nd}}``.
 - Suppose the price of a Treasury note is quoted as ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}``.
 - For \$100 par value, the quoted price of ``\\mathbf{$p11 + $p12 \\frac{$p13}{4}}`` refers to a dollar price of $p11 dollars plus ``($p12 + \\frac{$p13}{4})`` ``32^{\\textrm{nd}}`` of a dollar.
@@ -400,8 +400,18 @@ md"""
 # ╔═╡ 8464e17a-2f95-4bde-8c37-502359bb2dd8
 LocalResource("./Assets/TreasuryNoteDescrExampleBloomberg_2.png",:width => 1200) 
 
+# ╔═╡ 3464fc78-fe23-47d7-b870-9db1e7a5a18e
+md"""
+##
+"""
+
 # ╔═╡ a7c9120b-ee24-48c2-904a-e40ef95fcffa
 LocalResource("./Assets/TreasuryNoteDescrExampleBloombergDirtyPrice_2.png",:width => 1200) 
+
+# ╔═╡ 06f5b19f-9b17-45f9-b3d5-a2c954ae357e
+md"""
+##
+"""
 
 # ╔═╡ 8f9498b5-a1cf-4be7-b0dd-41aad76c959b
 md"""
@@ -446,6 +456,11 @@ Markdown.parse("""
 \$\\textrm{or}\$
 \$\\textrm{Dirty Price}=\\textrm{Clean Price} + \\textrm{Accrued Interest}\$
 """)
+
+# ╔═╡ c477517e-074c-4d0a-b0ab-449280d00655
+md"""
+##
+"""
 
 # ╔═╡ 577c5da8-de61-4f41-96f3-957c4fa93cd2
 begin
@@ -506,7 +521,7 @@ md"""
 
 # ╔═╡ fcaff09a-c014-4fe9-81f8-f0fb72d99829
 md"""
-#### Example 7
+## Example 7
 """
 
 # ╔═╡ 8323c2cc-cc29-416b-aca4-798f7cc844ed
@@ -552,7 +567,7 @@ $$\textrm{Accrued Interest} = \textrm{\$4} \times \left( \frac{ \textrm{118}}{\t
 
 # ╔═╡ 41b91a85-ac56-4b36-87e1-b121c756417e
 md"""
-#### Example 8
+## Example 8
 """
 
 # ╔═╡ 4d039efd-c682-4abe-a2a4-8536ed97a3c7
@@ -600,6 +615,7 @@ md"""
 
 # ╔═╡ 6e1be79b-bfc7-444e-b660-e0d24a2cf5dd
 md"""
+##
 - For coupon-bearing agency, municipal, and corporate bonds, a different day count convention is used.
 - It is assumed that every month has **30 days**, that any 6-month period has **180 days**, and that there are **360 days** in a year.
 - This day count convention is referred to as **30/360.**
@@ -633,7 +649,7 @@ LocalResource("./Assets/TreasuryBillDescrExampleBloomberg.png",:width => 1200)
 
 # ╔═╡ dcb12edc-553b-4fe7-9525-a86d9fd5a78a
 md"""
-#### Price Quotes for 52-week Treasury Bill
+## Price Quotes for 52-week Treasury Bill
 - On the Bloomberg Terminal click on `ALLQ` under _Quick Links_
 """
 
@@ -753,6 +769,11 @@ LocalResource("./Assets/TreasurySTRIPS_1.png",:width => 1200)
 # ╔═╡ 02748d79-5707-4130-9aae-0c6141e4f760
 LocalResource("./Assets/TreasurySTRIPS_2.png",:width => 600) 
 
+# ╔═╡ db3abd76-8d49-4cc9-9734-3f34f0f72aba
+md"""
+##
+"""
+
 # ╔═╡ 1217e6ec-8479-4a85-b0e7-088eee30bc63
 md"""
 - Zero-coupon Treasury securities were first created in August 1982 by large dealer firms on Wall Street. 
@@ -777,6 +798,11 @@ begin
 	</fieldset>      
 	"""
 end
+
+# ╔═╡ bc4bb2f5-aecb-414f-9fab-a4022236facb
+md"""
+##
+"""
 
 # ╔═╡ 2ee2c328-5ebe-488e-94a9-2fce2200484c
 md"""
@@ -1215,7 +1241,7 @@ uuid = "38a345b3-de98-5d2b-a5d3-14cd9215e700"
 version = "2.36.0+0"
 
 [[LinearAlgebra]]
-deps = ["Libdl"]
+deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[LogExpFunctions]]
@@ -1277,6 +1303,10 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "7937eda4681660b4d6aeeecc2f7e1c81c8ee4e2f"
 uuid = "e7412a2a-1a6e-54c0-be00-318e2571c051"
 version = "1.3.5+0"
+
+[[OpenBLAS_jll]]
+deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
+uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
 
 [[OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1374,7 +1404,7 @@ deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 
 [[Random]]
-deps = ["Serialization"]
+deps = ["SHA", "Serialization"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [[RecipesBase]]
@@ -1669,6 +1699,10 @@ git-tree-sha1 = "5982a94fcba20f02f42ace44b9894ee2b140fe47"
 uuid = "0ac62f75-1d6f-5e53-bd7c-93b484bb37c0"
 version = "0.15.1+0"
 
+[[libblastrampoline_jll]]
+deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+
 [[libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "daacc84a041563f965be61859a36e17c4e4fcd55"
@@ -1753,11 +1787,14 @@ version = "0.9.1+5"
 # ╟─16d95a82-743e-478c-a50d-36e800910883
 # ╟─be1e2ae2-8b05-42c7-bc54-18c9ff111854
 # ╟─8464e17a-2f95-4bde-8c37-502359bb2dd8
+# ╟─3464fc78-fe23-47d7-b870-9db1e7a5a18e
 # ╟─a7c9120b-ee24-48c2-904a-e40ef95fcffa
+# ╟─06f5b19f-9b17-45f9-b3d5-a2c954ae357e
 # ╟─8f9498b5-a1cf-4be7-b0dd-41aad76c959b
 # ╟─18026407-34e8-4a96-aaaf-410d495f9568
 # ╟─6acadc8a-dbb7-4193-9df7-09504755476b
 # ╟─362273d3-e019-4953-a1dd-21699f7a7def
+# ╟─c477517e-074c-4d0a-b0ab-449280d00655
 # ╟─577c5da8-de61-4f41-96f3-957c4fa93cd2
 # ╟─cedc6044-5eb2-4e95-98c7-e5831597a258
 # ╟─d43ce5da-dee3-4d44-a202-4f5f4770772b
@@ -1800,9 +1837,11 @@ version = "0.9.1+5"
 # ╟─b7bdc144-7648-403f-bce7-2b6df6a8dd2f
 # ╟─fe72e3e8-a2b4-43b2-811d-5f4fe2c8dd7a
 # ╟─02748d79-5707-4130-9aae-0c6141e4f760
+# ╟─db3abd76-8d49-4cc9-9734-3f34f0f72aba
 # ╟─1217e6ec-8479-4a85-b0e7-088eee30bc63
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
 # ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
+# ╟─bc4bb2f5-aecb-414f-9fab-a4022236facb
 # ╟─2ee2c328-5ebe-488e-94a9-2fce2200484c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

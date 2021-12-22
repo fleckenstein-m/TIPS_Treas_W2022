@@ -28,16 +28,13 @@ We analyze the nature of the violation of the law of one price that occured in t
 Treasury Inflation-Protected Securities (TIPS) markets and discuss how hedge funds took advantage of this "arbitrage" opportunity.
 
 
-## Lecture Material
-[Introduction](../lecture1-pluto_intro)
+## Course Overview
+1. Introduction
+2. The U.S. Treasury Market
+3. Treasury Market Conventions
+4. Introduction to Bond Pricing
+5. The TIPS-Treasury Trading Strategy
 
-[The U.S. Treasury Market](../lecture2-pluto_treasurymarket)
-
-[Treasury Market Conventions](../lecture3-pluto_marketconventions)
-
-[Intro to Bond Pricing](../lecture4-pluto_bondpricing)
-
-[The TIPS-Treasury Trading Strategy](../lecture5-pluto_tipstreasury)
 
 ~~~
 <br>
