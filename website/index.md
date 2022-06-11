@@ -3,7 +3,7 @@
 
 
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
-* **Class Times:** Jan 20/21, 1.30pm-3.30pm; Jan 24, 9.00am-11.00am 
+* **Class Times:** June 20, 2022, 1.30pm-3.30pm; June 21, 2022, 8.30am-10.30am 
 * **Class Location:** Geltzeiler Trading Center
 
 @def mintoclevel=2 
@@ -32,8 +32,7 @@ Treasury Inflation-Protected Securities (TIPS) markets and discuss how hedge fun
 1. Introduction
 2. The U.S. Treasury Market
 3. Treasury Market Conventions
-4. Introduction to Bond Pricing
-5. The TIPS-Treasury Trading Strategy
+4. The TIPS-Treasury Trading Strategy
 
 
 ~~~
