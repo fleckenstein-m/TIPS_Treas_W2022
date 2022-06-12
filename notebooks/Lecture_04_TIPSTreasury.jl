@@ -263,7 +263,49 @@ md"""
 # ╔═╡ 921402f8-a70c-4b45-b134-7fd70f0c699a
 md"""
 # Combining TIPS and Inflation Swap
+"""
 
+# ╔═╡ 1993f8d1-5e59-4b62-adbd-5cbe3fe6a358
+md"""
+##
+"""
+
+# ╔═╡ 3bb9c9a8-c9f7-4850-a201-430c6c145188
+# ╠═╡ show_logs = false
+LocalResource("./Assets/TIPS_Cashflows.png",:width => 900)
+
+# ╔═╡ 375e90f6-dc10-4760-bde1-fe8f0736dfb7
+md"""
+##
+##
+"""
+
+# ╔═╡ 41135cf4-cb1a-445c-9be0-7678c097362f
+# ╠═╡ show_logs = false
+LocalResource("./Assets/TIPSInflationswap_Cashflows.png",:width => 900)
+
+# ╔═╡ a021d092-6180-4690-9041-4ce935f656a9
+md"""
+##
+"""
+
+# ╔═╡ 3845bb92-8437-4f27-9fb3-67ecf0a062ca
+# ╠═╡ show_logs = false
+LocalResource("./Assets/TreasuryNoteCashflowExample.png",:width => 900)
+
+
+# ╔═╡ 02fb2509-7270-4d31-9e49-75055e18e84f
+md"""
+##
+"""
+
+# ╔═╡ 70620b8f-1d3a-4c6e-9a09-e9fa0a0d447c
+md"""
+## Numerical Example
+"""
+
+# ╔═╡ 5b3f716a-95e0-425d-84ac-bcefc796b7e6
+md"""
 - Suppose we invest in a TIPS with 6 months to maturity, coupon rate of 4%, and  (inflation-adjusted) principal of $100 .
 - Suppose the market price of the TIPS is 100, and that the market price of a Treasury note with six months to maturity and coupon rate of 5% is 102.
 """
@@ -502,9 +544,53 @@ md"""
 ##
 """
 
+# ╔═╡ 65ace0e1-ccb4-4b49-8149-7230a7b5877e
+md"""
+# The TIPS-Treasury Arbitrage Trade in a Nutshell
+"""
+
+# ╔═╡ 309e11f5-5ddb-4b54-b0a9-aaf596bf6ec2
+md"""
+- Suppose a Treasury bond with maturity $T$ and coupon rate of $c$ and has a market price of $P$.
+- Suppose the price of a TIPS with the same maturity $T$ and a coupon rate of $s$ has a market price of $V$.
+
+ __1.__ Buy the TIPS.
+
+ __2.__ Convert inflation-indexed TIPS coupon cash flows into fixed cash flows by enter into an inflation swap for each coupon payment date with a notional amount of $s$ (or $s + 100$ for the final principal payment date).
+
+__3.__ Match fixed cash fows: To match exactly the cash flows $c$ from the Treasury bond, go long or short a small amount of Treasury STRIPS for each coupon payment date.
+
+- You've created a synthetic Treasury
+- By the law of one price Cost(synthetic) should be Price(actual).
+- In reality, Cost(synthetic) < Price(actual).   
+
+__4.__ Short the Treasury bond and buy the synthetic Treasury.
+"""
+
+# ╔═╡ 5abf0785-8384-49ed-8d05-6b4966a91354
+md"""
+##
+"""
+
 # ╔═╡ 201a91a8-4154-414e-86b1-ca578fa105c2
 md"""
 # TIPS-Treasury Mispricing on December 30, 2008
+"""
+
+# ╔═╡ 680fabca-fc6f-4aa8-8154-49087e019089
+md"""
+- Treasury bond with maturity date on Feb 15 2025 and coupon rate of 7.625% and has market price \$169.47.
+- TIPS with a coupon rate of 2.375% and the same maturity date as the Treasury bond has market price of \$101.22.
+
+- Executing steps __1.__, __2.__, and __3.__ costs \$146.379.
+- Since \$146.379 < \$169.47, buy the synthetic Treasury and sell the Treasury bond.
+- Pocket ~\$23 profit (transaction costs would not exceed $1.50).
+
+"""
+
+# ╔═╡ be2e9fbb-9fe2-4e21-8c43-05b1cf3144c9
+md"""
+##
 """
 
 # ╔═╡ 27038fd7-4dc4-4dd5-87dd-0032478d0622
@@ -2340,6 +2426,15 @@ version = "0.9.1+5"
 # ╟─8fa726b4-7064-4bd3-a2fa-54d875593009
 # ╟─6c30ca52-f64e-400a-9a18-1639465c190e
 # ╟─921402f8-a70c-4b45-b134-7fd70f0c699a
+# ╟─1993f8d1-5e59-4b62-adbd-5cbe3fe6a358
+# ╟─3bb9c9a8-c9f7-4850-a201-430c6c145188
+# ╟─375e90f6-dc10-4760-bde1-fe8f0736dfb7
+# ╟─41135cf4-cb1a-445c-9be0-7678c097362f
+# ╟─a021d092-6180-4690-9041-4ce935f656a9
+# ╟─3845bb92-8437-4f27-9fb3-67ecf0a062ca
+# ╟─02fb2509-7270-4d31-9e49-75055e18e84f
+# ╟─70620b8f-1d3a-4c6e-9a09-e9fa0a0d447c
+# ╟─5b3f716a-95e0-425d-84ac-bcefc796b7e6
 # ╟─034818e7-caae-495c-b159-e28549acd23a
 # ╟─780b61fc-903e-4483-80d6-3cd927676589
 # ╟─41d9d4e4-a4f0-425f-bb39-80a3c18d0289
@@ -2378,7 +2473,12 @@ version = "0.9.1+5"
 # ╟─e72cde3c-ad81-4242-8222-5d6bf86f22f4
 # ╟─81e531a9-3afb-4c05-a138-133467882086
 # ╟─ed5c3bc3-e514-4529-992c-ee1a4dc7ed7c
+# ╟─65ace0e1-ccb4-4b49-8149-7230a7b5877e
+# ╟─309e11f5-5ddb-4b54-b0a9-aaf596bf6ec2
+# ╟─5abf0785-8384-49ed-8d05-6b4966a91354
 # ╟─201a91a8-4154-414e-86b1-ca578fa105c2
+# ╟─680fabca-fc6f-4aa8-8154-49087e019089
+# ╟─be2e9fbb-9fe2-4e21-8c43-05b1cf3144c9
 # ╟─27038fd7-4dc4-4dd5-87dd-0032478d0622
 # ╟─62ec696b-021f-4756-aff8-f62a122345ae
 # ╟─1480c3c4-7ef1-413b-9cd2-5bbb9f61a2e2
