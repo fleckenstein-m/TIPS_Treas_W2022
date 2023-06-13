@@ -1,4 +1,4 @@
 Lecture Material | Link
 :-----:          | :--------:
-html             | [click for html](../notebooks/Lecture_04_TIPSTreasury.html)
+html             | [click for html](../notebooks/04_TIPSTreasTrade.html)
 

@@ -1,4 +1,4 @@
 Lecture Material | Link
 :-----:          | :--------:
-html             | [click for html](../notebooks/Lecture_03_TreasuryMarketConventions.html)
+html             | [click for html](../notebooks/03_Lecture_03.html)
 

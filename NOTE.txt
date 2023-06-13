@@ -1,0 +1,8 @@
+Make .html files of lecture locally
+
+The material is in the "Lectures" folder
+Then put the .html file in the notebooks folder
+Then link the html files in the .md files in the website folder
+
+To change the course date on the sidebar
+go to website/_layout and edit the sidebar .html file

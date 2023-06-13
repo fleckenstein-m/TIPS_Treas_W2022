@@ -1,4 +1,4 @@
 Lecture Material | Link
 :-----:          | :--------:
-html             | [click for html](../notebooks/20230613_TIPSTreasIntro.html)
+html             | [click for html](../notebooks/01_TIPSTreasIntro.html)
 
