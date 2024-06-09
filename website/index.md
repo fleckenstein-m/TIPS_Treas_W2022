@@ -3,7 +3,7 @@
 
 
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
-* **Class Times:** June 19, 2023, 3.00pm-5.00pm; June 20, 2023, 9.00am-11.00am 
+* **Class Times:** June 19, 2024, 3.00pm-5.00pm; June 20, 2023, 9.00am-11.00am 
 * **Class Location:** Geltzeiler Trading Center
 
 @def mintoclevel=2 
@@ -54,7 +54,7 @@ Treasury Inflation-Protected Securities (TIPS) markets and discuss how hedge fun
 The copyright notice to be included in any copies and other derivative work of this material is:
 
 ```
-Copyright 2022 Matthias Fleckenstein, University of Delaware, Lerner College of Business & Economics, mflecken@udel.edu
+Copyright 2024 Matthias Fleckenstein, University of Delaware, Lerner College of Business & Economics, mflecken@udel.edu
 ```
 
 ![](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png) This is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)
