@@ -116,9 +116,6 @@ begin
         <legend>Goals for today</legend>      
 		<br>
         <input type="checkbox" value="">Know the different types of securities issued by the U.S. Treasury: Treasury bills, notes, bonds, TIPS, FRNs, and STRIPS. <br>      
-		<br>
-        <input type="checkbox" value="">Be familiar with the Treasury auction process.
-<br>
 <br>
 	  	</fieldset>      
 	"""
@@ -672,10 +669,7 @@ begin
         <legend>Goals for this lecture</legend>      
 		<br>
         <input type="checkbox" value="" checked>Know the different types of securities issued by the U.S. Treasury: Treasury bills, notes, bonds, TIPS, FRNs, and STRIPS. <br>      
-		<br>
-        <input type="checkbox" value="" checked
-	>Be familiar with the Treasury auction process.
-<br>
+
 <br>
 	  	</fieldset>      
 	"""
@@ -706,7 +700,6 @@ HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
-Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
@@ -729,7 +722,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.10.2"
 manifest_format = "2.0"
-project_hash = "db78a13d0acc486f56bcad72867f63dbe213f109"
+project_hash = "bf843a4acb19b1c0b5a5145ed1e10c40ab31e98f"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]

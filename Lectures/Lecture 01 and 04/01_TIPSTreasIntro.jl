@@ -197,7 +197,7 @@ html"""
 
 # ╔═╡ 8fa726b4-7064-4bd3-a2fa-54d875593009
 # ╠═╡ show_logs = false
-LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.png",:width => 900)
 
 # ╔═╡ aa3d4c8c-2a9d-4e5a-b622-5424f341c8fb
 vspace
@@ -210,7 +210,7 @@ html"""
 # ╔═╡ 675daf21-167e-43a2-b680-a905aaaf1563
 md"""
 ## International Inflation-Linked Bond Puzzle
-> - _Italian bond markets, for example, exhibited unprecedented price discrepancies between different classes of bond issued by the government as a result of the ECB’s LTRO liquidity injection._\
+> - _Italian bond markets, for example, exhibited unprecedented price discrepancies between different classes of bonds issued by the government as a result of the ECB’s LTRO liquidity injection._\
 > - _In January, investors dumped inflation-protected Italian bonds, fearful that they would automatically drop out of key European bond indices if the country’s credit rating was downgraded, while at the same time Italian banks snapped up regular Italian bonds with LTRO cash._\
 > - **_Hedge funds bought the cheap inflation-protected bonds, wrote swaps to offset inflation and then shorted expensive regular Italian bonds, thereby completely hedging out credit risk and inflation and locking in the supply and demand-driven difference between the two bonds._**\
 > - _The spread between them was more than 200 basis points, according to Bob Treue, the founder of Barnegat, a US-based fixed income arbitrage hedge fund that has made 18 per cent on its investments so far this year._

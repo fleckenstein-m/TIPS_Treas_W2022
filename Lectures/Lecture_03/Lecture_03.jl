@@ -330,7 +330,7 @@ html"""
 
 # ╔═╡ d0b9d5ee-9120-4273-b8fc-714295bf8063
 md"""
-- What is the price of thie Treasury bill (per \$100 par amount)?
+- What is the price of the Treasury bill (per \$100 par amount)?
 """
 
 # ╔═╡ 2bfea836-8d15-4c2e-88f0-1bc1c49615d9

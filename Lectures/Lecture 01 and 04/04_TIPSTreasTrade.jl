@@ -207,7 +207,7 @@ html"""
 
 # ╔═╡ 8fa726b4-7064-4bd3-a2fa-54d875593009
 # ╠═╡ show_logs = false
-LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.svg",:width => 900)
+LocalResource("./Assets/FleckensteinLongstaffLustig2014_Abstract.png",:width => 900)
 
 # ╔═╡ aa3d4c8c-2a9d-4e5a-b622-5424f341c8fb
 vspace
@@ -220,7 +220,7 @@ html"""
 # ╔═╡ 675daf21-167e-43a2-b680-a905aaaf1563
 md"""
 ## International Inflation-Linked Bond Puzzle
-> - _Italian bond markets, for example, exhibited unprecedented price discrepancies between different classes of bond issued by the government as a result of the ECB’s LTRO liquidity injection._\
+> - _Italian bond markets, for example, exhibited unprecedented price discrepancies between different classes of bonds issued by the government as a result of the ECB’s LTRO liquidity injection._\
 > - _In January, investors dumped inflation-protected Italian bonds, fearful that they would automatically drop out of key European bond indices if the country’s credit rating was downgraded, while at the same time Italian banks snapped up regular Italian bonds with LTRO cash._\
 > - **_Hedge funds bought the cheap inflation-protected bonds, wrote swaps to offset inflation and then shorted expensive regular Italian bonds, thereby completely hedging out credit risk and inflation and locking in the supply and demand-driven difference between the two bonds._**\
 > - _The spread between them was more than 200 basis points, according to Bob Treue, the founder of Barnegat, a US-based fixed income arbitrage hedge fund that has made 18 per cent on its investments so far this year._
@@ -428,7 +428,7 @@ html"""
 # ╔═╡ 96519f0e-df82-4c03-9c34-bee6f7fd961c
 md"""
 - If the rate of inflation actually turns out to be higher at, say, 4% on average, then at maturity the indexed bond will have generated a 3% real return (precisely as expected). 
-- The conventional bond’s 5% nominal return will have been eroded such that its ex post real yield is only 1%. 
+- The conventional bond’s 5% nominal return will have been eroded such that its ex-post real yield is only 1%. 
 - Of course, the reverse could occur instead. 
   - Suppose inflation turns out to be lower on average than had been expected at, say, 1%, then the conventional bond’s real return would turn out to be 4%, while that on the indexed bond would still have been 3%.
 """
@@ -567,7 +567,7 @@ html"""
 md"""
 - Then, take the difference between the two index CPI-U index levels and divide by it by the actual number of days in the month.  
 - Next, multiply the result by the number of the day for which the **Reference CPI** is to be calculated and subtract 1.
-  - For example, January 7 would be 6. January 25 is 24.
+  - For example, January 7 this is 6.
 - Finally, add this result to the January 1st, CPI-U index level.
 """
 
@@ -1124,7 +1124,7 @@ html"""
 # ╔═╡ 23e7092b-6006-4ddd-97ff-454128a88e31
 md"""
 - Next, we take a short position in the Treasury note and buy the TIPS. 
-- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury notes.
+- We pay $100 for the TIPS and get $102 in cash from shorting the Treasury note.
 - Our net cash flow is 102 - 100 = 2.
 
 """
