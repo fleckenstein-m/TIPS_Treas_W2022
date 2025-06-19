@@ -3,7 +3,7 @@
 
 
 * **Instructor:** Matthias Fleckenstein, [mflecken@udel.edu](mailto:mflecken@udel.edu)
-* **Class Times:** June 19, 2024, 3.00pm-5.00pm; June 20, 2023, 9.00am-11.00am 
+* **Class Times:** June 25, 2025, 3.00pm-5.00pm; June 26, 2025, 9.00am-11.00am 
 * **Class Location:** Geltzeiler Trading Center
 
 @def mintoclevel=2 
