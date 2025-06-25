@@ -640,7 +640,7 @@ md"""
 - For example, CPI-U for Jan 15, the official issue date of the inaugural TIPS bond is 158.43548. 
 - The CPI-U for Jan 25 is 158.53226.
 - Hence, the inflation adjustment factor for Jan 25 is 
-$I_{\text{t=1/27/1997}}=\frac{158.53226}{158.43458} = 1.00061$
+$I_{\text{t=1/25/1997}}=\frac{158.53226}{158.43458} = 1.00061$
 
 """
 
@@ -2298,6 +2298,20 @@ md"""
 """
 
 # ╔═╡ f2e53056-d926-46dc-8aca-8beb68c05218
+vspace
+
+# ╔═╡ 5a80cb52-5886-4fb8-a809-232d97131ae7
+md"""
+# Data Exercise
+"""
+
+# ╔═╡ 94219dd6-6ad5-4212-8426-0a8862e8e403
+md"""
+
+[Link to Dataset](https://www.dropbox.com/scl/fi/rsqeu43s4t35cat99p7hq/TIPS_Treasury_BE.xlsx?rlkey=gqzz0fx3nelakr0s0qhjbp52k&st=hkdckz46&dl=0)
+"""
+
+# ╔═╡ c1f88748-8985-4497-8422-0062f6953867
 vspace
 
 # ╔═╡ 53c77ef1-899d-47c8-8a30-ea38380d1614
@@ -4089,6 +4103,9 @@ version = "1.8.1+0"
 # ╟─8a8929a1-c6c8-4b9c-b60a-4791d9537a54
 # ╟─c87e3c57-f976-44b0-af02-c2f188a35db9
 # ╟─f2e53056-d926-46dc-8aca-8beb68c05218
+# ╟─5a80cb52-5886-4fb8-a809-232d97131ae7
+# ╟─94219dd6-6ad5-4212-8426-0a8862e8e403
+# ╟─c1f88748-8985-4497-8422-0062f6953867
 # ╟─53c77ef1-899d-47c8-8a30-ea38380d1614
 # ╟─670e45a3-9d28-47ae-a6b6-a1b1c67a0a4c
 # ╟─f8998179-a255-4b28-94fb-25a69a51d374
