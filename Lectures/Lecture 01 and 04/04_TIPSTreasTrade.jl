@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.20.4
+# v0.20.21
 
 using Markdown
 using InteractiveUtils
@@ -7,7 +7,7 @@ using InteractiveUtils
 # This Pluto notebook uses @bind for interactivity. When running this notebook outside of Pluto, the following 'mock version' of @bind gives bound variables a default value (instead of an error).
 macro bind(def, element)
     #! format: off
-    quote
+    return quote
         local iv = try Base.loaded_modules[Base.PkgId(Base.UUID("6e696c72-6542-2067-7265-42206c756150"), "AbstractPlutoDingetjes")].Bonds.initial_value catch; b -> missing; end
         local el = $(esc(element))
         global $(esc(def)) = Core.applicable(Base.get, el) ? Base.get(el) : iv(el)
@@ -110,7 +110,7 @@ begin
 	<p align=center style="font-size:25px; font-family:family:Georgia"> <b> The TIPS-Treasury Bond Puzzle
 	</b> <p>
 	<p style="padding-bottom:1cm"> </p>
-	<p align=center style="font-size:25px; font-family:family:Georgia"> June 2025 <p>
+	<p align=center style="font-size:25px; font-family:family:Georgia"> June 2026 <p>
 	<p style="padding-bottom:0.5cm"> </p>
 	<div align=center style="font-size:20px; font-family:family:Georgia"> Prof. Matt Fleckenstein </div>
 	<p style="padding-bottom:0.05cm"> </p>
@@ -552,9 +552,9 @@ html"""
 # ╔═╡ 8c4b9294-568c-49bf-a760-c54da18de10d
 md"""
 ## Example: Reference CPI for January 7, 1997
-- To find the **Reference CPI** for any date in Janurary 1997, we first find the **Reference CPI** index levels for January 1, 1997 and for February 1, 1997.
+- To find the **Reference CPI** for any date in January 1997, we first find the **Reference CPI** index levels for January 1, 1997 and for February 1, 1997.
   - The **Reference CPI** for January 1st is the CPI-U from October 1996 (published by the BLS in November).
-  - The **Reference CPI** for for February 1st is the CPI-U from November 1996 (published by the BLS in December).
+  - The **Reference CPI** for February 1st is the CPI-U from November 1996 (published by the BLS in December).
 """
 
 # ╔═╡ c95f15b3-db7f-4113-a6fb-c0a202b0d601
@@ -567,8 +567,8 @@ html"""
 
 # ╔═╡ 1980728f-8868-4911-a390-50134b7222bd
 md"""
-- Then, take the difference between the two index CPI-U index levels and divide by it by the actual number of days in the month.  
-- Next, multiply the result by the number of the day for which the **Reference CPI** is to be calculated and subtract 1.
+- Then, take the difference between the two CPI-U index levels and divide it by the actual number of days in the month.  
+- Next, multiply the result by the number of the day for which the **Reference CPI** is to be calculated, minus one.
   - For example, January 7 this is 6.
 - Finally, add this result to the January 1st, CPI-U index level.
 """
@@ -640,7 +640,7 @@ md"""
 - For example, CPI-U for Jan 15, the official issue date of the inaugural TIPS bond is 158.43548. 
 - The CPI-U for Jan 25 is 158.53226.
 - Hence, the inflation adjustment factor for Jan 25 is 
-$I_{\text{t=1/25/1997}}=\frac{158.53226}{158.43458} = 1.00061$
+$I_{\text{t=1/25/1997}}=\frac{158.53226}{158.43548} = 1.00061$
 
 """
 
@@ -913,7 +913,7 @@ Markdown.parse("
 	
 - Cash flow on the floating leg of the swap:
 	
-\$N \\times \\left[ (1+i)^T - 1 \\right]]= $(Nswap) \\times \\left[ (1+$(Iswap/100))^{$(Tswap)} - 1 \\right]=$(roundmult(Nswap*((1+Iswap/100)^Tswap-1),1e-4))\$
+\$N \\times \\left[ (1+i)^T - 1 \\right]= $(Nswap) \\times \\left[ (1+$(Iswap/100))^{$(Tswap)} - 1 \\right]=$(roundmult(Nswap*((1+Iswap/100)^Tswap-1),1e-4))\$
 	
 - Net cash flow of inflation buyer: $(roundmult(Nswap*(1+Iswap/100)^Tswap - Nswap*(1+fswap/100)^Tswap,1e-4))
 ")
@@ -1162,7 +1162,7 @@ html"""
 # ╔═╡ 8953ae0b-ab82-4173-bda8-9980ae1ef550
 md"""
 - Thus, we have non-zero cash outflow of fifty cents in six months.
-- We want to have zero cash flows in six months. How can we achive this?
+- We want to have zero cash flows in six months. How can we achieve this?
 """
 
 # ╔═╡ 88bf0e46-17c9-4a61-9e82-9c113c1dbadd
@@ -1226,7 +1226,7 @@ md"""
 # ╔═╡ 27038fd7-4dc4-4dd5-87dd-0032478d0622
 md"""
 - This table uses real market data on 12/30/2008 and shows the cash flows associated with 
-  - the 7.625% Treasury bond with maturity date January 15, 2025, and 
+  - the 7.625% Treasury bond with maturity date February 15, 2025, and 
   - the cash flows from the replicating strategy using the 2.375% TIPS issue with the same maturity date that replicates the cash flows of the Treasury bond. 
 """
 
@@ -1400,7 +1400,7 @@ html"""
 
 # ╔═╡ 312e0229-445e-42d4-8a0d-709c590c1add
 md"""
-## Treasury Note: 912828EA
+## Treasury Note: 912828EE
 """
 
 # ╔═╡ 97d9ba4b-880f-464e-bd94-7b72a86094b7
@@ -1605,7 +1605,7 @@ md"""
 
 # ╔═╡ cf85e64a-d5c4-4d04-b6ba-04ac003f7289
 Markdown.parse("
-- **Treasury 912727EE**
+- **Treasury 912828EE**
   - Quoted Price: 97-15+ per \$100 notional.
 > \$97 + \\frac{15}{32} + \\frac{1}{64} = $(97+15/32+1/64)\$
 ")
@@ -1789,7 +1789,7 @@ md"""
 ### Step 2: Set-up Cash Flows of the TIPS, Inflation Swaps and STRIPS
 - *Note, initially we assume that the TIPS and Treasury note have identical maturity and coupon cash flow dates. The Time column lists the coupon payment dates of the TIPS.*
 - The (real) coupon cash flows of the TIPS are $\frac{0.01875}{2}\times 100=0.9375$
-- The coupon cash flows of the Treasury note are are $\frac{0.0425}{2}\times 100=2.125$
+- The coupon cash flows of the Treasury note are $\frac{0.0425}{2}\times 100=2.125$
  
 """
 
@@ -1973,7 +1973,7 @@ html"""
 md"""
   - To keep the notation general, let the fixed real TIPS cash flow be denoted by $c_{\textrm{TIPS}}= 0.9375$ and let the Treasury note cash flow be $c_{\textrm{Tnote}}=2.125$.
 ${c_{\textrm{TIPS}}} \times (1 + {P_{\textrm{Swap}}(t)}) + x_t \cdot 100 = {c_{\textrm{Tnote}}}$
-$\to {x_t} = \frac{{{c_{\textrm{Tnote}}} - {c_{\textrm{TIPS}}} ( 1+ \cdot {P_{\textrm{Swap}}(t)}})}{{100}}$
+$\to {x_t} = \frac{{{c_{\textrm{Tnote}}} - {c_{\textrm{TIPS}}} ( 1+ {P_{\textrm{Swap}}(t)}})}{{100}}$
 $\to {x_t} = \frac{{{2.125} - ({c_{\textrm{TIPS}}} + {c_{\textrm{TIPS}}} \cdot {P_{\textrm{Swap}}(t)}})}{{100}}$
 """
 
@@ -2058,7 +2058,7 @@ html"""
 md"""
 - Note: To get inflation swap rates with tenors exactly matching the cash flow dates of the TIPS, we make two adjustments. 
 - First, we need to account for seasonalities in inflation swap rates (e.g. inflation rates for certain months during the year are higher/lower than in other months). 
-- Second, swap rates for short tenors (e.g. 1 month) are known because the reference CPI index values for near-term months are already known in the current month due to the 3-month indexaction lag). 
+- Second, swap rates for short tenors (e.g. 1 month) are known because the reference CPI index values for near-term months are already known in the current month due to the 3-month indexation lag). 
 - For details, see Fleckenstein, Longstaff, and Lustig (2014).
 """
 
@@ -2189,7 +2189,7 @@ html"""
 
 # ╔═╡ 3115e3a5-886e-4315-9c05-36cf9fe7692e
 md"""
-### 2.7. Calculate the Market Price fo the STRIPS Positions
+### 2.7. Calculate the Market Price of the STRIPS Positions
 """
 
 # ╔═╡ 73acdb08-b4d2-4e29-8004-1a936e72982f
@@ -2258,9 +2258,9 @@ md"""
 - The Treasury note has a market price of 
 $P_{\text{Treasury}}= $98.0734$
 
-- This is a puzzle because the price of two securities with exactly the same cash flows are different. 
+- This is a puzzle because the price of two securities with exactly the same cash flows is different. 
 - The Treasury note is __\$2.22__ more expensive than its equivalent TIPS.
-- Thus, by buying the TIPS and entering into the inflation swaps and STRIPS and by taking a short we have an arbitrage.
+- Thus, by buying the TIPS, entering into the inflation swaps and STRIPS, and taking a short position in the Treasury note, we have an arbitrage.
 """
 
 # ╔═╡ dc4c54ff-d99b-43d8-93b9-ed26334917e7
@@ -2292,7 +2292,7 @@ html"""
 
 # ╔═╡ c87e3c57-f976-44b0-af02-c2f188a35db9
 md"""
-- The price calculated in step 2 is the price of the TIPS that can be compared to the price of the Treasury note because it accounts for the difference in th timing of cash flows.
+- The price calculated in step 2 is the price of the TIPS that can be compared to the price of the Treasury note because it accounts for the difference in the timing of cash flows.
 - The yield of the TIPS turns out to be 4.97% and the market price of the Treasury note if its yield is 4.97% turns out to be 95.4583.
 - Thus the Treasury note is \$98.07337 - \$95.4583 = \$2.61507 more expensive than the equivalent TIPS. The arbitrage mispricing is \$2.61507.
 """
@@ -2379,9 +2379,9 @@ ShortCodes = "~0.3.5"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.11.2"
+julia_version = "1.12.1"
 manifest_format = "2.0"
-project_hash = "dba7d2b11709f0902e447990cfe719b851e0e316"
+project_hash = "9b393a9be4f2f0042926c5e45d69d6911981128a"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -2485,7 +2485,7 @@ weakdeps = ["Dates", "LinearAlgebra"]
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "1.1.1+0"
+version = "1.3.0+1"
 
 [[deps.Contour]]
 git-tree-sha1 = "439e35b0b36e2e5881738abc8857bd92ad6ff9a8"
@@ -2780,6 +2780,11 @@ git-tree-sha1 = "eac1206917768cb54957c65a615460d87b455fc1"
 uuid = "aacddb02-875f-59d6-b918-886e6ef4fbf8"
 version = "3.1.1+0"
 
+[[deps.JuliaSyntaxHighlighting]]
+deps = ["StyledStrings"]
+uuid = "ac6e5ff7-fb65-4e79-a425-ec3bc9c03011"
+version = "1.12.0"
+
 [[deps.Juno]]
 deps = ["Base64", "Logging", "Media", "Profile"]
 git-tree-sha1 = "07cb43290a840908a771552911a6274bc6c072c7"
@@ -2839,24 +2844,24 @@ uuid = "b27032c2-a3e7-50c8-80cd-2d36dbcbfd21"
 version = "0.6.4"
 
 [[deps.LibCURL_jll]]
-deps = ["Artifacts", "LibSSH2_jll", "Libdl", "MbedTLS_jll", "Zlib_jll", "nghttp2_jll"]
+deps = ["Artifacts", "LibSSH2_jll", "Libdl", "OpenSSL_jll", "Zlib_jll", "nghttp2_jll"]
 uuid = "deac9b47-8bc7-5906-a0fe-35ac56dc84c0"
-version = "8.6.0+0"
+version = "8.11.1+1"
 
 [[deps.LibGit2]]
-deps = ["Base64", "LibGit2_jll", "NetworkOptions", "Printf", "SHA"]
+deps = ["LibGit2_jll", "NetworkOptions", "Printf", "SHA"]
 uuid = "76f85450-5226-5b5a-8eaa-529ad045b433"
 version = "1.11.0"
 
 [[deps.LibGit2_jll]]
-deps = ["Artifacts", "LibSSH2_jll", "Libdl", "MbedTLS_jll"]
+deps = ["Artifacts", "LibSSH2_jll", "Libdl", "OpenSSL_jll"]
 uuid = "e37daf67-58a4-590a-8e99-b0245dd2ffc5"
-version = "1.7.2+0"
+version = "1.9.0+0"
 
 [[deps.LibSSH2_jll]]
-deps = ["Artifacts", "Libdl", "MbedTLS_jll"]
+deps = ["Artifacts", "Libdl", "OpenSSL_jll"]
 uuid = "29816b5a-b9ab-546f-933c-edad1886dfa8"
-version = "1.11.0+1"
+version = "1.11.3+1"
 
 [[deps.Libdl]]
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
@@ -2887,7 +2892,7 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.41.0+0"
 
 [[deps.Librsvg_jll]]
-deps = ["Artifacts", "JLLWrappers", "Libdl", "Pango_jll", "Pkg", "gdk_pixbuf_jll"]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pango_jll", "Pkg", "XML2_jll", "gdk_pixbuf_jll"]
 git-tree-sha1 = "ae0923dab7324e6bc980834f709c4cd83dd797ed"
 uuid = "925c91fb-5dd6-59dd-8e8c-345e74382d89"
 version = "2.54.5+0"
@@ -2907,7 +2912,7 @@ version = "2.41.0+0"
 [[deps.LinearAlgebra]]
 deps = ["Libdl", "OpenBLAS_jll", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
-version = "1.11.0"
+version = "1.12.0"
 
 [[deps.LogExpFunctions]]
 deps = ["DocStringExtensions", "IrrationalConstants", "LinearAlgebra"]
@@ -2952,7 +2957,7 @@ uuid = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
 version = "0.5.16"
 
 [[deps.Markdown]]
-deps = ["Base64"]
+deps = ["Base64", "JuliaSyntaxHighlighting", "StyledStrings"]
 uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 version = "1.11.0"
 
@@ -2963,7 +2968,8 @@ uuid = "739be429-bea8-5141-9913-cc70e7f3736d"
 version = "1.1.9"
 
 [[deps.MbedTLS_jll]]
-deps = ["Artifacts", "Libdl"]
+deps = ["Artifacts", "JLLWrappers", "Libdl"]
+git-tree-sha1 = "926c6af3a037c68d02596a44c22ec3595f5f760b"
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
 version = "2.28.6+0"
 
@@ -2996,7 +3002,7 @@ version = "1.11.0"
 
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
-version = "2023.12.12"
+version = "2025.5.20"
 
 [[deps.NaNMath]]
 deps = ["OpenLibm_jll"]
@@ -3006,7 +3012,7 @@ version = "1.1.3"
 
 [[deps.NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
-version = "1.2.0"
+version = "1.3.0"
 
 [[deps.Ogg_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -3017,12 +3023,12 @@ version = "1.3.5+1"
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
-version = "0.3.27+1"
+version = "0.3.29+0"
 
 [[deps.OpenLibm_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "05823500-19ac-5b8b-9628-191a04bc5112"
-version = "0.8.1+2"
+version = "0.8.7+0"
 
 [[deps.OpenSSL]]
 deps = ["BitFlags", "Dates", "MozillaCACerts_jll", "OpenSSL_jll", "Sockets"]
@@ -3031,10 +3037,9 @@ uuid = "4d8831e6-92b7-49fb-bdf8-b643e874388c"
 version = "1.5.0"
 
 [[deps.OpenSSL_jll]]
-deps = ["Artifacts", "JLLWrappers", "Libdl"]
-git-tree-sha1 = "9216a80ff3682833ac4b733caa8c00390620ba5d"
+deps = ["Artifacts", "Libdl"]
 uuid = "458c3c95-2e84-50aa-8efc-19380b2a3a95"
-version = "3.5.0+0"
+version = "3.5.1+0"
 
 [[deps.Opus_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
@@ -3050,7 +3055,7 @@ version = "1.8.1"
 [[deps.PCRE2_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "efcefdf7-47ab-520b-bdef-62a2eaa19f15"
-version = "10.42.0+1"
+version = "10.44.0+1"
 
 [[deps.Pango_jll]]
 deps = ["Artifacts", "Cairo_jll", "Fontconfig_jll", "FreeType2_jll", "FriBidi_jll", "Glib_jll", "HarfBuzz_jll", "JLLWrappers", "Libdl"]
@@ -3073,7 +3078,7 @@ version = "0.44.2+0"
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "FileWatching", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "Random", "SHA", "TOML", "Tar", "UUIDs", "p7zip_jll"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
-version = "1.11.0"
+version = "1.12.0"
 weakdeps = ["REPL"]
 
     [deps.Pkg.extensions]
@@ -3147,6 +3152,7 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 version = "1.11.0"
 
 [[deps.Profile]]
+deps = ["StyledStrings"]
 uuid = "9abbd945-dff8-562f-b5e8-e1ebf5ef1b79"
 version = "1.11.0"
 
@@ -3162,7 +3168,7 @@ uuid = "c0090381-4147-56d7-9ebc-da0b1113ec56"
 version = "6.5.3+1"
 
 [[deps.REPL]]
-deps = ["InteractiveUtils", "Markdown", "Sockets", "StyledStrings", "Unicode"]
+deps = ["InteractiveUtils", "JuliaSyntaxHighlighting", "Markdown", "Sockets", "StyledStrings", "Unicode"]
 uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 version = "1.11.0"
 
@@ -3262,7 +3268,7 @@ version = "1.2.1"
 [[deps.SparseArrays]]
 deps = ["Libdl", "LinearAlgebra", "Random", "Serialization", "SuiteSparse_jll"]
 uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
-version = "1.11.0"
+version = "1.12.0"
 
 [[deps.StableRNGs]]
 deps = ["Random"]
@@ -3311,7 +3317,7 @@ version = "1.11.0"
 [[deps.SuiteSparse_jll]]
 deps = ["Artifacts", "Libdl", "libblastrampoline_jll"]
 uuid = "bea87d4a-7f5b-5778-9afe-8cc45184846c"
-version = "7.7.0+0"
+version = "7.8.3+2"
 
 [[deps.TOML]]
 deps = ["Dates"]
@@ -3583,7 +3589,7 @@ version = "1.6.0+0"
 [[deps.Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
-version = "1.2.13+1"
+version = "1.3.1+2"
 
 [[deps.Zstd_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl"]
@@ -3630,7 +3636,7 @@ version = "0.15.2+0"
 [[deps.libblastrampoline_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-version = "5.11.0+0"
+version = "5.15.0+0"
 
 [[deps.libdecor_jll]]
 deps = ["Artifacts", "Dbus_jll", "JLLWrappers", "Libdl", "Libglvnd_jll", "Pango_jll", "Wayland_jll", "xkbcommon_jll"]
@@ -3677,12 +3683,12 @@ version = "1.1.6+0"
 [[deps.nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "8e850ede-7688-5339-a07c-302acd2aaf8d"
-version = "1.59.0+0"
+version = "1.64.0+1"
 
 [[deps.p7zip_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
-version = "17.4.0+2"
+version = "17.5.0+2"
 
 [[deps.x264_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
