@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FINC409/609 - Fixed Income Seccurities: Lecture 03 Quiz</title>
+  <style>
+
+    h1 {text-align: center;}
+    h2 {text-align: center;}
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+    }
+    h1 { text-align: center; }
+    .question {
+      border: 1px solid #ccc;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 4px;
+      cursor: pointer;
+    }
+    .feedback {
+      margin-top: 8px;
+      font-weight: bold;
+    }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    button {
+      padding: 6px 12px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>FINC409/609 - Fixed Income Securities</h1>
+  <h2>Prof. Matt Fleckenstein</h2>
+  <h2>Lecture 3 - Quiz</h2>
+  <br>
+
+
+  <!-- TEMPLATE FOR EACH QUESTION -->
+  <div class="question" id="q1">
+    <h3>1. How are U.S. Treasury bills quoted in the secondary market?</h3>
+    <div class="options">
+      <label><input type="radio" name="q1" value="A" data-correct="true"> Discount yield (bank discount basis)</label>
+      <label><input type="radio" name="q1" value="B"> Clean price per $100 par</label>
+      <label><input type="radio" name="q1" value="C"> Yield to maturity, semiannual compounding</label>
+      <label><input type="radio" name="q1" value="D"> Dirty price including accrued interest</label>
+    </div>
+    <button onclick="checkSingle('q1')">Check Answer</button>
+    <div class="feedback" id="feedback-q1"></div>
+  </div>
+
+  <div class="question" id="q2">
+    <h3>2. A 52-week T-bill has 355 days to maturity and is quoted at a discount yield of 4.81%. What is the price?</h3>
+    <div class="options">
+      <label><input type="radio" name="q2" value="A"> $95.00</label>
+      <label><input type="radio" name="q2" value="B" data-correct="true"> ≈ $95.26</label>
+      <label><input type="radio" name="q2" value="C"> ≈ $104.81</label>
+      <label><input type="radio" name="q2" value="D"> ≈ $99.52</label>
+    </div>
+    <button onclick="checkSingle('q2')">Check Answer</button>
+    <div class="feedback" id="feedback-q2"></div>
+  </div>
+
+  <div class="question" id="q3">
+    <h3>3. What day-count convention is used for Treasury bill discount yields?</h3>
+    <div class="options">
+      <label><input type="radio" name="q3" value="A" data-correct="true"> Actual/360</label>
+      <label><input type="radio" name="q3" value="B"> 30/360</label>
+      <label><input type="radio" name="q3" value="C"> Actual/365</label>
+      <label><input type="radio" name="q3" value="D"> Actual/Actual</label>
+    </div>
+    <button onclick="checkSingle('q3')">Check Answer</button>
+    <div class="feedback" id="feedback-q3"></div>
+  </div>
+
+  <div class="question" id="q4">
+    <h3>4. A Treasury note is quoted at 98-26. What is the clean price per $100 par?</h3>
+    <div class="options">
+      <label><input type="radio" name="q4" value="A"> $98.26</label>
+      <label><input type="radio" name="q4" value="B" data-correct="true"> $98.8125</label>
+      <label><input type="radio" name="q4" value="C"> $98.26 + AI</label>
+      <label><input type="radio" name="q4" value="D"> $99.26</label>
+    </div>
+    <button onclick="checkSingle('q4')">Check Answer</button>
+    <div class="feedback" id="feedback-q4"></div>
+  </div>
+
+  <div class="question" id="q5">
+    <h3>5. A Treasury note is quoted at 98-25+. What is the clean price?</h3>
+    <div class="options">
+      <label><input type="radio" name="q5" value="A"> $98.78125</label>
+      <label><input type="radio" name="q5" value="B"> $98.2500</label>
+      <label><input type="radio" name="q5" value="C" data-correct="true"> $98.796875</label>
+      <label><input type="radio" name="q5" value="D"> $99.015625</label>
+    </div>
+    <button onclick="checkSingle('q5')">Check Answer</button>
+    <div class="feedback" id="feedback-q5"></div>
+  </div>
+
+  <div class="question" id="q6">
+    <h3>6. Which relationship is correct?</h3>
+    <div class="options">
+      <label><input type="radio" name="q6" value="A"> Clean Price = Dirty Price + Accrued Interest</label>
+      <label><input type="radio" name="q6" value="B" data-correct="true"> Dirty Price = Clean Price + Accrued Interest</label>
+      <label><input type="radio" name="q6" value="C"> There is no difference. Clean Price and Dirty Price are always the same.</label>
+      <label><input type="radio" name="q6" value="D"> Dirty Priceexcludes Accrued Interest </label>
+    </div>
+    <button onclick="checkSingle('q6')">Check Answer</button>
+    <div class="feedback" id="feedback-q6"></div>
+  </div>
+
+<div class="question" id="q7">
+  <h3>7. A Treasury note pays a 3.50% annual coupon (paid semiannually). The semi-annual coupon payment is:</h3>
+  <div class="options">
+    <label><input type="radio" name="q7" value="A">$1.50</label>
+    <label><input type="radio" name="q7" value="B">$1.75</label>
+    <label><input type="radio" name="q7" value="C" data-correct="true">$1.75 per $100 par</label>
+    <label><input type="radio" name="q7" value="D">$3.50 per $100 par</label>
+  </div>
+  <button onclick="checkSingle('q7')">Check Answer</button>
+  <div class="feedback" id="feedback-q7"></div>
+</div>
+
+<div class="question" id="q8">
+  <h3>8. A Treasury bond has a 5% annual coupon (paid semiannually). 72 days have passed since the last coupon, and there are 181 days in the coupon period. What is the accrued interest per $100 par value?</h3>
+  <div class="options">
+    <label><input type="radio" name="q8" value="A">$0.75</label>
+    <label><input type="radio" name="q8" value="B">$5.00</label>
+    <label><input type="radio" name="q8" value="C" data-correct="true">Approximately $0.99</label>
+    <label><input type="radio" name="q8" value="D">$2.50</label>
+  </div>
+  <button onclick="checkSingle('q8')">Check Answer</button>
+  <div class="feedback" id="feedback-q8"></div>
+</div>
+
+  <div class="question" id="q9">
+    <h3>9. Which day-count convention is typically used for corporate bonds?</h3>
+    <div class="options">
+      <label><input type="radio" name="q9" value="A"> Actual/Actual</label>
+      <label><input type="radio" name="q9" value="B"> Actual/365</label>
+      <label><input type="radio" name="q9" value="C" data-correct="true"> 30/360</label>
+      <label><input type="radio" name="q9" value="D"> Actual/360</label>
+    </div>
+    <button onclick="checkSingle('q9')">Check Answer</button>
+    <div class="feedback" id="feedback-q9"></div>
+  </div>
+
+  <div class="question" id="q10">
+    <h3>10. What is a principal STRIP?</h3>
+    <div class="options">
+      <label><input type="radio" name="q10" value="A"> A security from a single coupon payment</label>
+      <label><input type="radio" name="q10" value="B"> A floating-rate Treasury</label>
+      <label><input type="radio" name="q10" value="C" data-correct="true"> Zero-coupon security from principal repayment</label>
+      <label><input type="radio" name="q10" value="D"> A Treasury bill</label>
+    </div>
+    <button onclick="checkSingle('q10')">Check Answer</button>
+    <div class="feedback" id="feedback-q10"></div>
+  </div>
+
+  <script>
+    function checkSingle(qid) {
+      const question = document.getElementById(qid);
+      const selected = question.querySelector("input[type='radio']:checked");
+      const feedback = document.getElementById("feedback-" + qid);
+
+      if (!selected) {
+        feedback.textContent = "Please select an answer.";
+        feedback.className = "feedback";
+        return;
+      }
+
+      if (selected.dataset.correct === "true") {
+        feedback.textContent = "Correct!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.textContent = "Incorrect. Try again.";
+        feedback.className = "feedback incorrect";
+      }
+    }
+  </script>
+</body>
+</html>
