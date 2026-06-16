@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FINC409/609 - Fixed Income Seccurities: Lecture 02 Quiz</title>
+  <style>
+    h1 {text-align: center;}
+    h2 {text-align: center;}
+
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+    .question p {
+      margin-top: 0;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 4px 0;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 8px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      cursor: pointer;
+    }
+    .feedback {
+      margin-top: 8px;
+      font-weight: bold;
+    }
+    .feedback.correct {
+      color: green;
+    }
+    .feedback.incorrect {
+      color: red;
+    }
+    #score {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>FINC409/609 - Fixed Income Securities</h1>
+  <h2>Prof. Matt Fleckenstein</h2>
+  <h2>Lecture 2 - Quiz</h2>
+
+
+  <!-- Question 1 -->
+  <div class="question" data-q="1" data-correct="c">
+    <p>1. Which of the following is <em>not</em> a U.S. Treasury security?</p>
+    <label><input type="radio" name="q1" value="a"> Treasury bill (T-bill)</label>
+    <label><input type="radio" name="q1" value="b"> Treasury note (T-note)</label>
+    <label><input type="radio" name="q1" value="c"> Municipal bond</label>
+    <label><input type="radio" name="q1" value="d"> Treasury Inflation-Protected Security (TIPS)</label>
+    <button type="button" onclick="checkQuestion(1)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question" data-q="2" data-correct="a">
+    <p>2. Which statement about Treasury bills (T-bills) is correct?</p>
+    <label><input type="radio" name="q2" value="a">
+      They are short-term securities (4 to 52 weeks) issued at a discount and pay no coupons before maturity.
+    </label>
+    <label><input type="radio" name="q2" value="b">
+      They have maturities of 10 to 30 years and pay coupons every six months.
+    </label>
+    <label><input type="radio" name="q2" value="c">
+      They are only issued with a 2-year maturity and pay interest quarterly.
+    </label>
+    <label><input type="radio" name="q2" value="d">
+      They are inflation-linked bonds whose principal is adjusted by CPI.
+    </label>
+    <button type="button" onclick="checkQuestion(2)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question" data-q="3" data-correct="b">
+    <p>3. What is a key difference between a Treasury bill and a Treasury note?</p>
+    <label><input type="radio" name="q3" value="a">
+      Treasury bills pay semiannual coupons; Treasury notes do not pay any coupons.
+    </label>
+    <label><input type="radio" name="q3" value="b">
+      Treasury bills are short-term zero-coupon securities, whereas Treasury notes are 2–10 year coupon securities with semiannual interest.
+    </label>
+    <label><input type="radio" name="q3" value="c">
+      Treasury bills are only available to institutional investors; Treasury notes are only for retail investors.
+    </label>
+    <label><input type="radio" name="q3" value="d">
+      There is no difference; they are just alternative names for the same instrument.
+    </label>
+    <button type="button" onclick="checkQuestion(3)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="question" data-q="4" data-correct="c">
+    <p>4. Which statement about Treasury bonds (T-bonds) is correct?</p>
+    <label><input type="radio" name="q4" value="a">
+      Treasury bonds have maturities of 1 year or less.
+    </label>
+    <label><input type="radio" name="q4" value="b">
+      Treasury currently issues new 15-year Treasury bonds.
+    </label>
+    <label><input type="radio" name="q4" value="c">
+      Treasury bonds are long-term securities with maturities of 20 and 30 years and pay coupons every six months.
+    </label>
+    <label><input type="radio" name="q4" value="d">
+      Treasury bonds have floating coupons linked to the 13-week T-bill rate.
+    </label>
+    <button type="button" onclick="checkQuestion(4)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 5 -->
+  <div class="question" data-q="5" data-correct="d">
+    <p>5. Which of the following best describes a Treasury Floating Rate Note (FRN)?</p>
+    <label><input type="radio" name="q5" value="a">
+      A 30-year fixed-rate bond with coupons paid annually.
+    </label>
+    <label><input type="radio" name="q5" value="b">
+      A 10-year note whose coupon is fixed at issuance and never changes.
+    </label>
+    <label><input type="radio" name="q5" value="c">
+      A short-term bill issued at a discount and paying no coupons.
+    </label>
+    <label><input type="radio" name="q5" value="d">
+      A 2-year security whose coupon is reset quarterly based on the 13-week Treasury bill rate.
+    </label>
+    <button type="button" onclick="checkQuestion(5)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 6 -->
+  <div class="question" data-q="6" data-correct="b">
+    <p>6. What is the key feature of Treasury Inflation-Protected Securities (TIPS)?</p>
+    <label><input type="radio" name="q6" value="a">
+      They have maturities only up to one year.
+    </label>
+    <label><input type="radio" name="q6" value="b">
+      Both the principal and coupon payments are adjusted for inflation, helping protect investors’ real returns.
+    </label>
+    <label><input type="radio" name="q6" value="c">
+      They are backed by municipal governments rather than the U.S. Treasury.
+    </label>
+    <label><input type="radio" name="q6" value="d">
+      They pay coupons monthly instead of semiannually.
+    </label>
+    <button type="button" onclick="checkQuestion(6)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 7 -->
+  <div class="question" data-q="7" data-correct="a">
+    <p>7. What are Treasury STRIPS?</p>
+    <label><input type="radio" name="q7" value="a">
+      Zero-coupon securities created by separating the coupon and principal payments of Treasury notes and bonds.
+    </label>
+    <label><input type="radio" name="q7" value="b">
+      Short-term floating-rate notes issued only by the private sector.
+    </label>
+    <label><input type="radio" name="q7" value="c">
+      A special type of T-bill issued directly by the Federal Reserve.
+    </label>
+    <label><input type="radio" name="q7" value="d">
+      Securities that combine corporate and Treasury cash flows into a single bond.
+    </label>
+    <button type="button" onclick="checkQuestion(7)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 8 -->
+  <div class="question" data-q="8" data-correct="c">
+    <p>8. How are Treasury securities sold in the primary market?</p>
+    <label><input type="radio" name="q8" value="a">
+      Through continuous trading on stock exchanges.
+    </label>
+    <label><input type="radio" name="q8" value="b">
+      Via negotiated sales with a single underwriter.
+    </label>
+    <label><input type="radio" name="q8" value="c">
+      Through sealed-bid auctions conducted by the U.S. Treasury Department.
+    </label>
+    <label><input type="radio" name="q8" value="d">
+      Only via private placements with foreign central banks.
+    </label>
+    <button type="button" onclick="checkQuestion(8)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 9 -->
+  <div class="question" data-q="9" data-correct="b">
+    <p>9. Which statement about noncompetitive bids in Treasury auctions is correct?</p>
+    <label><input type="radio" name="q9" value="a">
+      A noncompetitive bidder specifies both the yield and the quantity they want.
+    </label>
+    <label><input type="radio" name="q9" value="b">
+      A noncompetitive bidder specifies only the quantity (up to a limit of \$5 million) and accepts the yield determined by the auction.
+    </label>
+    <label><input type="radio" name="q9" value="c">
+      Noncompetitive bids are only allowed for foreign central banks.
+    </label>
+    <label><input type="radio" name="q9" value="d">
+      Noncompetitive bids always receive a higher yield than competitive bids.
+    </label>
+    <button type="button" onclick="checkQuestion(9)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <!-- Question 10 -->
+  <div class="question" data-q="10" data-correct="d">
+    <p>10. In a Treasury auction, what is the “stop-out yield” (or “high yield”)?</p>
+    <label><input type="radio" name="q10" value="a">
+      The lowest yield submitted in any competitive bid.
+    </label>
+    <label><input type="radio" name="q10" value="b">
+      The average yield of all noncompetitive bids.
+    </label>
+    <label><input type="radio" name="q10" value="c">
+      The yield paid only to primary dealers.
+    </label>
+    <label><input type="radio" name="q10" value="d">
+      The highest yield accepted by the Treasury that allows the full offering amount to be sold.
+    </label>
+    <button type="button" onclick="checkQuestion(10)">Check Answer</button>
+    <div class="feedback"></div>
+  </div>
+
+  <hr />
+
+  <button type="button" onclick="checkAll()">Check All Answers</button>
+  <div id="score"></div>
+
+  <script>
+    function checkQuestion(qNum) {
+      const qDiv = document.querySelector('.question[data-q="' + qNum + '"]');
+      const correct = qDiv.dataset.correct;
+      const selected = qDiv.querySelector('input[name="q' + qNum + '"]:checked');
+      const feedback = qDiv.querySelector('.feedback');
+
+      if (!selected) {
+        feedback.textContent = "Please select an answer.";
+        feedback.className = "feedback";
+        return;
+      }
+
+      if (selected.value === correct) {
+        feedback.textContent = "Correct!";
+        feedback.className = "feedback correct";
+      } else {
+        feedback.textContent = "Incorrect. Try again.";
+        feedback.className = "feedback incorrect";
+      }
+    }
+
+    function checkAll() {
+      const questions = document.querySelectorAll('.question');
+      let correctCount = 0;
+      let total = questions.length;
+
+      questions.forEach((qDiv) => {
+        const qNum = qDiv.dataset.q;
+        const correct = qDiv.dataset.correct;
+        const selected = qDiv.querySelector('input[name="q' + qNum + '"]:checked');
+        const feedback = qDiv.querySelector('.feedback');
+
+        if (!selected) {
+          feedback.textContent = "No answer selected.";
+          feedback.className = "feedback";
+          return;
+        }
+
+        if (selected.value === correct) {
+          correctCount++;
+          feedback.textContent = "Correct!";
+          feedback.className = "feedback correct";
+        } else {
+          feedback.textContent = "Incorrect. The correct answer is option " + correct.toUpperCase() + ".";
+          feedback.className = "feedback incorrect";
+        }
+      });
+
+      document.getElementById("score").textContent =
+        "You answered " + correctCount + " out of " + total + " questions correctly.";
+    }
+  </script>
+</body>
+</html>
